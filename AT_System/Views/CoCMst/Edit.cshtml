@@ -1,0 +1,74 @@
+﻿@model AT_System.Models.FI03_AT_CostCenter
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Cost Center For Receiver Cost Center : @ViewBag.RecCC_Name</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FI03_AT_CostCenter</legend>
+
+        <table>
+            <tr>
+@*                <td>@Html.LabelFor(model => model.Client)</td>*@
+@*                <td>@Html.EditorFor(model => model.Client) @Html.ValidationMessageFor(model => model.Client)</td>*@
+                <td></td>
+                <td>@Html.HiddenFor(model => model.Client) @Html.ValidationMessageFor(model => model.Client)</td>
+            </tr>
+            
+            <tr>
+@*                <td>@Html.LabelFor(model => model.AutoRun)</td>*@
+@*                <td>@Html.EditorFor(model => model.AutoRun) @Html.ValidationMessageFor(model => model.AutoRun)</td>*@
+                <td></td>
+                <td>@Html.HiddenFor(model => model.AutoRun) @Html.ValidationMessageFor(model => model.AutoRun)</td>
+            </tr>
+            
+            <tr>
+@*                <td>@Html.LabelFor(model => model.FI03_AT_RecCostCenter)</td>*@
+@*                <td>@Html.EditorFor(model => model.FI03_AT_RecCostCenter) @Html.ValidationMessageFor(model => model.FI03_AT_RecCostCenter)</td>*@
+@*                <td>@Html.DropDownListFor(model => model.FI03_AT_RecCostCenter, new SelectList(ViewBag.RecCC, "Value", "Text"), "Please Select", new { @class = "form-control btn btn-default dropdown-toggle", @Id = "cboRecCC" })</td>*@
+                <td></td>
+                <td>@Html.HiddenFor(model => model.FI03_AT_RecCostCenter) @Html.ValidationMessageFor(model => model.FI03_AT_RecCostCenter)</td>
+            </tr>
+            
+            <tr>
+                <td>@Html.LabelFor(model => model.AssetClass)</td>
+                <td>@Html.TextBoxFor(model => model.AssetClass, new { @readonly="readonly" })</td>
+            </tr>
+            
+            <tr>
+                <td>@Html.LabelFor(model => model.CostCenter)</td>
+                <td>@Html.EditorFor(model => model.CostCenter) @Html.ValidationMessageFor(model => model.CostCenter)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.Room)</td>
+                <td>@Html.EditorFor(model => model.Room) @Html.ValidationMessageFor(model => model.Room)</td>
+            </tr>
+
+            <tr>
+@*                <td>@Html.LabelFor(model => model.Status)</td>*@
+@*                <td>@Html.EditorFor(model => model.Status) @Html.ValidationMessageFor(model => model.Status)</td>*@
+                <td></td>
+                <td>@Html.HiddenFor(model => model.Status) @Html.ValidationMessageFor(model => model.Status)</td>
+            </tr>
+        </table>
+
+        <p>
+            <input type="submit" value="Save" /> | @Html.ActionLink("Back to List", "Index", new { id = Model.FI03_AT_RecCostCenter })
+
+                <span style='color:red; font-size:2.2em;'>@ViewBag.Error</span>
+
+        </p>
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

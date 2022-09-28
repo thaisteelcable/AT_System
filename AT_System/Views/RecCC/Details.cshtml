@@ -1,0 +1,57 @@
+﻿@model AT_System.Models.FI03_AT_RecCostCenter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FI03_AT_RecCostCenter</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Client)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Client)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AutoRun)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AutoRun)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ReceiverCC)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReceiverCC)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FieldCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FieldCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DepartmentCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DepartmentCode)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

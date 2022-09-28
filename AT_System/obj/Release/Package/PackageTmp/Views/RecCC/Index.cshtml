@@ -1,0 +1,121 @@
+﻿@model IEnumerable<AT_System.Models.FI03_AT_RecCostCenter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Maintain Receiver Cost Center</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>@Html.Label("Select Receiver Cost Center:")</td>
+            <td>@Html.TextBox("rec_cc")</td>
+            <td><input type="submit" value="Search" name="Search" /></td>    @*<td colspan="2"><input type="submit" value="Search" name="Search" /> <input type="submit" value="Report" name="Report" /></td>*@
+        </tr>
+    </table>
+}
+
+
+
+<div class="table-responsive"> 
+
+<table class="table table-hover table-striped table-bordered">
+
+    <thead class="tableHeader">
+    <tr>
+        <th>No.</th>
+        <th>
+@*            @Html.DisplayNameFor(model => model.Client)*@
+@*            @Html.DisplayNameFor(model => model.AutoRun)*@
+@*            @Html.DisplayNameFor(model => model.ReceiverCC)*@
+            Receiver Cost Center
+        </th>
+        <th>
+@*            @Html.DisplayNameFor(model => model.Status)*@
+@*            @Html.DisplayNameFor(model => model.FieldCode)*@
+            Matching Type
+        </th>
+        <th>
+@*            @Html.DisplayNameFor(model => model.DepartmentCode)*@
+            Matching Name
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+
+
+@{
+    int no = 1;
+    foreach (var item in Model)
+    {
+    <tr>
+        <td>@(no++)</td>
+
+        <td>
+@*            @Html.DisplayFor(modelItem => item.Client)*@
+            @Html.HiddenFor(modelItem => item.Client)
+@*            @Html.DisplayFor(modelItem => item.AutoRun)*@
+            @Html.HiddenFor(modelItem => item.AutoRun)
+            @Html.DisplayFor(modelItem => item.ReceiverCC)
+@*            @Html.DisplayFor(modelItem => item.Status)*@
+            @Html.HiddenFor(modelItem => item.Status)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentCode)
+        </td>
+        <td>
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.AutoRun }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AutoRun }) ||
+
+            @Html.ActionLink("Flow Master", "Index", "FlwMst", new { id = item.AutoRun }, null) |
+            @Html.ActionLink("Cost Center", "Index", "CoCMst", new { id = item.AutoRun }, null)
+            
+        </td>
+    </tr>
+    }
+}
+
+</table>
+
+</div>
+
+
+
+@section Scripts{
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryui")
+@Styles.Render("~/Content/themes/base/css")
+
+<script type="text/javascript">
+    $('.dp').datepicker({
+        format: 'mm/dd/yyyy'
+    });
+
+    //$(".filter").click(function () {
+    //    $("#srhfilter").val($(this).attr("title").trim());
+    //    $('#FrmSearch').submit();
+    //});
+</script>
+
+<style type="text/css">
+    .filter:hover {
+        cursor:pointer;
+        color:dodgerblue;
+    }
+</style>
+
+}
+
+

@@ -1,0 +1,107 @@
+﻿@model AT_System.Models._AT_Master
+
+@{
+    ViewBag.Title = "Flow Index";
+}
+
+<h2>Maintain Flow Master For Receiver Cost Center : @Html.DisplayFor(modelItem => Model.AT_RecCC.ReceiverCC)</h2>
+
+<p>
+    @Html.ActionLink("Add New Flow", "Create", new { id = Model.AT_RecCC.AutoRun }) | @Html.ActionLink("Back to List", "Index", "RecCC")
+</p>
+
+@*@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>@Html.Label("Select Receiver Cost Center OR Emp ID:")</td>
+            <td>@Html.TextBox("rec_cc")</td>
+            <td><input type="submit" value="Search" name="Search" /></td>
+        </tr>
+    </table>
+}*@
+
+<div class="table-responsive"> 
+
+<table class="table table-hover table-striped table-bordered">
+
+@*            <td>@Html.HiddenFor(modelItem => item.FI03_AT_RecCostCenter)</td>
+            <td>@Html.DisplayFor(modelItem => item.RecCC_NAME)</td>*@
+@*        <th>FI03_AT_RecCostCenter</th>
+        <th>RecCC_NAME</th>*@
+
+    <thead class="tableHeader">
+    <tr>
+        <th>No.</th>
+        <th>Step No  </th>
+        <th>Emp ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    </thead>
+
+@*    @{
+    int no = 1;
+    foreach (var item in Model.AT_FlwEmp) 
+    {
+        <tr>
+
+            <td>@(no++)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.AT_FlwMst.StepNo)</td>
+            <td>@Html.DisplayFor(modelItem => item.AT_FlwMst.EmpID)</td>
+            <td>@Html.DisplayFor(modelItem => item.AT_Emp.FirstNameEN)</td>
+            <td>@Html.DisplayFor(modelItem => item.AT_Emp.LastNameEN)</td>
+            <td>@Html.DisplayFor(modelItem => item.AT_FlwMst.Email)</td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AT_FlwMst.AutoRun }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AT_FlwMst.AutoRun })
+                @Html.HiddenFor(modelItem => item.AT_FlwMst.Client)
+                @Html.HiddenFor(modelItem => item.AT_FlwMst.AutoRun)
+                @Html.HiddenFor(modelItem => item.AT_FlwMst.Status)
+            </td>
+
+        </tr>
+    }
+}*@
+
+
+    @{
+    int no = 1;
+    foreach (var item in Model.AT_FlwMst) 
+    {
+        <tr>
+
+            <td>@(no++)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.StepNo)</td>
+            <td>@Html.DisplayFor(modelItem => item.EmpID)</td>
+            <td>@Html.DisplayFor(modelItem => item.EmpFirstName)</td>
+            <td>@Html.DisplayFor(modelItem => item.EmpLastName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AutoRun }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AutoRun })
+                @Html.HiddenFor(modelItem => item.Client)
+                @Html.HiddenFor(modelItem => item.AutoRun)
+                @Html.HiddenFor(modelItem => item.Status)
+            </td>
+
+        </tr>
+    }
+    }
+
+
+</table>
+
+</div>
+
+
+@*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+@*<p>
+    <input type="submit" value="Save" /> | @Html.ActionLink("Back to List", "Index")
+</p>*@

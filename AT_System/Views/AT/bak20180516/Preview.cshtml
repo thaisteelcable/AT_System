@@ -1,0 +1,359 @@
+﻿@model AT_System.Models._ATForm
+
+@{
+    ViewBag.Title = "Preview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <h2>Preview Asset Transfer</h2>
+    </div>
+    <div class="col-lg-6" style="text-align:right;">
+        @{
+            if (Model.AT_Header.DocStatus == "Approve")
+            {
+                <span style="color:green; font-size:larger;">@Html.DisplayFor(m => m.AT_Header.DocStatus)</span>
+            }
+            else if (Model.AT_Header.DocStatus == "Issue")
+            {
+                <span style="color:blue; font-size:larger;">@Html.DisplayFor(m => m.AT_Header.DocStatus)</span>
+            }else{
+                <span style="color:red; font-size:larger;">@Html.DisplayFor(m => m.AT_Header.DocStatus)</span>
+            }
+        }
+        
+    </div>
+</div>
+
+    @using (Html.BeginForm("Preview", "AT", FormMethod.Post, new { @id = "frmMain" }))
+    {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+            <div class="row">
+                <div class="col-lg-3">
+                    
+                    <input type="file" multiple="multiple" name="files[0]" id="files_1" style="width:180px;"/>
+                    <div id="showFile" style="height:35px;overflow-y:auto;">
+                        @foreach (var file in ViewBag.listFilename)
+                        { 
+                            <div>
+                                <a href="~/ATFiles/@Model.AT_Header.AutoRun/@file" target="_blank" style="font-size:small;color:blue;">@file</a>
+                                <span class="delFile" alt="@file" style="cursor:pointer" ></span>
+                            </div>
+                        }
+                    </div>
+                    <input type="hidden" name="guid" id="guid" value="@Model.AT_Header.AutoRun">
+                    <input type="hidden" name="hdnMaxLine" id="hdnMaxLine" value="0">
+                    <input type="hidden" id="hidAssClass"/>
+                    @Html.HiddenFor(model => model.AT_Header.AutoRun)
+                    @Html.HiddenFor(model => model.AT_Header.DocNo)
+                    @Html.HiddenFor(model => model.AT_Header.CreateDate)
+                    @Html.HiddenFor(model => model.AT_Header.CreateTime)
+                    @Html.HiddenFor(model => model.AT_Header.CreateBy)
+                </div>
+                 <div class="col-lg-1" style="text-align:right;">
+                    Issue Department
+                      
+                </div>
+                <div class="col-lg-2" >
+                    @Html.DropDownListFor(model => model.AT_Header.FI03_AT_RecCostCenter_From, new SelectList(ViewBag.tbSendDepartment, "Value", "Text"), "Please Select", new { @class = "btn btn-default dropdown-toggle", @Id = "tbSendDepartment", @readonly = "readonly", @disabled = "disabled" })
+                    @Html.HiddenFor(model => model.AT_Header.FI03_AT_RecCostCenter_From, new { @id = "hidIdSendDeprtment" })  
+                    <input type="hidden" id="hidSendDeprtment"/>                    
+                </div>
+                <div class="col-lg-1" style="text-align:right;">
+                    Receiver Department
+                      
+                </div>
+                <div class="col-lg-2" >
+                     @Html.DropDownListFor(model => model.AT_Header.FI03_AT_RecCostCenter_To, new SelectList(ViewBag.tbRecDepartment, "Value", "Text"), "Please Select", new { @class = "btn btn-default dropdown-toggle", @Id = "tbRecDepartment", @readonly = "readonly", @disabled = "disabled" })
+                     @Html.HiddenFor(model => model.AT_Header.FI03_AT_RecCostCenter_To, new { @id = "hidIdRecDepartment" })  
+                    <input type="hidden" id="hidRecDepartment"/>  
+                </div>
+                <div class="col-lg-1" style="text-align:right;">
+                     Document No. 
+                </div>
+                <div class="col-lg-2" >
+                    @Html.TextBoxFor(model => model.AT_Header.DocNo, new { @class = "form-control", @readonly = true })
+                      
+                </div>
+            </div>  
+        
+        <div class="table-responsive"> 
+                <table id="tbAdd" class="table table-hover table-striped table-bordered">
+                    <thead class="tableHeader">
+                      <tr>
+                        @*<th rowspan="2"></th>*@
+                        <th colspan="7" style="text-align:center;">Sender</th>
+                        <th colspan="4" style="text-align:center;">Receiver</th>
+                      </tr>
+                      <tr>
+                        <th>item</th>
+                        <th>Asset Class 
+                            <input type="hidden" id="hidAssetClass" />
+                        </th>
+                        <th>Asset </th>
+                        <th>Description</th>
+                        <th>Cost Center </th>
+                        <th>Room </th>
+                        <th>Qty </th>
+                        <th>Department </th>
+                        <th>Cost Center SAP </th>
+                        <th>Room </th>
+                        <th>Remark </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                       @{
+                            for (var item = 0; item < Model.AT_Item.Count; item++)
+                            {
+                                <tr>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].ItemNo' value='@Model.AT_Item[item].ItemNo' style='width:40px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='hidden' name='AT_ITEM[@item].AutoRun' value='@Model.AT_Item[item].AutoRun' style='width:60px;' readonly>
+                                        <input class='txt-disable' type='hidden' name='AT_ITEM[@item].FI03_AT_Doc' value='@Model.AT_Item[item].FI03_AT_Doc' style='width:60px;' readonly>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].AssetClass' value='@Model.AT_Item[item].AssetClass' style='width:60px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].Asset' value='@Model.AT_Item[item].Asset' style='width:120px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].AssetDescription' value='@Model.AT_Item[item].AssetDescription' style='width:250px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].CostCenter' value='@Model.AT_Item[item].CostCenter' style='width:80px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].Room' value='@Model.AT_Item[item].Room' style='width:80px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].Qty' value='@Model.AT_Item[item].Qty' style='width:60px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].RecCostCenter' value='@Model.AT_Item[item].RecCostCenter' style='width:120px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].CostCenter2' value='@Model.AT_Item[item].CostCenter2' style='width:80px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].Room2' value='@Model.AT_Item[item].Room2' style='width:90px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' name='AT_ITEM[@item].Remark' value='@Model.AT_Item[item].Remark' style='width:180px;' readonly>
+                                    </td>
+                                </tr>
+                            }
+            
+                        }
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="prFlow-content">
+                <div style="font-size: large; font-weight: 400;">Signature</div>
+            <br />
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">Issued </div>
+                    <div class="col-lg-2">Top Section </div>
+                    <div class="col-lg-2">Receiver  </div>
+                    <div class="col-lg-2">Top Section </div>
+                    <div class="col-lg-2">A&F </div>
+                    <div class="col-lg-1"></div>
+                </div>
+                <div class="row"> 
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        @Html.TextBoxFor(model => model.AT_Header.IssueBy, new { @class = "form-control", @readonly = true, @id = "txtIssue" })
+                        @*<input class='txt-disable form-control' type='text' placeholder="Signature", @Value=ViewBag.UserAD />*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.TextBoxFor(model => model.AT_Header.IssueByTop, new { @class = "form-control", @readonly = true, @id = "txtIssueTop" })
+                        @*<input class='txt-disable form-control' type='text' placeholder="Signature" />*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.TextBoxFor(model => model.AT_Header.ReceiveBy, new { @class = "form-control", @readonly = true, @id = "txtRec" })
+                        @*<input class='txt-disable form-control' type='text' placeholder="Signature" />*@
+                    </div>
+                    <div class="col-lg-2">
+                         @Html.TextBoxFor(model => model.AT_Header.ReceiveByTop, new { @class = "form-control", @readonly = true, @id = "txtRecTop" })
+                        @*<input class='txt-disable form-control' type='text' placeholder="Signature" txtSignature  />*@
+                    </div>
+                    <div class="col-lg-2">
+                         @Html.TextBoxFor(model => model.AT_Header.AFApp, new { @class = "form-control", @readonly = true, @id = "txtAF" })
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+                <div class="row"> 
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                         @Html.DisplayFor(model => model.AT_Header.IssueDate)
+                        @Html.DisplayFor(model => model.AT_Header.IssueTime)
+                        @Html.HiddenFor(model => model.AT_Header.IssueDate)
+                        @Html.HiddenFor(model => model.AT_Header.IssueTime)
+                         @*@Html.TextBoxFor(model => model.AT_Header.IssueDate, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateIssue" })*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.IssueDateTop)
+                        @Html.DisplayFor(model => model.AT_Header.IssueTimeTop)
+                        @Html.HiddenFor(model => model.AT_Header.IssueDateTop)
+                        @Html.HiddenFor(model => model.AT_Header.IssueTimeTop)
+                        @*@Html.TextBoxFor(model => model.AT_Header.IssueDateTop, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateTopSec" })*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.ReceiveDate)
+                        @Html.DisplayFor(model => model.AT_Header.ReceiveTime)
+                        @Html.HiddenFor(model => model.AT_Header.ReceiveDate)
+                        @Html.HiddenFor(model => model.AT_Header.ReceiveTime)
+                         @*@Html.TextBoxFor(model => model.AT_Header.ReceiveDate, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateReceiver" })*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.ReceiveDateTop)
+                        @Html.DisplayFor(model => model.AT_Header.ReceiveTimeTop)
+                        @Html.HiddenFor(model => model.AT_Header.ReceiveDateTop)
+                        @Html.HiddenFor(model => model.AT_Header.ReceiveTimeTop)
+                        @*@Html.TextBoxFor(model => model.AT_Header.ReceiveDateTop, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateTopRec" })*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.AFAppDate)
+                        @Html.DisplayFor(model => model.AT_Header.AFAppTime)
+                        @Html.HiddenFor(model => model.AT_Header.AFAppDate)
+                        @Html.HiddenFor(model => model.AT_Header.AFAppTime)
+                        @*@Html.TextBoxFor(model => model.AT_Header.AFAppDate, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateAF" })*@
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>
+        
+            <div id="blogFlow" class="prFlow-content">
+                <div style="font-size: large; font-weight: 400;">Document Status</div>
+                <br />
+                @{
+        for (var flow = 0; flow < Model.AT_Flow.Count; flow++)
+        {
+                     <div class="row">
+                         <div class="col-lg-1">
+                             @*Set Value Flow Approve*@
+                             @Html.HiddenFor(model => model.AT_Flow[flow].AutoRun)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_Doc)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_FlowMaster)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].FlowState)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].ApproveStatus)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].DateApprove)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].TimeApprove)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].UserCreate)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].DateCreate)
+                             @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_RecCostCenter)
+                         </div>
+                        <div class="col-lg-2">
+                              @Html.TextBoxFor(model => model.AT_Flow[flow].EmpID, new { @class = "form-control", style = "width:100%;", @id = "EmpID" + @flow, @readonly = "readonly" })
+                         </div>
+                         <div class="col-lg-2">
+                              @Html.TextBoxFor(model => model.AT_Flow[flow].EmpFirstName, new { @class = "form-control", style = "width:100%;", @id = "EmpFirstName" + @flow, @readonly = "readonly" })
+                         </div>
+                         <div class="col-lg-2">
+                              @Html.TextBoxFor(model => model.AT_Flow[flow].EmpLastName, new { @class = "form-control", style = "width:100%;", @id = "EmpLastName" + @flow, @readonly = "readonly" })
+                         </div>
+                         <div class="col-lg-3">
+                              @Html.TextBoxFor(model => model.AT_Flow[flow].EmpEmail, new { @class = "form-control", style = "width:100%;", @id = "EmpEmail" + @flow, @readonly = "readonly" })
+                         </div>
+                         <div class="col-lg-2"></div>
+                     </div>   
+        } 
+                    
+                 }
+            </div>
+          
+            <div class="row" style="padding-top: 10px;">
+                    <div class="col-lg-2">
+                        @*@id = "BackPage",*@
+                         @Html.ActionLink("Back to List", "Index", "AT", null, new { @class = "w3-btn w3-grey w3-small" })
+                    </div>
+
+                    @{                 
+                        var vUserAD = ViewBag.vUserAD.ToLower();
+                        var vNameCurrentflow = "";
+                        var vflowState = "";
+                        if (ViewBag.vNameCurrentflow != null && ViewBag.vNameCurrentflow.EmpFirstName != null) { 
+                            vNameCurrentflow = ViewBag.vNameCurrentflow.EmpFirstName.ToLower();
+                            vflowState = ViewBag.vNameCurrentflow.FlowState;
+                        } 
+                        
+                            
+                        if ((Session["chkPermission"].ToString() == "Admin" || vUserAD == vNameCurrentflow) && Model.AT_Header.DocStatus == "Issue")
+                        {
+                        <div class="col-lg-2 col-lg-offset-2">
+                            @{
+                                if (vflowState == "5")
+                                {
+                                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Acknowledge" class="w3-btn w3-indigo w3-small " />
+                                }
+                                else
+                                { 
+                                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Save Data" class="w3-btn w3-indigo w3-small " />
+                                }
+                            }
+                            @*<input type="submit" id="btnSubmit" name="btnSubmit" value="Save Data" class="w3-btn w3-indigo w3-small " />*@
+                        </div>
+                        <div class="col-lg-1 chkApprove" style="text-align:left; padding-top: 13px;">
+                            <input id="IsApprove" type="radio" name="chkApprove" value="true" checked onclick="hideNote()" />
+                            <span style="font-size:small;margin-left:3px;">Approve</span>
+                        </div>
+                        <div class="col-lg-1 chkReject" style="text-align:left; padding-top: 13px;">
+                            <input id="IsReject" type="radio" name="chkApprove" value="false" onclick="showNote()" />
+                            <span style="font-size:small;margin-left:3px;">Reject</span>
+                        </div>
+                        <div class="col-lg-3">
+                            <div id="dvNote" style="display: none">
+                                <input type="text" id="txtNote" name="txtNote" class="form-control input-sm" placeholder="Note for Reject" />
+                            </div>
+                        </div>  
+                        }
+                    }
+            </div>
+    
+    }
+@section Scripts {
+    <script type="text/javascript">
+        //$("#BackPage").click(function () {
+        //    history.go(-1);
+        //});
+
+        function showNote() { $("#dvNote").show(); }
+        function hideNote() { $("#dvNote").hide(); }
+
+        
+        $("#btnSubmit").click(function () {
+            if ((document.getElementById('IsReject').checked == true) && ($("#txtNote").val().trim() == "")) {
+                alert("ยังไม่ได้ระบุ Note for Reject");
+                document.getElementById('txtNote').focus();
+                return false;
+            }
+
+
+        });
+        
+    </script>
+}
+   <style type="text/css">
+
+    table#tbAdd {
+        font-size:.85em;
+        width:100%;
+    }
+    table#tbAdd th, table#tbAdd td {
+        text-align:center;
+    }
+    table#tbAdd th {
+        background-color: #3f51b5; 
+        color:#fff;           
+    }
+    #IsApprove, #IsReject {
+        width:initial;
+        width:auto;
+    }
+    </style>
+

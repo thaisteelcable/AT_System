@@ -1,0 +1,875 @@
+﻿@model AT_System.Models._ATForm
+
+@{
+    ViewBag.Title = "Reset";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-6">
+        <h2>Preview Asset Transfer</h2>
+    </div>
+    <div class="col-lg-6" style="text-align:right;">
+        <span style="color:red; font-size:larger;">@Html.DisplayFor(Model => Model.AT_Header.DocStatus)</span>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Reset", "AT", FormMethod.Post, new { @id = "frmMain" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+            <div class="row">
+                <div class="col-lg-1">
+                    <input type="hidden" name="hdnMaxLine" id="hdnMaxLine" value='@ViewBag.vCountItem'>
+                    <input name="btnAdd" type="button" id="btnAdd" value="+" onClick="CreateNewRow();"> 
+		            <input name="btnDel" type="button" id="btnDel" value="-" onClick="RemoveRow();">
+                    <input type="hidden" id="hidAssClass" value='@ViewBag.vAssetClass' />
+                </div>
+                <div class="col-lg-2">                 
+                    <input type="file" multiple="multiple" name="files[0]" id="files_1" style="width:250px;"/>
+                    <div id="showFile" style="height:35px;overflow-y:auto;">
+                        @foreach (var file in ViewBag.listFilename)
+                        { 
+                            <div>
+                                <a href="~/ATFiles/@Model.AT_Header.AutoRun/@file" target="_blank" style="font-size:small;color:blue;">@file</a>
+                                <span class="delFile" alt="@file" style="cursor:pointer" ><img src='../../Images/delete.png' /></span>
+                            </div>
+                        }
+                    </div>
+                    <input type="hidden" name="guid" id="guid" value="@Model.AT_Header.AutoRun" />
+                    @Html.HiddenFor(model => model.AT_Header.AutoRun)
+                    @Html.HiddenFor(model => model.AT_Header.DocNo)
+                    @Html.HiddenFor(model => model.AT_Header.CreateDate)
+                    @Html.HiddenFor(model => model.AT_Header.CreateTime)
+                    @Html.HiddenFor(model => model.AT_Header.CreateBy)
+                </div>
+                 <div class="col-lg-1" style="text-align:right;">
+                    Issue Department
+                      
+                </div>
+                <div class="col-lg-2" >
+                    @Html.DropDownListFor(model => model.AT_Header.FI03_AT_RecCostCenter_From, new SelectList(ViewBag.tbSendDepartment, "Value", "Text"), "Please Select", new { @class = "btn btn-default dropdown-toggle", @Id = "tbSendDepartment", @readonly = "readonly", @disabled = "disabled" })
+                    @Html.HiddenFor(model => model.AT_Header.FI03_AT_RecCostCenter_From, new { @id = "hidIdSendDeprtment" })  
+                    <input type="hidden" id="hidSendDeprtment"/>                    
+                </div>
+                <div class="col-lg-1" style="text-align:right;">
+                    Receiver Department
+                      
+                </div>
+                <div class="col-lg-2" >
+                     @Html.DropDownListFor(model => model.AT_Header.FI03_AT_RecCostCenter_To, new SelectList(ViewBag.tbRecDepartment, "Value", "Text"), "Please Select", new { @class = "btn btn-default dropdown-toggle", @Id = "tbRecDepartment", @readonly = "readonly", @disabled = "disabled" })
+                     @Html.HiddenFor(model => model.AT_Header.FI03_AT_RecCostCenter_To, new { @id = "hidIdRecDepartment" })  
+                    <input type="hidden" id="hidRecDepartment"/>  
+                </div>
+                <div class="col-lg-1" style="text-align:right;">
+                     Document No. 
+                </div>
+                <div class="col-lg-2" >
+                    @Html.TextBoxFor(model => model.AT_Header.DocNo, new { @class = "form-control", @readonly = true })
+                      
+                </div>
+            </div>  
+        
+        <div class="table-responsive"> 
+                <table id="tbAdd" class="table table-hover table-striped table-bordered">
+                    <thead class="tableHeader">
+                      <tr>
+                        @*<th rowspan="2"></th>*@
+                        <th colspan="7" style="text-align:center;">Sender</th>
+                        <th colspan="4" style="text-align:center;">Receiver</th>
+                      </tr>
+                      <tr>
+                        <th>item</th>
+                        <th>Asset Class 
+                            @*<input type="hidden" id="hidAssetClass"/>*@
+                        </th>
+                        <th>Asset </th>
+                        <th>Description</th>
+                        <th>Cost Center </th>
+                        <th>Room </th>
+                        <th>Qty </th>
+                        <th>Department </th>
+                        <th>Cost Center SAP </th>
+                        <th>Room </th>
+                        <th>Remark </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                       @{
+                                                      
+                        for (var item = 0; item < Model.AT_Item.Count; item++)
+                        {
+                                <tr>
+                                    <td>
+                                        <input class='txt-disable' type='text'  name='AT_ITEM[@item].ItemNo' value='@Model.AT_Item[item].ItemNo' style='width:40px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='hidden' name='AT_ITEM[@item].AutoRun' value='@Model.AT_Item[item].AutoRun' style='width:60px;' readonly>
+                                        <input class='txt-disable' type='hidden' name='AT_ITEM[@item].FI03_AT_Doc' value='@Model.AT_Item[item].FI03_AT_Doc' style='width:60px;' readonly>
+                                        <input class='txt-disable' type='text' id='AssClass_@item' name='AT_ITEM[@item].AssetClass' value='@Model.AT_Item[item].AssetClass' style='width:60px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='Ass_@item' name='AT_ITEM[@item].Asset' value='@Model.AT_Item[item].Asset' style='width:120px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='Desc_@item' name='AT_ITEM[@item].AssetDescription' value='@Model.AT_Item[item].AssetDescription' style='width:250px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='Cost_@item' name='AT_ITEM[@item].CostCenter' value='@Model.AT_Item[item].CostCenter' style='width:80px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='Room_@item' name='AT_ITEM[@item].Room' value='@Model.AT_Item[item].Room' style='width:80px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='Qty_@item' name='AT_ITEM[@item].Qty' value='@Model.AT_Item[item].Qty' style='width:60px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='Depart_@item' name='AT_ITEM[@item].RecCostCenter' value='@Model.AT_Item[item].RecCostCenter' style='width:120px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='CostSAP_@item' name='AT_ITEM[@item].CostCenter2' value='@Model.AT_Item[item].CostCenter2' style='width:80px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='RoomRec_@item' name='AT_ITEM[@item].Room2' value='@Model.AT_Item[item].Room2' style='width:90px;' readonly>
+                                    </td>
+                                    <td>
+                                        <input class='txt-disable' type='text' id='Remark_@item' name='AT_ITEM[@item].Remark' value='@Model.AT_Item[item].Remark' style='width:180px;' readonly>
+                                    </td>
+                                </tr>
+                        }
+            
+                        }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="prFlow-content">
+                <div style="font-size: large; font-weight: 400;">Signature</div>
+            <br />
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">Issued </div>
+                    <div class="col-lg-2">Top Section </div>
+                    <div class="col-lg-2">Receiver  </div>
+                    <div class="col-lg-2">Top Section </div>
+                    <div class="col-lg-2">A&F </div>
+                    <div class="col-lg-1"></div>
+                </div>
+                <div class="row"> 
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        @Html.TextBoxFor(model => model.AT_Header.IssueBy, new { @class = "form-control", @readonly = true, @id = "txtIssue" })
+                        @*<input class='txt-disable form-control' type='text' placeholder="Signature", @Value=ViewBag.UserAD />*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.TextBoxFor(model => model.AT_Header.IssueByTop, new { @class = "form-control", @readonly = true, @id = "txtIssueTop" })
+                        @*<input class='txt-disable form-control' type='text' placeholder="Signature" />*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.TextBoxFor(model => model.AT_Header.ReceiveBy, new { @class = "form-control", @readonly = true, @id = "txtRec" })
+                        @*<input class='txt-disable form-control' type='text' placeholder="Signature" />*@
+                    </div>
+                    <div class="col-lg-2">
+                         @Html.TextBoxFor(model => model.AT_Header.ReceiveByTop, new { @class = "form-control", @readonly = true, @id = "txtRecTop" })
+                        @*<input class='txt-disable form-control' type='text' placeholder="Signature" txtSignature  />*@
+                    </div>
+                    <div class="col-lg-2">
+                         @Html.TextBoxFor(model => model.AT_Header.AFApp, new { @class = "form-control", @readonly = true, @id = "txtAF" })
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+                <div class="row"> 
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.IssueDate)
+                        @Html.DisplayFor(model => model.AT_Header.IssueTime)
+                        @Html.HiddenFor(model => model.AT_Header.IssueDate)
+                        @Html.HiddenFor(model => model.AT_Header.IssueTime)
+                         @*@Html.TextBoxFor(model => model.AT_Header.IssueDate, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateIssue" })*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.IssueDateTop)
+                        @Html.DisplayFor(model => model.AT_Header.IssueTimeTop)
+                        @Html.HiddenFor(model => model.AT_Header.IssueDateTop)
+                        @Html.HiddenFor(model => model.AT_Header.IssueTimeTop)
+                        @*@Html.TextBoxFor(model => model.AT_Header.IssueDateTop, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateTopSec" })*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.ReceiveDate)
+                        @Html.DisplayFor(model => model.AT_Header.ReceiveTime)
+                        @Html.HiddenFor(model => model.AT_Header.ReceiveDate)
+                        @Html.HiddenFor(model => model.AT_Header.ReceiveTime)
+                         @*@Html.TextBoxFor(model => model.AT_Header.ReceiveDate, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateReceiver" })*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.ReceiveDateTop)
+                        @Html.DisplayFor(model => model.AT_Header.ReceiveTimeTop)
+                        @Html.HiddenFor(model => model.AT_Header.ReceiveDateTop)
+                        @Html.HiddenFor(model => model.AT_Header.ReceiveTimeTop)
+                        @*@Html.TextBoxFor(model => model.AT_Header.ReceiveDateTop, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateTopRec" })*@
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.DisplayFor(model => model.AT_Header.AFAppDate)
+                        @Html.DisplayFor(model => model.AT_Header.AFAppTime)
+                        @Html.HiddenFor(model => model.AT_Header.AFAppDate)
+                        @Html.HiddenFor(model => model.AT_Header.AFAppTime)
+                        @*@Html.TextBoxFor(model => model.AT_Header.AFAppDate, new { @class = "form-control", @readonly = true, @autocomplete = "off", @id = "dateAF" })*@
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>
+        
+            <div id="blogFlow" class="prFlow-content">
+                <div style="font-size: large; font-weight: 400;">Document Status</div>
+                <br />
+
+              <div id="tableFlow">
+                <table id='tbFlow'>
+                    @{
+                        for (var flow = 0; flow < 2; flow++)
+                        {
+                        <tr>
+                            <td style='padding-left:80px;'>
+                                     @*@Html.HiddenFor(model => model.AT_Flow[flow].AutoRun)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_Doc)*@
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_FlowMaster)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FlowState)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].ApproveStatus)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].DateApprove)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].TimeApprove)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].UserCreate)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].DateCreate)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_RecCostCenter)
+                                    <input type='hidden' id='txtNo1_@flow' name="AT_FLOW[@flow].FlowState"  value='@Model.AT_Flow[flow].FlowState' style="width:100px;" class="form-control">
+                                    @*<input type='text' id='txtNo1_@flow' name="AT_FLOW[@cntApproveRec].FlowState"  value=@cntApproveRec+@i style="width:100px;" class="form-control">*@
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempId1_@flow' name="AT_FLOW[@flow].EmpID" value="@Model.AT_Flow[flow].EmpID" class="form-control" style="width:150px;"   readonly>
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempFirstName1_@flow' name="AT_FLOW[@flow].EmpFirstName" value="@Model.AT_Flow[flow].EmpFirstName" class="form-control" style="width:150px;"   readonly>
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempLastName1_@flow' name="AT_FLOW[@flow].EmpLastName" value="@Model.AT_Flow[flow].EmpLastName" class="form-control" style="width:200px;"   readonly>
+                                </td>
+                                <td> 
+                                    <input type="hidden" id='txtFlowID1_@flow' name="AT_FLOW[@flow].FI03_AT_FlowMaster" value="@Model.AT_Flow[flow].AutoRun" class="form-control" >
+                                    <input type="hidden" id='txtRecID1_@flow' name="AT_FLOW[@flow].FI03_AT_RecCostCenter"  value="@Model.AT_Flow[flow].FI03_AT_RecCostCenter" class="form-control"  >
+                                </td>
+                                
+                                <td> 
+                                    <input type="text" id='txtemail1_@flow' name="AT_FLOW[@flow].EmpEmail"  value="@Model.AT_Flow[flow].EmpEmail" class="form-control" style="width:250px;"   readonly>
+                                </td>
+                                <td>
+                                    @if(Model.AT_Flow[flow].ApproveStatus == "Reject"){
+                                        <span style="color:red;">
+                                            @Html.DisplayFor(mItem => mItem.AT_Flow[flow].ApproveStatus)
+                                            &nbsp;
+                                            Note : @Html.DisplayFor(mItem => mItem.AT_Flow[flow].Remark)
+                                        </span>
+                                    }
+                                </td>
+                        </tr>
+                        }
+                    }
+                </table>
+                <table id='tbFlowRec'>
+                    @{
+                        for (var flow = 2; flow < 4; flow++)
+                        {
+                        <tr>
+                            <td style='padding-left:80px;'>
+                                  @*   @Html.HiddenFor(model => model.AT_Flow[flow].AutoRun)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_Doc)*@
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_FlowMaster)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FlowState)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].ApproveStatus)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].DateApprove)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].TimeApprove)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].UserCreate)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].DateCreate)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_RecCostCenter)
+                                    <input type='hidden' id='txtNo2_@flow' name="AT_FLOW[@flow].FlowState"  value='@Model.AT_Flow[flow].FlowState' style="width:100px;" class="form-control">
+                                    @*<input type='text' id='txtNo3_@flow' name="AT_FLOW[@cntApproveRec].FlowState"  value=@cntApproveRec+@i style="width:100px;" class="form-control">*@
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempId2_@flow' name="AT_FLOW[@flow].EmpID" value="@Model.AT_Flow[flow].EmpID" class="form-control" style="width:150px;"   readonly>
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempFirstName2_@flow' name="AT_FLOW[@flow].EmpFirstName" value="@Model.AT_Flow[flow].EmpFirstName" class="form-control" style="width:150px;"   readonly>
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempLastName2_@flow' name="AT_FLOW[@flow].EmpLastName" value="@Model.AT_Flow[flow].EmpLastName" class="form-control" style="width:200px;"   readonly>
+                                </td>
+                                <td> 
+                                    <input type="hidden" id='txtFlowID2_@flow' name="AT_FLOW[@flow].FI03_AT_FlowMaster" value="@Model.AT_Flow[flow].AutoRun" class="form-control" >
+                                    <input type="hidden" id='txtRecID2_@flow' name="AT_FLOW[@flow].FI03_AT_RecCostCenter"  value="@Model.AT_Flow[flow].FI03_AT_RecCostCenter" class="form-control"  >
+                                </td>
+                                
+                                <td> 
+                                    <input type="text" id='txtemail2_@flow' name="AT_FLOW[@flow].EmpEmail"  value="@Model.AT_Flow[flow].EmpEmail" class="form-control" style="width:250px;"   readonly>
+                                </td>
+                                <td>
+                                    @if(Model.AT_Flow[flow].ApproveStatus == "Reject"){
+                                        <span style="color:red;">
+                                            @Html.DisplayFor(mItem => mItem.AT_Flow[flow].ApproveStatus)
+                                            &nbsp;
+                                            Note : @Html.DisplayFor(mItem => mItem.AT_Flow[flow].Remark)
+                                        </span>
+                                    }
+                                </td>
+                        </tr>
+                        }
+                    }
+                </table>
+                <table id='tbFlowAF'>
+                    @{
+                        for (var flow = 4; flow < 5; flow++)
+                        {
+                        <tr>
+                            <td style='padding-left:80px;'>
+                                     @*@Html.HiddenFor(model => model.AT_Flow[flow].AutoRun)*@
+                                     @*@Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_Doc)*@
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_FlowMaster)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FlowState)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].ApproveStatus)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].DateApprove)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].TimeApprove)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].UserCreate)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].DateCreate)
+                                     @Html.HiddenFor(model => model.AT_Flow[flow].FI03_AT_RecCostCenter)
+                                    <input type='hidden' id='txtNo3_@flow' name="AT_FLOW[@flow].FlowState"  value='@Model.AT_Flow[flow].FlowState' style="width:100px;" class="form-control">
+                                    @*<input type='text' id='txtNo3_@flow' name="AT_FLOW[@cntApproveRec].FlowState"  value=@cntApproveRec+@i style="width:100px;" class="form-control">*@
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempId3_@flow' name="AT_FLOW[@flow].EmpID" value="@Model.AT_Flow[flow].EmpID" class="form-control" style="width:150px;"   readonly>
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempFirstName3_@flow' name="AT_FLOW[@flow].EmpFirstName" value="@Model.AT_Flow[flow].EmpFirstName" class="form-control" style="width:150px;"   readonly>
+                                </td>
+                                <td>
+                                    <input type="text" id='txtempLastName3_@flow' name="AT_FLOW[@flow].EmpLastName" value="@Model.AT_Flow[flow].EmpLastName" class="form-control" style="width:200px;"   readonly>
+                                </td>
+                                <td> 
+                                    <input type="hidden" id='txtFlowID3_@flow' name="AT_FLOW[@flow].FI03_AT_FlowMaster" value="@Model.AT_Flow[flow].AutoRun" class="form-control" >
+                                    <input type="hidden" id='txtRecID3_@flow' name="AT_FLOW[@flow].FI03_AT_RecCostCenter"  value="@Model.AT_Flow[flow].FI03_AT_RecCostCenter" class="form-control"  >
+                                </td>
+                                
+                                <td> 
+                                    <input type="text" id='txtemail3_@flow' name="AT_FLOW[@flow].EmpEmail"  value="@Model.AT_Flow[flow].EmpEmail" class="form-control" style="width:250px;"   readonly>
+                                </td>
+                                <td>
+                                    @if(Model.AT_Flow[flow].ApproveStatus == "Reject"){
+                                        <span style="color:red;">
+                                            @Html.DisplayFor(mItem => mItem.AT_Flow[flow].ApproveStatus)
+                                            &nbsp;
+                                            Note : @Html.DisplayFor(mItem => mItem.AT_Flow[flow].Remark)
+                                        </span>
+                                    }
+                                </td>
+                        </tr>
+                        }
+                    }
+                </table>
+
+                
+             </div>
+            </div>
+          
+            <div class="row" style="padding-top: 10px;">
+
+                    @{                 
+                        var vUserAD = ViewBag.vUserAD.ToLower();
+
+                        if ((Session["chkPermission"].ToString() == "Admin" || vUserAD == Model.AT_Header.CreateBy) && Model.AT_Header.DocStatus == "Reject")
+                        {
+                                <div class="col-lg-1 col-lg-offset-5">
+                                <input name="btnSubmit" type="button" id="btnSubmit" value="Save" style="width:100px;" class="w3-btn w3-indigo w3-small"> 
+                                </div>
+                                <div class="col-lg-1" style="padding-top:5px;">@Html.ActionLink("Back to List", "Index", "AT", null, new { @class = "w3-btn w3-grey w3-small" })</div>
+                        }
+                    }
+            </div>
+    
+}
+@section Scripts {
+@Scripts.Render("~/bundles/jqueryui")
+@Styles.Render("~/Content/themes/base/css")  
+    <script type="text/javascript">
+        
+        $("#btnSubmit").click(function () {
+            var result = true;
+            if ($("#tbSendDepartment").val() == "" || $("#tbRecDepartment").val() == "") {
+                alert("กรุณาเลือก Department เพื่อทำการเพิ่ม Asset");
+                $("#blogFlow").hide();
+                if ($("#tbSendDepartment").val() == "") { $("#tbSendDepartment").focus(); result = false; return false; } else { $("#tbRecDepartment").focus(); result = false; return false; }
+            } else {
+                $("#blogFlow").show();
+                result = true;
+            }
+
+            if ($("#hdnMaxLine").val() <= 0) {
+                alert("กรุณาเลือก Asset อย่างน้อย 1 รายการ");
+                return false;
+            }
+
+            $("[id*='Ass_']").each(function (i) {
+                var id = $(this).attr("id").substring(4);
+                if ($(this).val().trim() == "") {
+                    alert("ยังไม่ได้ระบุ Asset (Item " + (i + 1) + ")"); result = false; return false;
+                }
+            });
+
+            $("[id*='Desc_']").each(function (i) {
+                var id = $(this).attr("id").substring(5);
+                if ($(this).val().trim() == "") {
+                    alert("ยังไม่ได้ระบุ Asset (Item " + (i + 1) + ")"); result = false; return false;
+                }
+            });
+
+            $("[id*='Qty_']").each(function (i) {
+                var id = $(this).attr("id").substring(4);
+                if ($(this).val().trim() == "") {
+                    alert("ยังไม่ได้ระบุ Qty (Item " + (i + 1) + ")"); result = false; return false;
+                }
+            });
+
+            if (result == false) { return false; }
+            $("#frmMain").submit();
+
+        });
+
+        $("#tbSendDepartment").change(function () {
+            var costcenter = $("#tbSendDepartment").val();
+            var txtCostcenter = $("#tbSendDepartment option:selected").text();
+
+            if (costcenter != "") {
+                $("#blogFlow").show();
+                var array = txtCostcenter.split(" ");
+                var myDT = "";
+
+                if ($("#tbSendDepartment").val() == $("#tbRecDepartment").val() && $("#tbRecDepartment").val() != null) {
+                    $("#tbRecDepartment").attr("disabled", "disabled");
+                    alert("ไม่สามารถโอนย้ายทรัพย์สิน Department เดียวกันได้ \n กรุณาเลือก Department ใหม่อีกครั้ง.");
+                    $("#tbSendDepartment").val("");
+                    $("#tbSendDepartment").focus();
+                    return false;
+                } else {
+                    $("#tbRecDepartment").removeAttr('disabled');
+                }
+
+                $("#hidIdSendDeprtment").val(costcenter);
+                $("#hidSendDeprtment").val(array[0]);
+
+                $.ajax({
+                    url: '@Url.Action("GetFlowApprove", "AT")',
+                    type: 'POST',
+                    data: 'costcenter=' + $("#hidIdSendDeprtment").val(),
+                    success: function (data) {
+
+                        var len = data.length;
+                        var cntApproveSend = 0;
+                        //myDT += "<table id='tbFlow' >";
+                        for (i = 0; i < len; i++) {
+                            myDT += "<tr>";
+                            myDT += "<td style='padding-left:80px;'><input type='hidden' name='AT_FLOW[" + cntApproveSend + "].FlowState' id='txtNo_1" + i + "' value='001_" + data[i].StepNo + "' style='width:100px;' class='form-control'></td>";
+                            myDT += "<td><input type='text' name='AT_FLOW[" + cntApproveSend + "].EmpID' id='txtempId_1" + i + "' value='" + data[i].EmpID + "' style='width:150px; ' class='form-control' readonly></td>";
+                            myDT += "<td><input type='text' name='AT_FLOW[" + cntApproveSend + "].EmpFirstName' id='txtempFirstName_1" + i + "' value='" + data[i].EmpFirstName + "' style='width:150px; ' class='form-control' readonly></td>";
+                            myDT += "<td><input type='text' name='AT_FLOW[" + cntApproveSend + "].EmpLastName' id='txtempLastName_1" + i + "' value='" + data[i].EmpLastName + "' style='width:200px; ' class='form-control' readonly></td>";
+                            myDT += "<td><input type='hidden' name='AT_FLOW[" + cntApproveSend + "].FI03_AT_FlowMaster' id='txtFlowID_1" + i + "' value='" + data[i].AutoRun + "' class='form-control'>";
+                            myDT += "<input type='hidden' name='AT_FLOW[" + cntApproveSend + "].FI03_AT_RecCostCenter' id='txtRecID_1" + i + "' value='" + data[i].FI03_AT_RecCostCenter + "' class='form-control' ></td>";
+                            myDT += "<td><input type='text' name='AT_FLOW[" + cntApproveSend + "].EmpEmail' id='txtemail_1" + i + "' value='" + data[i].Email + "' style='width:250px;' class='form-control' readonly></td>";
+                            myDT += "</tr>";
+                            cntApproveSend++;
+                        }
+                        //myDT += "</table>";
+
+                        document.getElementById('tbFlow').innerHTML = myDT;
+                    }
+                });
+            } else {
+                $("#blogFlow").hide();
+                $("#tbRecDepartment").attr("disabled", "disabled");
+            }
+        });
+
+        $("#tbRecDepartment").change(function () {
+            var RecCostcenter = $("#tbRecDepartment").val();
+            var txtCostcenter = $("#tbRecDepartment option:selected").text();
+
+            if (RecCostcenter != "") {
+                $("#blogFlow").show();
+                var array = txtCostcenter.split(" ");
+                var myDT = "";
+
+                if ($("#tbSendDepartment").val() == $("#tbRecDepartment").val() && $("#tbRecDepartment").val() != null) {
+                    alert("ไม่สามารถโอนย้ายทรัพย์สิน Department เดียวกันได้ \n กรุณาเลือก Department ใหม่อีกครั้ง.");
+                    $("#tbRecDepartment").val("");
+                    $("#tbRecDepartment").focus();
+                    return false;
+                }
+
+                $("#hidIdRecDepartment").val(RecCostcenter);
+                $("#hidRecDepartment").val(array[0]);
+
+                $.ajax({
+                    url: '@Url.Action("GetFlowApprove", "AT")',
+                    type: 'POST',
+                    data: 'costcenter=' + $("#hidIdRecDepartment").val(),
+                    success: function (data) {
+
+                        var len = data.length;
+
+                        var cntApproveRec = 2;
+                        //myDT += "<table id='tbFlow' >";
+                        for (i = 0; i < len; i++) {
+                            myDT += "<tr>";
+                            myDT += "<td style='padding-left:80px;'><input type='hidden' name='AT_FLOW[" + cntApproveRec + "].FlowState' id='txtNo_2" + i + "' value='002_" + data[i].StepNo + "' style='width:100px; ' class='form-control'></td>";
+                            myDT += "<td><input type='text' name='AT_FLOW[" + cntApproveRec + "].EmpID' id='txtempId_2" + i + "' value='" + data[i].EmpID + "' style='width:150px; ' class='form-control' readonly></td>";
+                            myDT += "<td><input type='text' name='AT_FLOW[" + cntApproveRec + "].EmpFirstName' id='txtempFirstName_2" + i + "' value='" + data[i].EmpFirstName + "' style='width:150px; ' class='form-control' readonly></td>";
+                            myDT += "<td><input type='text' name='AT_FLOW[" + cntApproveRec + "].EmpLastName' id='txtempLastName_2" + i + "' value='" + data[i].EmpLastName + "' style='width:200px; ' class='form-control' readonly></td>";
+                            myDT += "<td><input type='hidden' name='AT_FLOW[" + cntApproveRec + "].FI03_AT_FlowMaster' id='txtFlowID_2" + i + "' value='" + data[i].AutoRun + "' class='form-control' >";
+                            myDT += "<input type='hidden' name='AT_FLOW[" + cntApproveRec + "].FI03_AT_RecCostCenter' id='txtRecID_2" + i + "' value='" + data[i].FI03_AT_RecCostCenter + "' class='form-control' ></td>";
+                            myDT += "<td><input type='text' name='AT_FLOW[" + cntApproveRec + "].EmpEmail' id='txtemail_2" + i + "' value='" + data[i].Email + "' style='width:250px;' class='form-control' readonly></td>";
+                            myDT += "</tr>";
+                            cntApproveRec++;
+                        }
+                        //myDT += "</table>";
+
+                        document.getElementById('tbFlowRec').innerHTML = myDT;
+                    }
+                });
+            } else { $("#blogFlow").hide(); }
+        });
+
+        $("#tbAdd").on("keypress", "[id*='Ass_']", function (e) {
+            if (e.which == 13) {
+                var id = $(this).attr("id").substr(4);
+                var idCostcenter = $("#hidIdRecDepartment").val();
+                var txtCostcenter = $("#tbSendDepartment option:selected").text();
+                var arrayCostcenter = txtCostcenter.split(" ");
+
+                if ($("#Ass_" + id).val() == "") { return false(); }
+
+                $(document.body).css({ 'cursor': 'wait' });
+
+                $.ajax({
+                    url: '@Url.Action("GetAsset", "AT")',
+                    type: "POST",
+                    datatype: "json",
+                    data: 'costcenter=' + arrayCostcenter[0] + "&asset=" + $("#Ass_" + id).val(),
+                    success: function (result) {
+
+                        // Get the size of an object
+                        //var vCount = Object.size(result);
+                        //var vCount = Object.keys(result).length;
+                        if (result) {
+                            //if (vCount > 0) {
+                            //Convert String to XML
+                            //var xmlDoc = StringToXML(result).firstChild;
+                            var xmlDoc = StringToXML(result);
+
+                            //Reference Value on XML Tag
+                            var txtAssetClass = xmlDoc.getElementsByTagName("ASSET_CLASS")["0"].childNodes["0"].nodeValue;
+                            //var txtAssetClass = xmlDoc.getElementsByTagName("ASSET_CLASS")["0"].innerHTML;
+                            var txtAsset = xmlDoc.getElementsByTagName("ASSET")["0"].childNodes["0"].nodeValue;
+                            var txtDesc = xmlDoc.getElementsByTagName("DESCRIPTION")["0"].childNodes["0"].nodeValue;
+                            var txtCostcenter = xmlDoc.getElementsByTagName("COST_CENTER")["0"].childNodes["0"].nodeValue;
+                            var txtRoom = xmlDoc.getElementsByTagName("COST_CENTER_NAME")["0"].childNodes["0"].nodeValue;
+                            var txtRoom2 = xmlDoc.getElementsByTagName("ROOM")["0"].childNodes["0"].nodeValue;
+
+                            ////check costcenter and room on permission
+                            //if (arrayCostcenter[1] != txtRoom2 && arrayCostcenter[1] != txtRoom) {
+                            //    alert("Asset นี้ไม่อยู่ในส่วนงานของคุณ กรุณากรอก Asset ใหม่");
+                            //    $("#Ass_" + id).select();
+                            //    return false;
+                            //}else{
+                                $("#AssClass_" + id).val(txtAssetClass);
+                                $("#Desc_" + id).val(txtDesc);
+                                $("#Cost_" + id).val(txtCostcenter);
+                                if (arrayCostcenter[1] != txtRoom) { $("#Room_" + id).val(txtRoom2); } else { $("#Room_" + id).val(txtRoom); }
+                                $("#Qty_" + id).val('1');
+
+                                $.ajax({
+                                    url: '@Url.Action("GetCostcenterSAP", "AT")',
+                                    type: "POST",
+                                    data: 'costcenter=' + idCostcenter + "&assetclass=" + txtAssetClass,
+                                    success: function (data) {
+                                        var len = data.length;
+                                        if (len == 0) {
+                                            $("#CostSAP_" + id).val('');
+                                            $("#Room_" + id).val('');
+                                        }
+                                        for (i = 0; i < len; i++) {
+                                            $("#CostSAP_" + id).val(data[i].CostCenter);
+                                            $("#RoomRec_" + id).val(data[i].Room);
+                                        }
+                                    }//Success Get Costcenter SAP
+                                });
+                                $("#Qty_" + id).focus();
+                            //}
+                        } else {
+                            //Data Not Found Set Empty Value
+                            $("#AssClass_" + id).val('');
+                            $("#Desc_" + id).val('');
+                            $("#Cost_" + id).val('');
+                            $("#Room_" + id).val('');
+                            $("#Qty_" + id).val('');
+                            $("#CostSAP_" + id).val('');
+                            $("#RoomRec_" + id).val('');
+                            alert("Asset Not Found.");
+                            $("#Ass_" + id).select();
+                            $(document.body).css({ 'cursor': 'default' });
+                            return false;
+                        }
+                    }// Success Get Asset
+                });
+                $(document.body).css({ 'cursor': 'default' });
+            }
+        })
+
+        function StringToXML(oString) {
+            //code for IE
+            if (window.ActiveXObject) {
+                var oXML = new ActiveXObject("Microsoft.XMLDOM");
+                oXML.loadXML(oString);
+                return oXML;
+            }
+                // code for Chrome, Safari, Firefox, Opera, etc. 
+            else {
+                return (new DOMParser()).parseFromString(oString, "text/xml");
+            }
+        }
+
+
+        //Create New Row Asset
+        function CreateNewRow() {
+            //var intLine = parseInt(document.frmMain.hdnMaxLine.value);
+            var intLine = parseInt($("#hdnMaxLine").val());
+            var txtCostcenter = $("#tbRecDepartment option:selected").text();
+
+            if ($("#tbSendDepartment").val() == "" || $("#tbRecDepartment").val() == "") {
+                $("#chkCostcenter").html("กรุณาเลือก Department เพื่อทำการเพิ่ม Asset");
+                $("#blogFlow").hide();
+                if ($("#tbSendDepartment").val() == "") { $("#tbSendDepartment").focus(); return false; } else { $("#tbRecDepartment").focus(); return false; }
+            } else {
+                $("#blogFlow").show();
+            }
+
+            if ($("#Ass_" + intLine).val() == "") {
+                alert("Please Input Asset.");
+                $("#Ass_" + intLine).select();
+                return false();
+            }
+
+            if ($("#AssClass_" + intLine).val() == "") {
+                alert("Asset Not Found");
+                $("#Ass_" + intLine).select();
+                return false();
+            }
+
+            if ($("#CostSAP_" + intLine).val() == "") {
+                alert("Received Costcenter Not Found.");
+                $("#CostSAP_" + intLine).select();
+                return false();
+            }
+
+            var theTable = document.all.tbAdd
+            var newRow = theTable.insertRow(theTable.rows.length)
+            newRow.id = newRow.uniqueID
+
+            var newCell
+
+            //*** Column 1 ***//
+            newCell = newRow.insertCell(0);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center>" + (intLine + 1) + "</center>";
+            //<INPUT TYPE=\"HIDDEN\"  NAME=\"AT_ITEM[" + intLine + "].ItemNo" + "\" ID=\"ItemNo_" + intLine + "\" VALUE=\""+ intLine +"\" >
+            //*** Column 2 ***//
+            newCell = newRow.insertCell(1);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].AssetClass" + "\" ID=\"AssClass_" + (intLine) + "\"   STYLE=\"WIDTH:60px;\" CLASS=\"form-control\" READONLY></center>";
+
+            //*** Column 3 ***//
+            newCell = newRow.insertCell(2);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].Asset" + "\"  ID=\"Ass_" + (intLine) + "\"  STYLE=\"WIDTH:130px; BACKGROUND-COLOR:YELLOW;\" CLASS=\"form-control\" ></center>";
+
+            //*** Column 4 ***//
+            newCell = newRow.insertCell(3);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].AssetDescription" + "\"  ID=\"Desc_" + (intLine) + "\"  STYLE=\" WIDTH:250px;\" CLASS=\"form-control\" READONLY></center>";
+
+            //*** Column 5 ***//
+            newCell = newRow.insertCell(4);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].CostCenter" + "\"  ID=\"Cost_" + (intLine) + "\" STYLE=\"WIDTH:80px;\" CLASS=\"form-control\" READONLY></center>";
+
+            //*** Column 6 ***//
+            newCell = newRow.insertCell(5);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].Room" + "\"  ID=\"Room_" + (intLine) + "\"  STYLE=\"WIDTH:80px;\" CLASS=\"form-control\" READONLY></center>";
+
+            //*** Column 7 ***//
+            newCell = newRow.insertCell(6);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_Item[" + intLine + "].Qty" + "\"  ID=\"Qty_" + (intLine) + "\"  STYLE=\"TEXT-ALIGN:RIGHT; WIDTH:60px; BACKGROUND-COLOR:YELLOW;\" CLASS=\"form-control\" ></center>";
+
+            //*** Column 8 ***//
+            newCell = newRow.insertCell(7);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].RecCostCenter" + "\"  ID=\"Depart_" + (intLine) + "\" VALUE=\"" + txtCostcenter + "\" STYLE=\"WIDTH:120px\" CLASS=\"form-control\" READONLY ></center>";
+
+            //*** Column 9 ***//
+            newCell = newRow.insertCell(8);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].CostCenter2" + "\"  ID=\"CostSAP_" + (intLine) + "\"  STYLE=\"WIDTH:80px;\" CLASS=\"form-control\" READONLY ></center>";
+
+            //*** Column 10 ***//
+            newCell = newRow.insertCell(9);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><input TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].Room2" + "\"  ID=\"RoomRec_" + (intLine) + "\"  style=\"WIDTH:80px;\" CLASS=\"form-control\" READONLY ></center>";
+
+            //*** Column 11 ***//
+            newCell = newRow.insertCell(10);
+            newCell.id = newCell.uniqueID;
+            newCell.setAttribute("className", "css-name");
+            newCell.innerHTML = "<center><INPUT TYPE=\"TEXT\"  NAME=\"AT_ITEM[" + intLine + "].Remark" + "\"  ID=\"Remark_" + (intLine) + "\"  STYLE=\"WIDTH:180px; BACKGROUND-COLOR:YELLOW;\" CLASS=\"form-control\"></center>";
+
+            intLine++;
+
+
+            //Close Action on Dropdown Department
+            if (intLine != 0) {
+                $("#tbSendDepartment").attr("disabled", "disabled");
+                $("#tbRecDepartment").attr("disabled", "disabled");
+            }
+            else {
+                $("#tbSendDepartment").removeAttr('disabled');
+                $("#tbRecDepartment").removeAttr('disabled');
+            }
+
+            $("#Ass_" + intLine).focus();
+            $("#hdnMaxLine").val(intLine);
+        }
+
+        function RemoveRow() {
+            intLine = parseInt($("#hdnMaxLine").val());
+            if (parseInt(intLine) > 0) {
+                document.getElementById("tbAdd").deleteRow(intLine + 2);
+                intLine--;
+                $("#hdnMaxLine").val(intLine);
+            }
+
+            if (parseInt(intLine) > 0) {
+                $("#tbSendDepartment").attr("disabled", "disabled");
+                $("#tbRecDepartment").attr("disabled", "disabled");               
+            }
+            else {
+                $("#tbSendDepartment").removeAttr('disabled');
+                $("#tbRecDepartment").removeAttr('disabled');
+                $("#hidAssClass").val('')
+            }
+        }
+
+        // JQuery for Attached Files.
+        $("#files_1").change(function (e) {
+            if (navigator.appVersion.toString().search(/MSIE [1-9]\./g) != -1) { alert("ไม่สามารถอัพโหลดไฟล์ได้ เนื่องจาก IE Version ต่ำกว่า IE10"); return false; }
+            if ($(this).val() == '') { return false; };
+            var formData = new FormData($("#frmMain")[0]);
+
+            var filesize = this.files[0].size;
+            if (filesize > 5242880) {
+                alert("ขนาดไฟล์ต้องไม่เกิน 5 MB");
+                if ($.browser.msie) { $(this).replaceWith($(this).clone()); }
+                else { $(this).val(''); }
+
+                return false;
+            }
+
+            $.ajax({
+
+                url: '@Url.Action("UploadFile")',
+                type: 'POST',
+                data: formData,
+                async: false,
+                success: function (data) {
+                    if (data.Error != "OK") {
+                        alert('controller' + data.Error);
+                    } else {
+                        $("#showFile").append("<div>");
+                        $("#showFile").append("<a href='../" + data.pathfile + "/" + data.filename + "' target='_BLANK' style='color:#ff33cc;'>" + data.filename + "</a>");
+                        $("#showFile").append("<span class='delFile' alt='" + data.filename + "' style='cursor:pointer;'><img src='../../Images/delete.png' /></span>");
+                        $("#showFile").append("</div>");
+                    }
+
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+            if ($.browser.msie) {
+                $(this).replaceWith($(this).clone());
+            } else {
+                $(this).val('');
+            }
+
+            e.preventDefault();
+
+        });
+
+            $("#showFile").on("click", ".delFile", function () {
+                var obj = $(this);
+                var filename = obj.attr("alt");
+                var guid = $("#guid").val();
+
+                $.ajax({
+                    url: '@Url.Action("RemoveUploadFile")',
+                    type: 'POST',
+                    data: 'guid=' + guid + '&filename=' + filename,
+                    success: function (data) {
+                        if (data.result == "Done") {
+                            obj.prev().detach();
+                            obj.detach();
+                        }
+                    }
+                });
+            });
+
+            //=========================//
+    </script>
+}
+   <style type="text/css">
+
+    table#tbAdd {
+        font-size:.85em;
+        width:100%;
+    }
+    table#tbAdd th, table#tbAdd td {
+        text-align:center;
+    }
+    table#tbAdd th {
+        background-color: #3f51b5; 
+        color:#fff;           
+    }
+    #IsApprove, #IsReject {
+        width:initial;
+        width:auto;
+    }
+    </style>
+
+

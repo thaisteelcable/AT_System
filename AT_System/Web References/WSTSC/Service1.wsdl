@@ -1,0 +1,4480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="EDI_LogData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LogName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_LogDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_LogDataResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_LogData_PDS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LogName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_LogData_PDSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_LogData_PDSResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Change_Password">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PasswordOld" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PasswordNew" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Change_PasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Change_PasswordResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetVendorData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetVendorDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetVendorDataResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetForecast">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetForecastResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetForecastResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetForecast_Detail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetForecast_DetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetForecast_DetailResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetPO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypePO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetPOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetPOResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetPO_Detail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypePO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetPO_DetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetPO_DetailResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_OutboundRVSheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RVSheetNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_OutboundRVSheetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_OutboundRVSheetResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_ConvertUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitTo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_ConvertUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_ConvertUnitResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_ConvertBaseUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitTo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Qty" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_ConvertBaseUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_ConvertBaseUnitResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Search_Invoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypeData" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ColorStatus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Search_InvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Search_InvoiceResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Invoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_InvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_InvoiceResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Invoice_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Condition" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Salesman" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Taxpayer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SentBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ManagerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Invoice_UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Invoice_UpdateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Invoice_Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Invoice_DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Invoice_DeleteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Invoice_Detail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Invoice_DetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_Invoice_DetailResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Invoice_Detail_AutoID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Invoice_Detail_AutoIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_Invoice_Detail_AutoIDResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SearchPO_Invoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="POno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SearchPO_InvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_SearchPO_InvoiceResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Invoice_Detail_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="POno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POItem" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeliveryQty" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Packing" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorLot" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NetWeight" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitNetWeight" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StatusTAG" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Invoice_Detail_UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Invoice_Detail_UpdateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Invoice_Detail_Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Invoice_Detail_DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Invoice_Detail_DeleteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Print_Report">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Print_ReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_Print_ReportResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Search_Billing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BillingNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Search_BillingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Search_BillingResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Billing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_BillingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_BillingResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Billing_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="BillingNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Condition" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="BillingBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Taxpayer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Billing_UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Billing_UpdateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Billing_Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Billing_DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Billing_DeleteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Billing_Detail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Billing_DetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_Billing_DetailResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Billing_Detail_Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Billing_Detail_DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Billing_Detail_DeleteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Billing_Detail_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="VersionInv" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tax3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Billing_Detail_UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Billing_Detail_UpdateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Billing_Report">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Billing_ReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_Billing_ReportResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SearchPO_Inv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SearchPO_InvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_SearchPO_InvResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SearchPO_Inv_Mat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SearchPO_Inv_MatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_SearchPO_Inv_MatResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SaveData_Inv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POItem" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Material" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="POQty" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeliveryQty" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitQty" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Packing" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorLot" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliveryDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductionDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NetWeight" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitNetWeight" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPComputer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SaveData_InvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_SaveData_InvResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetTAG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliveryDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetTAGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetTAGResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetTAG_Detail_PO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POItem" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetTAG_Detail_POResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetTAG_Detail_POResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetTAG_Detail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetTAG_DetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetTAG_DetailResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetDescriptionDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SubjectID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetDescriptionDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetDescriptionDetailResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetCountSubject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetCountSubjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetCountSubjectResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SaveScore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MonthYear" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmpID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SubjectID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ValData" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SaveScoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EDI_SaveScoreResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetLastValData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetLastValDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetLastValDataResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DateTimeNow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DateTimeNowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DateTimeNowResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetMonthEvaluation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Client" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateEvaluation" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="VendorID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetMonthEvaluationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetMonthEvaluationResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetContentNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoRun" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_GetContentNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_GetContentNewsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMB51">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MaterialDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Reservation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReferenceDoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PostingStart" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PostingEnd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMB51Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMB51Result">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAsset">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CostCenter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asset" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAssetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAssetResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Onhand_Subcon">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="POITEM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeliveryQty" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Onhand_SubconResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Onhand_SubconResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartShort">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartShortResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPartShortResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartShortDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Postdt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartShortDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPartShortDetailsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPDS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Delivery" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPDSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPDSResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPDSHeader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Vendor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Delivery" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPDSHeaderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPDSHeaderResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LogName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Verdor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLogResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginAD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginADResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginADResult" type="tns:ArrayOfDataAD" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDataAD">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DataAD" nillable="true" type="tns:DataAD" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DataAD">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EDI_SupplierMonthlyHD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pYear" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IssueSup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheckSup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApproveSup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReceivedTSC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CheckTSC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Forecast" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForecastN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SupplierMonthlyHDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_SupplierMonthlyHDResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SupplierMonthly">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MATNR" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAKTX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Inventory" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Forecast" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Diff" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForecastN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DateStartProd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AmtQty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StdQty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BalanceQty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pYear" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_SupplierMonthlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_SupplierMonthlyResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_EditSupplierMonthly">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Autonumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MATNR" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAKTX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Inventory" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Forecast" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Diff" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForecastN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DateStartProd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AmtQty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StdQty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BalanceQty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pYear" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_EditSupplierMonthlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_EditSupplierMonthlyResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_DelSupplierMonthly">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Autonumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_DelSupplierMonthlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_DelSupplierMonthlyResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_SupplierHD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pYear" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_SupplierHDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_SupplierHDResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_Supplier">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pYear" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_SupplierResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_SupplierResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_EditSupplier">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Autonumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_EditSupplierResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_EditSupplierResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_SupplierPartNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pYear" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EDI_Get_SupplierPartNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EDI_Get_SupplierPartNoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfDataAD" nillable="true" type="tns:ArrayOfDataAD" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EDI_LogDataSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_LogData" />
+  </wsdl:message>
+  <wsdl:message name="EDI_LogDataSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_LogDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_LogData_PDSSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_LogData_PDS" />
+  </wsdl:message>
+  <wsdl:message name="EDI_LogData_PDSSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_LogData_PDSResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Change_PasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Change_Password" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Change_PasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Change_PasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetVendorDataSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetVendorData" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetVendorDataSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetVendorDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetForecastSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetForecast" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetForecastSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetForecastResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetForecast_DetailSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetForecast_Detail" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetForecast_DetailSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetForecast_DetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetPOSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetPO" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetPOSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetPOResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetPO_DetailSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetPO_Detail" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetPO_DetailSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetPO_DetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_OutboundRVSheetSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_OutboundRVSheet" />
+  </wsdl:message>
+  <wsdl:message name="EDI_OutboundRVSheetSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_OutboundRVSheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_ConvertUnitSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_ConvertUnit" />
+  </wsdl:message>
+  <wsdl:message name="EDI_ConvertUnitSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_ConvertUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_ConvertBaseUnitSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_ConvertBaseUnit" />
+  </wsdl:message>
+  <wsdl:message name="EDI_ConvertBaseUnitSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_ConvertBaseUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Search_InvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Search_Invoice" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Search_InvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Search_InvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_InvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Invoice" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_InvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_InvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Invoice_Update" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Invoice_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Invoice_Delete" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Invoice_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Invoice_DetailSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Invoice_Detail" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Invoice_DetailSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Invoice_DetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Invoice_Detail_AutoIDSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Invoice_Detail_AutoID" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Invoice_Detail_AutoIDSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Invoice_Detail_AutoIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_InvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_SearchPO_Invoice" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_InvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_SearchPO_InvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_Detail_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Invoice_Detail_Update" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_Detail_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Invoice_Detail_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_Detail_DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Invoice_Detail_Delete" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_Detail_DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Invoice_Detail_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Print_ReportSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Print_Report" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Print_ReportSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Print_ReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Search_BillingSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Search_Billing" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Search_BillingSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Search_BillingResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_BillingSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Billing" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_BillingSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_BillingResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Billing_Update" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Billing_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Billing_Delete" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Billing_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Billing_DetailSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Billing_Detail" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Billing_DetailSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Billing_DetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_Detail_DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Billing_Detail_Delete" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_Detail_DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Billing_Detail_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_Detail_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Billing_Detail_Update" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_Detail_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Billing_Detail_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Billing_ReportSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Billing_Report" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Billing_ReportSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Billing_ReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_InvSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_SearchPO_Inv" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_InvSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_SearchPO_InvResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_Inv_MatSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_SearchPO_Inv_Mat" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_Inv_MatSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_SearchPO_Inv_MatResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SaveData_InvSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_SaveData_Inv" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SaveData_InvSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_SaveData_InvResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAGSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetTAG" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAGSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetTAGResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAG_Detail_POSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetTAG_Detail_PO" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAG_Detail_POSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetTAG_Detail_POResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAG_DetailSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetTAG_Detail" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAG_DetailSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetTAG_DetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetDescriptionDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetDescriptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetDescriptionDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetDescriptionDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetCountSubjectSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetCountSubject" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetCountSubjectSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetCountSubjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SaveScoreSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_SaveScore" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SaveScoreSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_SaveScoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetLastValDataSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetLastValData" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetLastValDataSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetLastValDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DateTimeNowSoapIn">
+    <wsdl:part name="parameters" element="tns:DateTimeNow" />
+  </wsdl:message>
+  <wsdl:message name="DateTimeNowSoapOut">
+    <wsdl:part name="parameters" element="tns:DateTimeNowResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetMonthEvaluationSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetMonthEvaluation" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetMonthEvaluationSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetMonthEvaluationResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetContentNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_GetContentNews" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetContentNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_GetContentNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMB51SoapIn">
+    <wsdl:part name="parameters" element="tns:GetMB51" />
+  </wsdl:message>
+  <wsdl:message name="GetMB51SoapOut">
+    <wsdl:part name="parameters" element="tns:GetMB51Response" />
+  </wsdl:message>
+  <wsdl:message name="GetAssetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAsset" />
+  </wsdl:message>
+  <wsdl:message name="GetAssetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAssetResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Onhand_SubconSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Onhand_Subcon" />
+  </wsdl:message>
+  <wsdl:message name="Get_Onhand_SubconSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Onhand_SubconResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPartShortSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPartShort" />
+  </wsdl:message>
+  <wsdl:message name="GetPartShortSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPartShortResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPartShortDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPartShortDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetPartShortDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPartShortDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPDSSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPDS" />
+  </wsdl:message>
+  <wsdl:message name="GetPDSSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPDSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPDSHeaderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPDSHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPDSHeaderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPDSHeaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLogSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLog" />
+  </wsdl:message>
+  <wsdl:message name="GetLogSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginADSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginAD" />
+  </wsdl:message>
+  <wsdl:message name="LoginADSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginADResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SupplierMonthlyHDSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_SupplierMonthlyHD" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SupplierMonthlyHDSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_SupplierMonthlyHDResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SupplierMonthlySoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_SupplierMonthly" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SupplierMonthlySoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_SupplierMonthlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_EditSupplierMonthlySoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_EditSupplierMonthly" />
+  </wsdl:message>
+  <wsdl:message name="EDI_EditSupplierMonthlySoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_EditSupplierMonthlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_DelSupplierMonthlySoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_DelSupplierMonthly" />
+  </wsdl:message>
+  <wsdl:message name="EDI_DelSupplierMonthlySoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_DelSupplierMonthlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierHDSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_SupplierHD" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierHDSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_SupplierHDResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_Supplier" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_SupplierResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_EditSupplierSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_EditSupplier" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_EditSupplierSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_EditSupplierResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierPartNoSoapIn">
+    <wsdl:part name="parameters" element="tns:EDI_Get_SupplierPartNo" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierPartNoSoapOut">
+    <wsdl:part name="parameters" element="tns:EDI_Get_SupplierPartNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EDI_LogDataHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+    <wsdl:part name="LogName" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_LogDataHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_LogData_PDSHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+    <wsdl:part name="LogName" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="Description" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_LogData_PDSHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Change_PasswordHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="PasswordOld" type="s:string" />
+    <wsdl:part name="PasswordNew" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Change_PasswordHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetVendorDataHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetVendorDataHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetForecastHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetForecastHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetForecast_DetailHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetForecast_DetailHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetPOHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="TypePO" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetPOHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetPO_DetailHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="TypePO" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetPO_DetailHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_OutboundRVSheetHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="RVSheetNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_OutboundRVSheetHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_ConvertUnitHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Material" type="s:string" />
+    <wsdl:part name="UnitFrom" type="s:string" />
+    <wsdl:part name="UnitTo" type="s:string" />
+    <wsdl:part name="Qty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_ConvertUnitHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_ConvertBaseUnitHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Material" type="s:string" />
+    <wsdl:part name="UnitFrom" type="s:string" />
+    <wsdl:part name="UnitTo" type="s:string" />
+    <wsdl:part name="Qty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_ConvertBaseUnitHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Search_InvoiceHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="InvoiceNo" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+    <wsdl:part name="TypeData" type="s:string" />
+    <wsdl:part name="ColorStatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Search_InvoiceHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_InvoiceHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_InvoiceHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_UpdateHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="InvNo" type="s:string" />
+    <wsdl:part name="InvDate" type="s:string" />
+    <wsdl:part name="Condition" type="s:string" />
+    <wsdl:part name="Salesman" type="s:string" />
+    <wsdl:part name="Taxpayer" type="s:string" />
+    <wsdl:part name="SentBy" type="s:string" />
+    <wsdl:part name="ManagerName" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_UpdateHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_DeleteHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_DeleteHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Invoice_DetailHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Invoice_DetailHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Invoice_Detail_AutoIDHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="AutoID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Invoice_Detail_AutoIDHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_InvoiceHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="POno" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+    <wsdl:part name="Material" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_InvoiceHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_Detail_UpdateHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="AutoID" type="s:string" />
+    <wsdl:part name="POno" type="s:string" />
+    <wsdl:part name="POItem" type="s:string" />
+    <wsdl:part name="Material" type="s:string" />
+    <wsdl:part name="DeliveryQty" type="s:string" />
+    <wsdl:part name="Packing" type="s:string" />
+    <wsdl:part name="VendorLot" type="s:string" />
+    <wsdl:part name="NetWeight" type="s:string" />
+    <wsdl:part name="UnitNetWeight" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+    <wsdl:part name="StatusTAG" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_Detail_UpdateHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_Detail_DeleteHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="AutoID" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Invoice_Detail_DeleteHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Print_ReportHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="Type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Print_ReportHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Search_BillingHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="BillingNo" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Search_BillingHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_BillingHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_BillingHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_UpdateHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="BillingNo" type="s:string" />
+    <wsdl:part name="Condition" type="s:string" />
+    <wsdl:part name="BillingBy" type="s:string" />
+    <wsdl:part name="Taxpayer" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_UpdateHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_DeleteHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_DeleteHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Billing_DetailHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Billing_DetailHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_Detail_DeleteHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="AutoID" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_Detail_DeleteHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_Detail_UpdateHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="VersionInv" type="s:string" />
+    <wsdl:part name="AutoID" type="s:string" />
+    <wsdl:part name="InvNo" type="s:string" />
+    <wsdl:part name="InvDate" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="Tax3" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Billing_Detail_UpdateHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Billing_ReportHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_Billing_ReportHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_InvHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="POno" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_InvHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_Inv_MatHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="POno" type="s:string" />
+    <wsdl:part name="StartDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+    <wsdl:part name="Material" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SearchPO_Inv_MatHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SaveData_InvHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="POno" type="s:string" />
+    <wsdl:part name="POItem" type="s:string" />
+    <wsdl:part name="Material" type="s:string" />
+    <wsdl:part name="POQty" type="s:string" />
+    <wsdl:part name="DeliveryQty" type="s:string" />
+    <wsdl:part name="UnitQty" type="s:string" />
+    <wsdl:part name="Packing" type="s:string" />
+    <wsdl:part name="VendorLot" type="s:string" />
+    <wsdl:part name="DeliveryDate" type="s:string" />
+    <wsdl:part name="ProductionDate" type="s:string" />
+    <wsdl:part name="NetWeight" type="s:string" />
+    <wsdl:part name="UnitNetWeight" type="s:string" />
+    <wsdl:part name="IPComputer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SaveData_InvHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAGHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="DeliveryDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAGHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAG_Detail_POHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="POno" type="s:string" />
+    <wsdl:part name="POItem" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAG_Detail_POHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAG_DetailHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetTAG_DetailHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetDescriptionDetailHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Department" type="s:string" />
+    <wsdl:part name="SubjectID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetDescriptionDetailHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetCountSubjectHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Department" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetCountSubjectHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SaveScoreHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="MonthYear" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="EmpID" type="s:string" />
+    <wsdl:part name="IDNo" type="s:string" />
+    <wsdl:part name="SubjectID" type="s:string" />
+    <wsdl:part name="ValData" type="s:string" />
+    <wsdl:part name="Comment" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SaveScoreHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetLastValDataHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetLastValDataHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="DateTimeNowHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DateTimeNowHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetMonthEvaluationHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="DateEvaluation" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetMonthEvaluationHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetContentNewsHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="AutoRun" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_GetContentNewsHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetMB51HttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="MaterialDoc" type="s:string" />
+    <wsdl:part name="Reservation" type="s:string" />
+    <wsdl:part name="ReferenceDoc" type="s:string" />
+    <wsdl:part name="PostingStart" type="s:string" />
+    <wsdl:part name="PostingEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMB51HttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetAssetHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="CostCenter" type="s:string" />
+    <wsdl:part name="Asset" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAssetHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="Get_Onhand_SubconHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="PO" type="s:string" />
+    <wsdl:part name="POITEM" type="s:string" />
+    <wsdl:part name="Vendor" type="s:string" />
+    <wsdl:part name="DeliveryQty" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_Onhand_SubconHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetPartShortHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPartShortHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetPartShortDetailsHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Postdt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPartShortDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetPDSHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Version" type="s:string" />
+    <wsdl:part name="Vendor" type="s:string" />
+    <wsdl:part name="Delivery" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPDSHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetPDSHeaderHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Vendor" type="s:string" />
+    <wsdl:part name="Delivery" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPDSHeaderHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetLogHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="LogName" type="s:string" />
+    <wsdl:part name="Verdor" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLogHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="LoginADHttpPostIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoginADHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDataAD" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SupplierMonthlyHDHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="pMonth" type="s:string" />
+    <wsdl:part name="pYear" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="IssueSup" type="s:string" />
+    <wsdl:part name="CheckSup" type="s:string" />
+    <wsdl:part name="ApproveSup" type="s:string" />
+    <wsdl:part name="ReceivedTSC" type="s:string" />
+    <wsdl:part name="CheckTSC" type="s:string" />
+    <wsdl:part name="Forecast" type="s:string" />
+    <wsdl:part name="ForecastN" type="s:string" />
+    <wsdl:part name="OrderN" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SupplierMonthlyHDHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SupplierMonthlyHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="VendorName" type="s:string" />
+    <wsdl:part name="MATNR" type="s:string" />
+    <wsdl:part name="MAKTX" type="s:string" />
+    <wsdl:part name="Price" type="s:string" />
+    <wsdl:part name="Inventory" type="s:string" />
+    <wsdl:part name="Forecast" type="s:string" />
+    <wsdl:part name="OrderN" type="s:string" />
+    <wsdl:part name="Diff" type="s:string" />
+    <wsdl:part name="ForecastN" type="s:string" />
+    <wsdl:part name="DateStartProd" type="s:string" />
+    <wsdl:part name="AmtQty" type="s:string" />
+    <wsdl:part name="StdQty" type="s:string" />
+    <wsdl:part name="BalanceQty" type="s:string" />
+    <wsdl:part name="pMonth" type="s:string" />
+    <wsdl:part name="pYear" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_SupplierMonthlyHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_EditSupplierMonthlyHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Autonumber" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="VendorName" type="s:string" />
+    <wsdl:part name="MATNR" type="s:string" />
+    <wsdl:part name="MAKTX" type="s:string" />
+    <wsdl:part name="Price" type="s:string" />
+    <wsdl:part name="Inventory" type="s:string" />
+    <wsdl:part name="Forecast" type="s:string" />
+    <wsdl:part name="OrderN" type="s:string" />
+    <wsdl:part name="Diff" type="s:string" />
+    <wsdl:part name="ForecastN" type="s:string" />
+    <wsdl:part name="DateStartProd" type="s:string" />
+    <wsdl:part name="AmtQty" type="s:string" />
+    <wsdl:part name="StdQty" type="s:string" />
+    <wsdl:part name="BalanceQty" type="s:string" />
+    <wsdl:part name="pMonth" type="s:string" />
+    <wsdl:part name="pYear" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_EditSupplierMonthlyHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_DelSupplierMonthlyHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Autonumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_DelSupplierMonthlyHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierHDHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="pMonth" type="s:string" />
+    <wsdl:part name="pYear" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierHDHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="pMonth" type="s:string" />
+    <wsdl:part name="pYear" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_EditSupplierHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="Autonumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_EditSupplierHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierPartNoHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="VendorID" type="s:string" />
+    <wsdl:part name="pMonth" type="s:string" />
+    <wsdl:part name="pYear" type="s:string" />
+    <wsdl:part name="PartNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EDI_Get_SupplierPartNoHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="EDI_LogData">
+      <wsdl:input message="tns:EDI_LogDataSoapIn" />
+      <wsdl:output message="tns:EDI_LogDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_LogData_PDS">
+      <wsdl:input message="tns:EDI_LogData_PDSSoapIn" />
+      <wsdl:output message="tns:EDI_LogData_PDSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Change_Password">
+      <wsdl:input message="tns:EDI_Change_PasswordSoapIn" />
+      <wsdl:output message="tns:EDI_Change_PasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetVendorData">
+      <wsdl:input message="tns:EDI_GetVendorDataSoapIn" />
+      <wsdl:output message="tns:EDI_GetVendorDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast">
+      <wsdl:input message="tns:EDI_GetForecastSoapIn" />
+      <wsdl:output message="tns:EDI_GetForecastSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast_Detail">
+      <wsdl:input message="tns:EDI_GetForecast_DetailSoapIn" />
+      <wsdl:output message="tns:EDI_GetForecast_DetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO">
+      <wsdl:input message="tns:EDI_GetPOSoapIn" />
+      <wsdl:output message="tns:EDI_GetPOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO_Detail">
+      <wsdl:input message="tns:EDI_GetPO_DetailSoapIn" />
+      <wsdl:output message="tns:EDI_GetPO_DetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_OutboundRVSheet">
+      <wsdl:input message="tns:EDI_OutboundRVSheetSoapIn" />
+      <wsdl:output message="tns:EDI_OutboundRVSheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertUnit">
+      <wsdl:input message="tns:EDI_ConvertUnitSoapIn" />
+      <wsdl:output message="tns:EDI_ConvertUnitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertBaseUnit">
+      <wsdl:input message="tns:EDI_ConvertBaseUnitSoapIn" />
+      <wsdl:output message="tns:EDI_ConvertBaseUnitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Invoice">
+      <wsdl:input message="tns:EDI_Search_InvoiceSoapIn" />
+      <wsdl:output message="tns:EDI_Search_InvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice">
+      <wsdl:input message="tns:EDI_Get_InvoiceSoapIn" />
+      <wsdl:output message="tns:EDI_Get_InvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Update">
+      <wsdl:input message="tns:EDI_Invoice_UpdateSoapIn" />
+      <wsdl:output message="tns:EDI_Invoice_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Delete">
+      <wsdl:input message="tns:EDI_Invoice_DeleteSoapIn" />
+      <wsdl:output message="tns:EDI_Invoice_DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail">
+      <wsdl:input message="tns:EDI_Get_Invoice_DetailSoapIn" />
+      <wsdl:output message="tns:EDI_Get_Invoice_DetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail_AutoID">
+      <wsdl:input message="tns:EDI_Get_Invoice_Detail_AutoIDSoapIn" />
+      <wsdl:output message="tns:EDI_Get_Invoice_Detail_AutoIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Invoice">
+      <wsdl:input message="tns:EDI_SearchPO_InvoiceSoapIn" />
+      <wsdl:output message="tns:EDI_SearchPO_InvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Update">
+      <wsdl:input message="tns:EDI_Invoice_Detail_UpdateSoapIn" />
+      <wsdl:output message="tns:EDI_Invoice_Detail_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Delete">
+      <wsdl:input message="tns:EDI_Invoice_Detail_DeleteSoapIn" />
+      <wsdl:output message="tns:EDI_Invoice_Detail_DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Print_Report">
+      <wsdl:input message="tns:EDI_Get_Print_ReportSoapIn" />
+      <wsdl:output message="tns:EDI_Get_Print_ReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Billing">
+      <wsdl:input message="tns:EDI_Search_BillingSoapIn" />
+      <wsdl:output message="tns:EDI_Search_BillingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing">
+      <wsdl:input message="tns:EDI_Get_BillingSoapIn" />
+      <wsdl:output message="tns:EDI_Get_BillingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Update">
+      <wsdl:input message="tns:EDI_Billing_UpdateSoapIn" />
+      <wsdl:output message="tns:EDI_Billing_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Delete">
+      <wsdl:input message="tns:EDI_Billing_DeleteSoapIn" />
+      <wsdl:output message="tns:EDI_Billing_DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Detail">
+      <wsdl:input message="tns:EDI_Get_Billing_DetailSoapIn" />
+      <wsdl:output message="tns:EDI_Get_Billing_DetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Delete">
+      <wsdl:input message="tns:EDI_Billing_Detail_DeleteSoapIn" />
+      <wsdl:output message="tns:EDI_Billing_Detail_DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Update">
+      <wsdl:input message="tns:EDI_Billing_Detail_UpdateSoapIn" />
+      <wsdl:output message="tns:EDI_Billing_Detail_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Report">
+      <wsdl:input message="tns:EDI_Get_Billing_ReportSoapIn" />
+      <wsdl:output message="tns:EDI_Get_Billing_ReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv">
+      <wsdl:input message="tns:EDI_SearchPO_InvSoapIn" />
+      <wsdl:output message="tns:EDI_SearchPO_InvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv_Mat">
+      <wsdl:input message="tns:EDI_SearchPO_Inv_MatSoapIn" />
+      <wsdl:output message="tns:EDI_SearchPO_Inv_MatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveData_Inv">
+      <wsdl:input message="tns:EDI_SaveData_InvSoapIn" />
+      <wsdl:output message="tns:EDI_SaveData_InvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG">
+      <wsdl:input message="tns:EDI_GetTAGSoapIn" />
+      <wsdl:output message="tns:EDI_GetTAGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail_PO">
+      <wsdl:input message="tns:EDI_GetTAG_Detail_POSoapIn" />
+      <wsdl:output message="tns:EDI_GetTAG_Detail_POSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail">
+      <wsdl:input message="tns:EDI_GetTAG_DetailSoapIn" />
+      <wsdl:output message="tns:EDI_GetTAG_DetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetDescriptionDetail">
+      <wsdl:input message="tns:EDI_GetDescriptionDetailSoapIn" />
+      <wsdl:output message="tns:EDI_GetDescriptionDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetCountSubject">
+      <wsdl:input message="tns:EDI_GetCountSubjectSoapIn" />
+      <wsdl:output message="tns:EDI_GetCountSubjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveScore">
+      <wsdl:input message="tns:EDI_SaveScoreSoapIn" />
+      <wsdl:output message="tns:EDI_SaveScoreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetLastValData">
+      <wsdl:input message="tns:EDI_GetLastValDataSoapIn" />
+      <wsdl:output message="tns:EDI_GetLastValDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DateTimeNow">
+      <wsdl:input message="tns:DateTimeNowSoapIn" />
+      <wsdl:output message="tns:DateTimeNowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetMonthEvaluation">
+      <wsdl:input message="tns:EDI_GetMonthEvaluationSoapIn" />
+      <wsdl:output message="tns:EDI_GetMonthEvaluationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetContentNews">
+      <wsdl:input message="tns:EDI_GetContentNewsSoapIn" />
+      <wsdl:output message="tns:EDI_GetContentNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMB51">
+      <wsdl:input message="tns:GetMB51SoapIn" />
+      <wsdl:output message="tns:GetMB51SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAsset">
+      <wsdl:input message="tns:GetAssetSoapIn" />
+      <wsdl:output message="tns:GetAssetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Onhand_Subcon">
+      <wsdl:input message="tns:Get_Onhand_SubconSoapIn" />
+      <wsdl:output message="tns:Get_Onhand_SubconSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShort">
+      <wsdl:input message="tns:GetPartShortSoapIn" />
+      <wsdl:output message="tns:GetPartShortSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShortDetails">
+      <wsdl:input message="tns:GetPartShortDetailsSoapIn" />
+      <wsdl:output message="tns:GetPartShortDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDS">
+      <wsdl:input message="tns:GetPDSSoapIn" />
+      <wsdl:output message="tns:GetPDSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDSHeader">
+      <wsdl:input message="tns:GetPDSHeaderSoapIn" />
+      <wsdl:output message="tns:GetPDSHeaderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLog">
+      <wsdl:input message="tns:GetLogSoapIn" />
+      <wsdl:output message="tns:GetLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginAD">
+      <wsdl:input message="tns:LoginADSoapIn" />
+      <wsdl:output message="tns:LoginADSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthlyHD">
+      <wsdl:input message="tns:EDI_SupplierMonthlyHDSoapIn" />
+      <wsdl:output message="tns:EDI_SupplierMonthlyHDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthly">
+      <wsdl:input message="tns:EDI_SupplierMonthlySoapIn" />
+      <wsdl:output message="tns:EDI_SupplierMonthlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_EditSupplierMonthly">
+      <wsdl:input message="tns:EDI_EditSupplierMonthlySoapIn" />
+      <wsdl:output message="tns:EDI_EditSupplierMonthlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_DelSupplierMonthly">
+      <wsdl:input message="tns:EDI_DelSupplierMonthlySoapIn" />
+      <wsdl:output message="tns:EDI_DelSupplierMonthlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierHD">
+      <wsdl:input message="tns:EDI_Get_SupplierHDSoapIn" />
+      <wsdl:output message="tns:EDI_Get_SupplierHDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Supplier">
+      <wsdl:input message="tns:EDI_Get_SupplierSoapIn" />
+      <wsdl:output message="tns:EDI_Get_SupplierSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_EditSupplier">
+      <wsdl:input message="tns:EDI_Get_EditSupplierSoapIn" />
+      <wsdl:output message="tns:EDI_Get_EditSupplierSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierPartNo">
+      <wsdl:input message="tns:EDI_Get_SupplierPartNoSoapIn" />
+      <wsdl:output message="tns:EDI_Get_SupplierPartNoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Service1HttpPost">
+    <wsdl:operation name="EDI_LogData">
+      <wsdl:input message="tns:EDI_LogDataHttpPostIn" />
+      <wsdl:output message="tns:EDI_LogDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_LogData_PDS">
+      <wsdl:input message="tns:EDI_LogData_PDSHttpPostIn" />
+      <wsdl:output message="tns:EDI_LogData_PDSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Change_Password">
+      <wsdl:input message="tns:EDI_Change_PasswordHttpPostIn" />
+      <wsdl:output message="tns:EDI_Change_PasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetVendorData">
+      <wsdl:input message="tns:EDI_GetVendorDataHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetVendorDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast">
+      <wsdl:input message="tns:EDI_GetForecastHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetForecastHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast_Detail">
+      <wsdl:input message="tns:EDI_GetForecast_DetailHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetForecast_DetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO">
+      <wsdl:input message="tns:EDI_GetPOHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetPOHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO_Detail">
+      <wsdl:input message="tns:EDI_GetPO_DetailHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetPO_DetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_OutboundRVSheet">
+      <wsdl:input message="tns:EDI_OutboundRVSheetHttpPostIn" />
+      <wsdl:output message="tns:EDI_OutboundRVSheetHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertUnit">
+      <wsdl:input message="tns:EDI_ConvertUnitHttpPostIn" />
+      <wsdl:output message="tns:EDI_ConvertUnitHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertBaseUnit">
+      <wsdl:input message="tns:EDI_ConvertBaseUnitHttpPostIn" />
+      <wsdl:output message="tns:EDI_ConvertBaseUnitHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Invoice">
+      <wsdl:input message="tns:EDI_Search_InvoiceHttpPostIn" />
+      <wsdl:output message="tns:EDI_Search_InvoiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice">
+      <wsdl:input message="tns:EDI_Get_InvoiceHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_InvoiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Update">
+      <wsdl:input message="tns:EDI_Invoice_UpdateHttpPostIn" />
+      <wsdl:output message="tns:EDI_Invoice_UpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Delete">
+      <wsdl:input message="tns:EDI_Invoice_DeleteHttpPostIn" />
+      <wsdl:output message="tns:EDI_Invoice_DeleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail">
+      <wsdl:input message="tns:EDI_Get_Invoice_DetailHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_Invoice_DetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail_AutoID">
+      <wsdl:input message="tns:EDI_Get_Invoice_Detail_AutoIDHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_Invoice_Detail_AutoIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Invoice">
+      <wsdl:input message="tns:EDI_SearchPO_InvoiceHttpPostIn" />
+      <wsdl:output message="tns:EDI_SearchPO_InvoiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Update">
+      <wsdl:input message="tns:EDI_Invoice_Detail_UpdateHttpPostIn" />
+      <wsdl:output message="tns:EDI_Invoice_Detail_UpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Delete">
+      <wsdl:input message="tns:EDI_Invoice_Detail_DeleteHttpPostIn" />
+      <wsdl:output message="tns:EDI_Invoice_Detail_DeleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Print_Report">
+      <wsdl:input message="tns:EDI_Get_Print_ReportHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_Print_ReportHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Billing">
+      <wsdl:input message="tns:EDI_Search_BillingHttpPostIn" />
+      <wsdl:output message="tns:EDI_Search_BillingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing">
+      <wsdl:input message="tns:EDI_Get_BillingHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_BillingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Update">
+      <wsdl:input message="tns:EDI_Billing_UpdateHttpPostIn" />
+      <wsdl:output message="tns:EDI_Billing_UpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Delete">
+      <wsdl:input message="tns:EDI_Billing_DeleteHttpPostIn" />
+      <wsdl:output message="tns:EDI_Billing_DeleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Detail">
+      <wsdl:input message="tns:EDI_Get_Billing_DetailHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_Billing_DetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Delete">
+      <wsdl:input message="tns:EDI_Billing_Detail_DeleteHttpPostIn" />
+      <wsdl:output message="tns:EDI_Billing_Detail_DeleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Update">
+      <wsdl:input message="tns:EDI_Billing_Detail_UpdateHttpPostIn" />
+      <wsdl:output message="tns:EDI_Billing_Detail_UpdateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Report">
+      <wsdl:input message="tns:EDI_Get_Billing_ReportHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_Billing_ReportHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv">
+      <wsdl:input message="tns:EDI_SearchPO_InvHttpPostIn" />
+      <wsdl:output message="tns:EDI_SearchPO_InvHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv_Mat">
+      <wsdl:input message="tns:EDI_SearchPO_Inv_MatHttpPostIn" />
+      <wsdl:output message="tns:EDI_SearchPO_Inv_MatHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveData_Inv">
+      <wsdl:input message="tns:EDI_SaveData_InvHttpPostIn" />
+      <wsdl:output message="tns:EDI_SaveData_InvHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG">
+      <wsdl:input message="tns:EDI_GetTAGHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetTAGHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail_PO">
+      <wsdl:input message="tns:EDI_GetTAG_Detail_POHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetTAG_Detail_POHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail">
+      <wsdl:input message="tns:EDI_GetTAG_DetailHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetTAG_DetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetDescriptionDetail">
+      <wsdl:input message="tns:EDI_GetDescriptionDetailHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetDescriptionDetailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetCountSubject">
+      <wsdl:input message="tns:EDI_GetCountSubjectHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetCountSubjectHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveScore">
+      <wsdl:input message="tns:EDI_SaveScoreHttpPostIn" />
+      <wsdl:output message="tns:EDI_SaveScoreHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetLastValData">
+      <wsdl:input message="tns:EDI_GetLastValDataHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetLastValDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DateTimeNow">
+      <wsdl:input message="tns:DateTimeNowHttpPostIn" />
+      <wsdl:output message="tns:DateTimeNowHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetMonthEvaluation">
+      <wsdl:input message="tns:EDI_GetMonthEvaluationHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetMonthEvaluationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetContentNews">
+      <wsdl:input message="tns:EDI_GetContentNewsHttpPostIn" />
+      <wsdl:output message="tns:EDI_GetContentNewsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMB51">
+      <wsdl:input message="tns:GetMB51HttpPostIn" />
+      <wsdl:output message="tns:GetMB51HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAsset">
+      <wsdl:input message="tns:GetAssetHttpPostIn" />
+      <wsdl:output message="tns:GetAssetHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Onhand_Subcon">
+      <wsdl:input message="tns:Get_Onhand_SubconHttpPostIn" />
+      <wsdl:output message="tns:Get_Onhand_SubconHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShort">
+      <wsdl:input message="tns:GetPartShortHttpPostIn" />
+      <wsdl:output message="tns:GetPartShortHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShortDetails">
+      <wsdl:input message="tns:GetPartShortDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetPartShortDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDS">
+      <wsdl:input message="tns:GetPDSHttpPostIn" />
+      <wsdl:output message="tns:GetPDSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDSHeader">
+      <wsdl:input message="tns:GetPDSHeaderHttpPostIn" />
+      <wsdl:output message="tns:GetPDSHeaderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLog">
+      <wsdl:input message="tns:GetLogHttpPostIn" />
+      <wsdl:output message="tns:GetLogHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginAD">
+      <wsdl:input message="tns:LoginADHttpPostIn" />
+      <wsdl:output message="tns:LoginADHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthlyHD">
+      <wsdl:input message="tns:EDI_SupplierMonthlyHDHttpPostIn" />
+      <wsdl:output message="tns:EDI_SupplierMonthlyHDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthly">
+      <wsdl:input message="tns:EDI_SupplierMonthlyHttpPostIn" />
+      <wsdl:output message="tns:EDI_SupplierMonthlyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_EditSupplierMonthly">
+      <wsdl:input message="tns:EDI_EditSupplierMonthlyHttpPostIn" />
+      <wsdl:output message="tns:EDI_EditSupplierMonthlyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_DelSupplierMonthly">
+      <wsdl:input message="tns:EDI_DelSupplierMonthlyHttpPostIn" />
+      <wsdl:output message="tns:EDI_DelSupplierMonthlyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierHD">
+      <wsdl:input message="tns:EDI_Get_SupplierHDHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_SupplierHDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Supplier">
+      <wsdl:input message="tns:EDI_Get_SupplierHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_SupplierHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_EditSupplier">
+      <wsdl:input message="tns:EDI_Get_EditSupplierHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_EditSupplierHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierPartNo">
+      <wsdl:input message="tns:EDI_Get_SupplierPartNoHttpPostIn" />
+      <wsdl:output message="tns:EDI_Get_SupplierPartNoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EDI_LogData">
+      <soap:operation soapAction="http://tempuri.org/EDI_LogData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_LogData_PDS">
+      <soap:operation soapAction="http://tempuri.org/EDI_LogData_PDS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Change_Password">
+      <soap:operation soapAction="http://tempuri.org/EDI_Change_Password" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetVendorData">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetVendorData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetForecast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast_Detail">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetForecast_Detail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetPO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO_Detail">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetPO_Detail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_OutboundRVSheet">
+      <soap:operation soapAction="http://tempuri.org/EDI_OutboundRVSheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertUnit">
+      <soap:operation soapAction="http://tempuri.org/EDI_ConvertUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertBaseUnit">
+      <soap:operation soapAction="http://tempuri.org/EDI_ConvertBaseUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Invoice">
+      <soap:operation soapAction="http://tempuri.org/EDI_Search_Invoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_Invoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Update">
+      <soap:operation soapAction="http://tempuri.org/EDI_Invoice_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Delete">
+      <soap:operation soapAction="http://tempuri.org/EDI_Invoice_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_Invoice_Detail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail_AutoID">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_Invoice_Detail_AutoID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Invoice">
+      <soap:operation soapAction="http://tempuri.org/EDI_SearchPO_Invoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Update">
+      <soap:operation soapAction="http://tempuri.org/EDI_Invoice_Detail_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Delete">
+      <soap:operation soapAction="http://tempuri.org/EDI_Invoice_Detail_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Print_Report">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_Print_Report" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Billing">
+      <soap:operation soapAction="http://tempuri.org/EDI_Search_Billing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_Billing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Update">
+      <soap:operation soapAction="http://tempuri.org/EDI_Billing_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Delete">
+      <soap:operation soapAction="http://tempuri.org/EDI_Billing_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Detail">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_Billing_Detail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Delete">
+      <soap:operation soapAction="http://tempuri.org/EDI_Billing_Detail_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Update">
+      <soap:operation soapAction="http://tempuri.org/EDI_Billing_Detail_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Report">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_Billing_Report" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv">
+      <soap:operation soapAction="http://tempuri.org/EDI_SearchPO_Inv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv_Mat">
+      <soap:operation soapAction="http://tempuri.org/EDI_SearchPO_Inv_Mat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveData_Inv">
+      <soap:operation soapAction="http://tempuri.org/EDI_SaveData_Inv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetTAG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail_PO">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetTAG_Detail_PO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetTAG_Detail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetDescriptionDetail">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetDescriptionDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetCountSubject">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetCountSubject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveScore">
+      <soap:operation soapAction="http://tempuri.org/EDI_SaveScore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetLastValData">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetLastValData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DateTimeNow">
+      <soap:operation soapAction="http://tempuri.org/DateTimeNow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetMonthEvaluation">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetMonthEvaluation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetContentNews">
+      <soap:operation soapAction="http://tempuri.org/EDI_GetContentNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMB51">
+      <soap:operation soapAction="http://tempuri.org/GetMB51" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAsset">
+      <soap:operation soapAction="http://tempuri.org/GetAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Onhand_Subcon">
+      <soap:operation soapAction="http://tempuri.org/Get_Onhand_Subcon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShort">
+      <soap:operation soapAction="http://tempuri.org/GetPartShort" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShortDetails">
+      <soap:operation soapAction="http://tempuri.org/GetPartShortDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDS">
+      <soap:operation soapAction="http://tempuri.org/GetPDS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDSHeader">
+      <soap:operation soapAction="http://tempuri.org/GetPDSHeader" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLog">
+      <soap:operation soapAction="http://tempuri.org/GetLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginAD">
+      <soap:operation soapAction="http://tempuri.org/LoginAD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthlyHD">
+      <soap:operation soapAction="http://tempuri.org/EDI_SupplierMonthlyHD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthly">
+      <soap:operation soapAction="http://tempuri.org/EDI_SupplierMonthly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_EditSupplierMonthly">
+      <soap:operation soapAction="http://tempuri.org/EDI_EditSupplierMonthly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_DelSupplierMonthly">
+      <soap:operation soapAction="http://tempuri.org/EDI_DelSupplierMonthly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierHD">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_SupplierHD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Supplier">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_Supplier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_EditSupplier">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_EditSupplier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierPartNo">
+      <soap:operation soapAction="http://tempuri.org/EDI_Get_SupplierPartNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EDI_LogData">
+      <soap12:operation soapAction="http://tempuri.org/EDI_LogData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_LogData_PDS">
+      <soap12:operation soapAction="http://tempuri.org/EDI_LogData_PDS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Change_Password">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Change_Password" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetVendorData">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetVendorData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetForecast" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast_Detail">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetForecast_Detail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetPO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO_Detail">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetPO_Detail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_OutboundRVSheet">
+      <soap12:operation soapAction="http://tempuri.org/EDI_OutboundRVSheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertUnit">
+      <soap12:operation soapAction="http://tempuri.org/EDI_ConvertUnit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertBaseUnit">
+      <soap12:operation soapAction="http://tempuri.org/EDI_ConvertBaseUnit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Invoice">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Search_Invoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_Invoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Update">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Invoice_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Delete">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Invoice_Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_Invoice_Detail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail_AutoID">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_Invoice_Detail_AutoID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Invoice">
+      <soap12:operation soapAction="http://tempuri.org/EDI_SearchPO_Invoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Update">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Invoice_Detail_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Delete">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Invoice_Detail_Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Print_Report">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_Print_Report" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Billing">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Search_Billing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_Billing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Update">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Billing_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Delete">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Billing_Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Detail">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_Billing_Detail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Delete">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Billing_Detail_Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Update">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Billing_Detail_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Report">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_Billing_Report" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv">
+      <soap12:operation soapAction="http://tempuri.org/EDI_SearchPO_Inv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv_Mat">
+      <soap12:operation soapAction="http://tempuri.org/EDI_SearchPO_Inv_Mat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveData_Inv">
+      <soap12:operation soapAction="http://tempuri.org/EDI_SaveData_Inv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetTAG" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail_PO">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetTAG_Detail_PO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetTAG_Detail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetDescriptionDetail">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetDescriptionDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetCountSubject">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetCountSubject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveScore">
+      <soap12:operation soapAction="http://tempuri.org/EDI_SaveScore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetLastValData">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetLastValData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DateTimeNow">
+      <soap12:operation soapAction="http://tempuri.org/DateTimeNow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetMonthEvaluation">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetMonthEvaluation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetContentNews">
+      <soap12:operation soapAction="http://tempuri.org/EDI_GetContentNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMB51">
+      <soap12:operation soapAction="http://tempuri.org/GetMB51" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAsset">
+      <soap12:operation soapAction="http://tempuri.org/GetAsset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Onhand_Subcon">
+      <soap12:operation soapAction="http://tempuri.org/Get_Onhand_Subcon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShort">
+      <soap12:operation soapAction="http://tempuri.org/GetPartShort" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShortDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetPartShortDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDS">
+      <soap12:operation soapAction="http://tempuri.org/GetPDS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDSHeader">
+      <soap12:operation soapAction="http://tempuri.org/GetPDSHeader" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLog">
+      <soap12:operation soapAction="http://tempuri.org/GetLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginAD">
+      <soap12:operation soapAction="http://tempuri.org/LoginAD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthlyHD">
+      <soap12:operation soapAction="http://tempuri.org/EDI_SupplierMonthlyHD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthly">
+      <soap12:operation soapAction="http://tempuri.org/EDI_SupplierMonthly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_EditSupplierMonthly">
+      <soap12:operation soapAction="http://tempuri.org/EDI_EditSupplierMonthly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_DelSupplierMonthly">
+      <soap12:operation soapAction="http://tempuri.org/EDI_DelSupplierMonthly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierHD">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_SupplierHD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Supplier">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_Supplier" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_EditSupplier">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_EditSupplier" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierPartNo">
+      <soap12:operation soapAction="http://tempuri.org/EDI_Get_SupplierPartNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1HttpPost" type="tns:Service1HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="EDI_LogData">
+      <http:operation location="/EDI_LogData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_LogData_PDS">
+      <http:operation location="/EDI_LogData_PDS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Change_Password">
+      <http:operation location="/EDI_Change_Password" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetVendorData">
+      <http:operation location="/EDI_GetVendorData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast">
+      <http:operation location="/EDI_GetForecast" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetForecast_Detail">
+      <http:operation location="/EDI_GetForecast_Detail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO">
+      <http:operation location="/EDI_GetPO" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetPO_Detail">
+      <http:operation location="/EDI_GetPO_Detail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_OutboundRVSheet">
+      <http:operation location="/EDI_OutboundRVSheet" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertUnit">
+      <http:operation location="/EDI_ConvertUnit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_ConvertBaseUnit">
+      <http:operation location="/EDI_ConvertBaseUnit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Invoice">
+      <http:operation location="/EDI_Search_Invoice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice">
+      <http:operation location="/EDI_Get_Invoice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Update">
+      <http:operation location="/EDI_Invoice_Update" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Delete">
+      <http:operation location="/EDI_Invoice_Delete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail">
+      <http:operation location="/EDI_Get_Invoice_Detail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Invoice_Detail_AutoID">
+      <http:operation location="/EDI_Get_Invoice_Detail_AutoID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Invoice">
+      <http:operation location="/EDI_SearchPO_Invoice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Update">
+      <http:operation location="/EDI_Invoice_Detail_Update" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Invoice_Detail_Delete">
+      <http:operation location="/EDI_Invoice_Detail_Delete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Print_Report">
+      <http:operation location="/EDI_Get_Print_Report" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Search_Billing">
+      <http:operation location="/EDI_Search_Billing" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing">
+      <http:operation location="/EDI_Get_Billing" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Update">
+      <http:operation location="/EDI_Billing_Update" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Delete">
+      <http:operation location="/EDI_Billing_Delete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Detail">
+      <http:operation location="/EDI_Get_Billing_Detail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Delete">
+      <http:operation location="/EDI_Billing_Detail_Delete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Billing_Detail_Update">
+      <http:operation location="/EDI_Billing_Detail_Update" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Billing_Report">
+      <http:operation location="/EDI_Get_Billing_Report" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv">
+      <http:operation location="/EDI_SearchPO_Inv" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SearchPO_Inv_Mat">
+      <http:operation location="/EDI_SearchPO_Inv_Mat" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveData_Inv">
+      <http:operation location="/EDI_SaveData_Inv" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG">
+      <http:operation location="/EDI_GetTAG" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail_PO">
+      <http:operation location="/EDI_GetTAG_Detail_PO" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetTAG_Detail">
+      <http:operation location="/EDI_GetTAG_Detail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetDescriptionDetail">
+      <http:operation location="/EDI_GetDescriptionDetail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetCountSubject">
+      <http:operation location="/EDI_GetCountSubject" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SaveScore">
+      <http:operation location="/EDI_SaveScore" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetLastValData">
+      <http:operation location="/EDI_GetLastValData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DateTimeNow">
+      <http:operation location="/DateTimeNow" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetMonthEvaluation">
+      <http:operation location="/EDI_GetMonthEvaluation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_GetContentNews">
+      <http:operation location="/EDI_GetContentNews" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMB51">
+      <http:operation location="/GetMB51" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAsset">
+      <http:operation location="/GetAsset" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Onhand_Subcon">
+      <http:operation location="/Get_Onhand_Subcon" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShort">
+      <http:operation location="/GetPartShort" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartShortDetails">
+      <http:operation location="/GetPartShortDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDS">
+      <http:operation location="/GetPDS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDSHeader">
+      <http:operation location="/GetPDSHeader" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLog">
+      <http:operation location="/GetLog" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginAD">
+      <http:operation location="/LoginAD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthlyHD">
+      <http:operation location="/EDI_SupplierMonthlyHD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_SupplierMonthly">
+      <http:operation location="/EDI_SupplierMonthly" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_EditSupplierMonthly">
+      <http:operation location="/EDI_EditSupplierMonthly" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_DelSupplierMonthly">
+      <http:operation location="/EDI_DelSupplierMonthly" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierHD">
+      <http:operation location="/EDI_Get_SupplierHD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_Supplier">
+      <http:operation location="/EDI_Get_Supplier" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_EditSupplier">
+      <http:operation location="/EDI_Get_EditSupplier" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EDI_Get_SupplierPartNo">
+      <http:operation location="/EDI_Get_SupplierPartNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://192.168.0.192/WSTSC/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://192.168.0.192/WSTSC/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1HttpPost" binding="tns:Service1HttpPost">
+      <http:address location="http://192.168.0.192/WSTSC/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

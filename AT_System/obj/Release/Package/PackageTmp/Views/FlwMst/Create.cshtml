@@ -1,0 +1,98 @@
+﻿@model AT_System.Models.FI03_AT_FlowMaster
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@*<h2>Create Flow for @ViewBag.RecCC.ReceiverCC</h2>*@
+<h2>Create Flow Master @ViewBag.RecCC_Name</h2>
+
+@using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FI03_AT_FlowMaster</legend>
+
+        <table>
+
+@*            <tr>
+                <td>@Html.LabelFor(model => model.Client)</td>
+                <td>@Html.EditorFor(model => model.Client) @Html.ValidationMessageFor(model => model.Client)</td>
+            </tr>*@
+            
+@*            <tr>
+                <td>@Html.LabelFor(model => model.AutoRun)</td>
+                <td>@Html.EditorFor(model => model.AutoRun) @Html.ValidationMessageFor(model => model.AutoRun)</td>
+            </tr>*@
+            
+            <tr>
+@*                <td>@Html.LabelFor(model => model.FI03_AT_RecCostCenter)</td>
+                <td>@Html.DropDownListFor(model => model.FI03_AT_RecCostCenter, new SelectList(ViewBag.RecCC, "Value", "Text"), "Please Select", new { @class = "form-control btn btn-default dropdown-toggle", @Id = "cboRecCC" })</td>*@
+                <td></td>
+                <td>@Html.HiddenFor(model => model.FI03_AT_RecCostCenter, new { @class = "form-control", @Value=ViewBag.RecCC_ID, @readonly = "readonly", @id="Requester"})</td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td>@Html.LabelFor(model => model.StepNo)</td>
+                <td>@Html.EditorFor(model => model.StepNo) @Html.ValidationMessageFor(model => model.StepNo)</td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td>@Html.LabelFor(model => model.EmpID)</td>
+                <td>@Html.EditorFor(model => model.EmpID, new { @id = "txtEmp" }) @Html.ValidationMessageFor(model => model.EmpID)</td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td>@Html.LabelFor(model => model.EmpFirstName)</td>
+                <td>@Html.EditorFor(model => model.EmpFirstName) @Html.ValidationMessageFor(model => model.EmpFirstName)</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.EmpLastName)</td>
+                <td>@Html.EditorFor(model => model.EmpLastName) @Html.ValidationMessageFor(model => model.EmpLastName)</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.Email)</td>
+                <td>@Html.EditorFor(model => model.Email) @Html.ValidationMessageFor(model => model.Email)</td>
+                <td></td>
+            </tr>
+
+@*            <tr>
+                <td>@Html.LabelFor(model => model.Status)</td>
+                <td>@Html.EditorFor(model => model.Status) @Html.ValidationMessageFor(model => model.Status)</td>
+            </tr>*@
+        </table>
+
+        <p>
+            <input type="submit" value="Create" /> | @Html.ActionLink("Back to List", "Index", new { id = @ViewBag.RecCC_ID })
+            <span style='color:red; font-size:2.2em;'>@ViewBag.Error</span>
+        </p>
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<script type="text/javascript">
+    
+    //$("#txtEmp").on("keypress", "[id='txtEmp']", function (e) {
+    //    if ((e.which < 48 || e.which > 57)) {
+    //        return false;
+    //    }
+    //    if ((e.keyCode < 48 || e.keyCode > 57)) {
+    //        return false;
+    //    }
+    //});
+
+</script>
+
+

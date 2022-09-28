@@ -1,0 +1,19 @@
+﻿@if (System.Web.HttpContext.Current.Session["UserAD"] != null && System.Web.HttpContext.Current.Session["UserAD"] != "")
+{
+    <text>   
+
+        <span style="color:#fff;">Hello, @User.Identity.Name ( @Session["DepartmentCode"].ToString() )</span> 
+@*@Html.ActionLink(User.Identity.Name+" (" + Session["chkPermission"].ToString() + ") ", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })*@
+              
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }
+        
+    </text>
+} else {
+    <ul>
+        <li>@*@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

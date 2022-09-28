@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head >
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Asset Transfer System</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body onload="startTime()">
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <a href="~/HOME/Index" class="linkLogo">
+                    <img src="~/Images/5_v2.png" style="width:120px; height:51px; margin-bottom:15px;" />
+                    </a>
+
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        
+                        @Html.Partial("_LoginPartial")
+                        
+                    </section>
+                    <div id="tsc_currentdate">
+
+			            <script type="text/javascript">
+				        <!--
+    var m_names = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+    var d_names = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+
+    //-->
+
+    function startTime() {
+        var today = new Date();
+        var day = today.getDay();
+        var d = today.getDate();
+        var M = today.getMonth();
+        var y = today.getFullYear();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        var type;
+        if (h > 11) {
+            type = "PM";
+        } else {
+            type = "AM";
+        }
+        $("#tsc_currentdate").html(d_names[day] + ", " + d + " " + m_names[M] + " " + y + " " + h + ":" + m + ":" + s + " " + type);
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+        return i;
+    }
+			            </script>
+                    </div>
+                </div>
+            </div>
+        </header>
+                
+        <div id="body">
+            <ul class="content-wrapper nav nav-tabs">
+              <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  FI<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Asset Transfer", "Index", "AT")</li>  
+                </ul>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  Report<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Asset Transfer Report", "Report", "Report")</li>  
+                </ul>
+              </li>
+                @if (Session["chkPermission"] != null && (Session["chkPermission"].ToString() == "Admin") ){
+              <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  Data Maintenance<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @*<li>@Html.ActionLink("Flow Master", "Index", "FlwMst")</li>
+                    <li>@Html.ActionLink("Cost Center", "Index", "CoCMst")</li> *@   
+                    <li>@Html.ActionLink("Receiver Cost Center", "Index", "RecCC")</li>  
+                </ul>
+              </li>
+                }
+            </ul>
+
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper clear-fix">
+                @{
+                    if (TempData["Message"] != null)
+                    {
+                        if (TempData["MessageStatus"] == "X")
+                        {
+                          <div id="hideMe" class="alertMessageConfirmSuccess">
+                               <strong>Message : </strong> @TempData["Message"].ToString()
+                          </div>
+                        }
+                        else
+                        {
+                          <div id="hideMe" class="alertMessageConfirmFail">
+                               <strong>Message : </strong> @TempData["Message"].ToString()
+                          </div>
+                        }
+                    }
+                  }
+
+
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#hideMe').delay(3000).fadeOut();
+    });
+</script>

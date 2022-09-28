@@ -1,0 +1,110 @@
+﻿@model AT_System.Models.FI03_AT_FlowMaster
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Flow Master @ViewBag.RecCC_Name</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FI03_AT_FlowMaster</legend>
+
+        <table>
+            <tr>
+                <td></td>
+                <td>@Html.HiddenFor(model => model.Client) @Html.ValidationMessageFor(model => model.Client)</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>@Html.HiddenFor(model => model.AutoRun) @Html.ValidationMessageFor(model => model.AutoRun)</td>
+            </tr>
+
+            <tr>
+
+                <td></td>
+                <td>@Html.HiddenFor(model => model.FI03_AT_RecCostCenter) @Html.ValidationMessageFor(model => model.FI03_AT_RecCostCenter)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.StepNo)</td>
+                <td>@Html.EditorFor(model => model.StepNo) @Html.ValidationMessageFor(model => model.StepNo)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.EmpID)</td>
+                <td>@Html.EditorFor(model => model.EmpID) @Html.ValidationMessageFor(model => model.EmpID)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.EmpFirstName)</td>
+                <td>@Html.EditorFor(model => model.EmpFirstName) @Html.ValidationMessageFor(model => model.EmpFirstName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.EmpLastName)</td>
+                <td>@Html.EditorFor(model => model.EmpLastName) @Html.ValidationMessageFor(model => model.EmpLastName)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.Email)</td>
+                <td>@Html.EditorFor(model => model.Email, new { @autocomplete="off" }) @Html.ValidationMessageFor(model => model.Email)</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>@Html.HiddenFor(model => model.Status) @Html.ValidationMessageFor(model => model.Status)</td>
+            </tr>
+        </table>
+
+        <p>
+            <input type="submit" value="Save" />
+            | @Html.ActionLink("Back to List", "Index", new { id = Model.FI03_AT_RecCostCenter })
+            <span style='color: red; font-size: 2.2em;'>@ViewBag.Error</span>
+        </p>
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+    <script type="text/javascript">
+        
+
+        $.post(
+            "@Url.Action("ListEMail","FlwMst")",
+            function (data) {
+                $("#Email").autocomplete({
+                    source: data,
+                    focus: function (event, ui) {
+                        $(this).val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        var desc = ui.item.desc.split("|");
+                        $("#Email").val(ui.item.label);
+                        $("#EmpID").val(ui.item.value);
+                        $("#EmpFirstName").val(desc[0]);
+                        $("#EmpLastName").val(desc[1]);
+
+                        return false;
+                    },
+                    change: function (event, ui) {
+                        if (ui.item == null) {
+                            $("#Email").val('');
+                            $("#EmpID").val('');
+                            $("#EmpFirstName").val('');
+                            $("#EmpLastName").val('');
+                        }
+                    }
+                });
+            });
+    </script>
+}
+

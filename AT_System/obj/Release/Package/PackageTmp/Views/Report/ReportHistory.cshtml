@@ -1,0 +1,142 @@
+﻿@model List<AT_System.Models.vAssetTransfer_ReportHistory>
+
+@{
+    ViewBag.Title = "History Report";
+    Layout = null;
+}
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+    <h3>Asset Transfer Report History</h3>
+    <br />
+
+        <table class="table table-bordered table-hover">
+            <thead style="text-align: center;">
+            <tr>
+                <td class="th-sender">NO.</td>
+                <td class="th-sender">Doc NO.</td>
+                <td class="th-sender">Create Date</td>
+                <td class="th-sender">Create Time</td>
+                <td class="th-sender">Asset</td>
+                <td class="th-sender">Description</td>
+                <td class="th-sender">Cost Center</td>
+                <td class="th-sender">Room</td>
+                <td class="th-sender">Qty</td>
+
+            </tr>
+            
+            </thead>
+            <tbody>
+                @{ int no = 1;
+                   var strDate = "";
+                   var strDateTmp = "";
+                   var strTime = "";
+                   var strTimeTmp = "";
+                   var strAsset = "";
+                }
+                @foreach (var item in Model)
+                {
+                <tr>
+                    @{ 
+                   
+                    
+                    
+                        if (item.CreateDate != strDateTmp || item.CreateTime != strTimeTmp || strAsset != item.Asset)
+                        {
+                            strDate = item.CreateDate;
+                            strTime = item.CreateTime;
+                            strDateTmp = strDate;
+                            strTimeTmp = strTime;
+                            //item.CreateDate = item.CreateDate == null ? null : DateTime.ParseExact(item.CreateDate, "yyyymmdd", null).ToString("dd.mm.yyyy");
+                            //item.CreateTime = item.CreateTime == null ? null : DateTime.ParseExact(item.CreateTime, "HHmmss", null).ToString("HH.mm.ss");
+                            strDate = DateTime.ParseExact(strDate, "yyyymmdd", null).ToString("dd.mm.yyyy");
+                            strTime = DateTime.ParseExact(strTime, "HHmmss", null).ToString("HH.mm.ss");
+                            <td class="center">@(no++)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DocNo)</td>
+                            <td>@strDateTmp</td>                 
+                            <td>@strTimeTmp </td>
+                            <td>@Html.DisplayFor(modelItem => item.Asset)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AssetDescription)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CostCenter)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Room)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Qty)</td>
+                       }else{
+                           strDateTmp = item.CreateDate;
+                           strTimeTmp = item.CreateTime;
+                       }
+                    
+                           strAsset = item.Asset;
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+<style type="text/css">
+        .form-control {
+            width:100%;
+            height:25px;
+            font-size:12px;
+            padding:5px;
+        }
+
+        input[type="radio"] {
+            width:16px;
+            margin:0;
+        }
+
+        .table {
+            table-layout: auto;
+            white-space: nowrap;
+            word-wrap: break-word;
+        }
+
+        .table-bordered, .table-bordered thead tr td, .table-bordered tbody tr td {
+            border-color:black;
+            font-family:Calibri;
+            font-size:.9em;
+        }
+            .table-bordered thead {
+                font-weight:bold;
+            }
+            .table-bordered tbody tr td {
+                /*color: darkgreen;*/
+            }
+        .th-other {
+            background-color:#FFFFF7;
+        }
+        .th-sender {
+            background-color:#92CDDC;  /*#31869B*/
+            color:black;
+        }
+        .th-reciever {
+            background-color:#C4D79B;
+        }
+        .th-remark {
+            background-color: #D9D9D9; /*#DAEEF3*/
+        }
+        .th-flow {
+            background-color:#FDE9D9;
+        }
+
+        .row-group1 td {
+            background-color: white;   /*#FFFFF7;*/
+        }
+        .row-group2 td {
+            background-color: #FFFFFF; /*#EEECE1*/
+        }
+
+        /*.table-hover > tbody > tr:hover > td{
+            background-color: blue;
+            color: #fff;
+        }*/
+
+        .center {
+            text-align: center;
+        }
+</style>

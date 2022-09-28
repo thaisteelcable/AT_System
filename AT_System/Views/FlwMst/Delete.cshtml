@@ -1,0 +1,75 @@
+﻿@model AT_System.Models.FI03_AT_FlowMaster
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Flow Master @ViewBag.RecCC_Name</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+@using (Html.BeginForm()) {
+
+<fieldset>
+    <legend>FI03_AT_FlowMaster</legend>
+
+    <table>
+        <tr>
+@*            <td>@Html.DisplayNameFor(model => model.Client)</td>*@
+@*            <td>@Html.DisplayFor(model => model.Client)</td>*@
+            <td></td>
+            <td>@Html.HiddenFor(model => model.Client)</td>
+        </tr>
+
+        <tr>
+@*            <td>@Html.DisplayNameFor(model => model.AutoRun)</td>*@
+@*            <td>@Html.DisplayFor(model => model.AutoRun)</td>*@
+            <td></td>
+            <td>@Html.HiddenFor(model => model.AutoRun)</td>
+        </tr>
+
+        <tr>
+@*            <td>@Html.DisplayNameFor(model => model.FI03_AT_RecCostCenter)</td>*@
+@*            <td>@Html.DisplayFor(model => model.FI03_AT_RecCostCenter)</td>*@
+            <td></td>
+            <td>@Html.HiddenFor(model => model.FI03_AT_RecCostCenter)</td>
+        </tr>
+
+@*        <tr>
+            <td>@Html.DisplayNameFor(model => model.FI03_AT_RecCostCenter)</td>
+            <td>@ViewBag.RecCC_Name</td>
+        </tr>*@
+
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.StepNo)</td>
+@*            <td>@Html.DisplayFor(model => model.StepNo)</td>*@
+            <td>@Html.TextBoxFor(model => model.StepNo, new { @readonly="readonly"})</td>
+        </tr>
+
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.EmpID)</td>
+@*            <td>@Html.DisplayFor(model => model.EmpID)</td>*@
+            <td>@Html.TextBoxFor(model => model.EmpID, new { @readonly="readonly"})</td>
+        </tr>
+
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Email)</td>
+@*            <td>@Html.DisplayFor(model => model.Email)</td>*@
+            <td>@Html.TextBoxFor(model => model.Email, new { @readonly="readonly"})</td>
+        </tr>
+
+        <tr>
+@*            <td>@Html.DisplayNameFor(model => model.Status)</td>*@
+@*            <td>@Html.DisplayFor(model => model.Status)</td>*@
+            <td></td>
+            <td>@Html.HiddenFor(model => model.Status)</td>
+        </tr>
+    </table>
+
+</fieldset>
+
+    <p>
+        <input type="submit" value="Delete" /> | @Html.ActionLink("Back to List", "Index", new { id = Model.FI03_AT_RecCostCenter })
+        <span style='color:red; font-size:2.2em;'>@ViewBag.Error</span>
+    </p>
+}

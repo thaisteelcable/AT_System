@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SAPModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SAPEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="FI03_AT_DocItem" EntityType="SAPModel.FI03_AT_DocItem" />
+    <EntitySet Name="FI03_AT_RecCostCenter" EntityType="SAPModel.FI03_AT_RecCostCenter" />
+    <EntitySet Name="HR01_Employee" EntityType="SAPModel.HR01_Employee" />
+    <EntitySet Name="FI03_AT_Doc" EntityType="SAPModel.FI03_AT_Doc" />
+    <EntitySet Name="FI03_AT_FlowApprove" EntityType="SAPModel.FI03_AT_FlowApprove" />
+    <EntitySet Name="vAssetTransfer_Doc" EntityType="SAPModel.vAssetTransfer_Doc" />
+    <EntitySet Name="vAssetTransfer_Flow" EntityType="SAPModel.vAssetTransfer_Flow" />
+    <EntitySet Name="FI03_AT_CostCenter" EntityType="SAPModel.FI03_AT_CostCenter" />
+    <EntitySet Name="FI03_AT_FlowMaster" EntityType="SAPModel.FI03_AT_FlowMaster" />
+    <EntitySet Name="MM01_PR_Config" EntityType="SAPModel.MM01_PR_Config" />
+    <EntitySet Name="vAssetTransfer_Report" EntityType="SAPModel.vAssetTransfer_Report" />
+    <EntitySet Name="FI03_AT_FlowApprove_Log" EntityType="SAPModel.FI03_AT_FlowApprove_Log" />
+    <EntitySet Name="FI03_AT_RecCostCenter_Special" EntityType="SAPModel.FI03_AT_RecCostCenter_Special" />
+    <EntitySet Name="vAssetTransfer_ReportHistory" EntityType="SAPModel.vAssetTransfer_ReportHistory" />
+  </EntityContainer>
+  <EntityType Name="FI03_AT_DocItem">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="Guid" Name="FI03_AT_Doc" />
+    <Property Type="Int32" Name="ItemNo" />
+    <Property Type="String" Name="AssetClass" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Asset" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AssetDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Qty" />
+    <Property Type="String" Name="RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FI03_AT_RecCostCenter">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="String" Name="ReceiverCC" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" />
+    <Property Type="String" Name="FieldCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DepartmentCode" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HR01_Employee">
+    <Key>
+      <PropertyRef Name="Client" />
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Type="String" Name="Client" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpID" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CompanyName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpStatus" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="WorkShift" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="JobTitleCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="JobTitleName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PositionTitleCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PositionTitleName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BranchCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BranchName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SectionCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SectionName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DivisionCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DivisionName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DepartmentCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DepartmentName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TeamCode" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TeamName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NamePrefix" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FirstName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NamePrefixEN" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FirstNameEN" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastNameEN" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Sex" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="BirthDate" Precision="3" />
+    <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Tel" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="StartWorkDate" Precision="3" />
+    <Property Type="DateTime" Name="StartPermanent" Precision="3" />
+    <Property Type="DateTime" Name="EndWorkDate" Precision="3" />
+    <Property Type="String" Name="Username" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="SendMailFC" />
+    <Property Type="Boolean" Name="SendMailSO" />
+    <Property Type="Boolean" Name="SendMailComparing" />
+    <Property Type="String" Name="DivisionCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DepartmentCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SectionCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PositionCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TeamCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EmpIDCard" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FI03_AT_Doc">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter_From" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter_To" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssueBy" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssueDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssueByTop" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssueDateTop" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiveBy" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiveDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiveByTop" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiveDateTop" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFApp" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFAppDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" />
+    <Property Type="String" Name="CreateTime" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CreateBy" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UpdateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UpdateTime" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DocStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FlowStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssueTime" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssueTimeTop" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiveTime" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiveTimeTop" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFAppTime" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FI03_AT_FlowApprove">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="Guid" Name="FI03_AT_Doc" />
+    <Property Type="Guid" Name="FI03_AT_FlowMaster" />
+    <Property Type="String" Name="FlowState" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FlowStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpFirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpLastName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ApproveStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DateApprove" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TimeApprove" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserCreate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DateCreate" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Remark" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Flag" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vAssetTransfer_Doc">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+      <PropertyRef Name="AutoRunItem" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter_From" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiverCC_From" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter_To" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiverCC_to" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRunItem" Nullable="false" />
+    <Property Type="Int32" Name="ItemNo" />
+    <Property Type="String" Name="AssetClass" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Asset" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AssetDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Qty" />
+    <Property Type="String" Name="RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DocStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FlowStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vAssetTransfer_Flow">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+      <PropertyRef Name="AutoRunItem" />
+    </Key>
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="FI03_AT_FlowMaster" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter_From" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter_To" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRunItem" Nullable="false" />
+    <Property Type="String" Name="FlowState" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpFirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpLastName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ApproveStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DateApprove" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TimeApprove" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserCreate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DateCreate" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Remark" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FI03_AT_CostCenter">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AssetClass" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" />
+  </EntityType>
+  <EntityType Name="FI03_AT_FlowMaster">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="Guid" Name="FI03_AT_RecCostCenter" />
+    <Property Type="Int32" Name="StepNo" />
+    <Property Type="String" Name="EmpID" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" />
+    <Property Type="String" Name="EmpFirstName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpLastName" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MM01_PR_Config">
+    <Key>
+      <PropertyRef Name="Client" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="String" Name="Client" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Description" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Movement" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Active" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vAssetTransfer_Report">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+      <PropertyRef Name="AutoRunItem" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter_From" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiverCC_From" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter_To" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiverCC_to" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRunItem" Nullable="false" />
+    <Property Type="Int32" Name="ItemNo" />
+    <Property Type="String" Name="AssetClass" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Asset" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AssetDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Qty" />
+    <Property Type="String" Name="RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="fsIssuer" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssuerID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssuerName" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssuerEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssuerAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssuerAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssuerAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IssuerRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="fsTopIssuer" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopIssuerID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopIssuerName" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopIssuerEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopIssuerAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopIssuerAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopIssuerAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopIssuerRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="fsReciever" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RecieverID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RecieverName" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RecieverEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RecieverAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RecieverAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RecieverAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RecieverRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="fsTopReciever" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopRecieverID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopRecieverName" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopRecieverEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopRecieverAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopRecieverAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopRecieverAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TopRecieverRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="fsAF" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFName" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AFRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DocStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FI03_AT_FlowApprove_Log">
+    <Key>
+      <PropertyRef Name="RunNo" />
+    </Key>
+    <Property Type="Int64" Name="RunNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" />
+    <Property Type="Guid" Name="FI03_AT_Doc" />
+    <Property Type="Guid" Name="FI03_AT_FlowMaster" />
+    <Property Type="String" Name="FlowState" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FlowStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpFirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpLastName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmpEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ApproveStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DateApprove" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TimeApprove" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserCreate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DateCreate" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Remark" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Flag" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FI03_AT_RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FI03_AT_RecCostCenter_Special">
+    <Key>
+      <PropertyRef Name="AutoRun" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AutoRun" Nullable="false" />
+    <Property Type="String" Name="SectionCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FieldCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DepartmentCode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" />
+  </EntityType>
+  <EntityType Name="vAssetTransfer_ReportHistory">
+    <Key>
+      <PropertyRef Name="DocNo" />
+    </Key>
+    <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DocNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CreateTime" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Asset" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AssetDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Qty" />
+    <Property Type="String" Name="RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CostCenter2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Room2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ItemNo" />
+  </EntityType>
+</Schema>

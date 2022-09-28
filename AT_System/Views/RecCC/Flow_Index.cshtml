@@ -1,0 +1,73 @@
+﻿@model AT_System.Models._AT_FlwMst2
+
+@{
+    ViewBag.Title = "Flow Index";
+}
+
+<h2>Maintain Flow Master</h2>
+
+<p>
+@*    @Html.ActionLink("Add New Flow", "Flow_Create")*@
+    @Html.ActionLink("Add New Flow", "Create","FlwMst")
+</p>
+
+@*@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>@Html.Label("Select Receiver Cost Center OR Emp ID:")</td>
+            <td>@Html.TextBox("rec_cc")</td>
+            <td><input type="submit" value="Search" name="Search" /></td>
+        </tr>
+    </table>
+}*@
+
+
+<table>
+
+@*            <td>@Html.HiddenFor(modelItem => item.FI03_AT_RecCostCenter)</td>
+            <td>@Html.DisplayFor(modelItem => item.RecCC_NAME)</td>*@
+@*        <th>FI03_AT_RecCostCenter</th>
+        <th>RecCC_NAME</th>*@
+
+
+    <tr>
+        <th>No.</th>
+        <th></th>               @*Client*@
+        <th></th>               @*AutoRun*@
+        <th>StepNo</th>
+        <th>EmpID</th>
+        <th>Email</th>
+        <th></th>                @*Status*@
+        <th></th>
+    </tr>
+
+
+    @{
+    int no = 1;
+    foreach (var item in Model.AT_FlwMst) {
+        <tr>
+
+            <td>@(no++)</td>
+            <td>@Html.HiddenFor(modelItem => item.Client)</td>
+            <td>@Html.HiddenFor(modelItem => item.AutoRun)</td>
+            <td>@Html.DisplayFor(modelItem => item.StepNo)</td>
+            <td>@Html.DisplayFor(modelItem => item.EmpID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>@Html.HiddenFor(modelItem => item.Status)</td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AutoRun }) |
+@*                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.AutoRun })
+            </td>
+
+        </tr>
+    }
+}
+
+</table>
+
+<p>
+    <input type="submit" value="Save" /> | @Html.ActionLink("Back to List", "Index")
+</p>

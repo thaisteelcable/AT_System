@@ -1,0 +1,335 @@
+﻿@model List<AT_System.Models.vAssetTransfer_Report>
+
+@{
+    ViewBag.Title = "Report";
+}
+
+
+<h2>Asset Transfer Report</h2>
+
+<br />
+
+@using(Html.BeginForm("Report","Report",FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row" style="border-bottom:1px solid black;padding-bottom:6px;">
+        <div class="col-lg-7">
+            
+            <div class="row show-grid">
+
+                <div class="col-lg-2">
+                    Asset Class
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" name="AssetClassFrom" value="@ViewBag.AssetClassFrom" class="form-control" />
+                </div>
+                <div class="col-lg-1">
+                    To
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" name="AssetClassTo" value="@ViewBag.AssetClassTo" class="form-control" />
+                </div>
+
+            </div>
+
+
+            <div class="row show-grid">
+
+                <div class="col-lg-2">
+                    Asset NO.
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" name="AssetNOFrom" value="@ViewBag.AssetNOFrom" class="form-control" />
+                </div>
+                <div class="col-lg-1">
+                    To
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" name="AssetNOTo" value="@ViewBag.AssetNOTo" class="form-control" />
+                </div>
+
+            </div>
+
+            <div class="row show-grid">
+
+                <div class="col-lg-2">
+                    Document NO.
+                    <span style="font-size:10px;color:purple">(TSC-YYYYMM-XXXX)</span>
+                </div>                
+                <div class="col-lg-3">
+                    <input type="text" name="DocNO" value="@ViewBag.DocNO" class="form-control" />
+                </div>
+                
+            </div>
+
+            <div class="row show-grid">
+
+                <div class="col-lg-2">
+                    Create Date <span style="color:red">*</span>
+                    <span style="font-size:11px;color:purple">(DD/MM/YYYY)</span>
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" name="CreateDateFrom" value="@ViewBag.CreateDateFrom" class="form-control dp" readonly="readonly" />
+                </div>
+                <div class="col-lg-1">
+                    To
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" name="CreateDateTo" value="@ViewBag.CreateDateTo" class="form-control dp" readonly="readonly" />
+                </div>
+
+            </div>    
+            
+            <div class="row show-grid">
+
+                <div class="col-lg-2"></div>
+                <div class="col-lg-1">
+                    <div class="radio"><input type="radio" name="AllORCompleted" value="All" @if (ViewBag.AllORCompleted == "All") { Write("checked='checked'"); } } />All</div>
+                </div>
+                 <div class="col-lg-1">
+                    <div class="radio"><input type="radio" name="AllORCompleted" value="Issued" @if (ViewBag.AllORCompleted == "Issued") { Write("checked='checked'"); } />Issue</div>
+                </div>
+                
+                <div class="col-lg-1">
+                    <div class="radio"><input type="radio" name="AllORCompleted" value="Rejected" @if (ViewBag.AllORCompleted == "Rejected") { Write("checked='checked'"); } />Reject</div>
+                </div>
+                <div class="col-lg-1" style="padding-right:5px;">
+                    <div class="radio"><input type="radio" name="AllORCompleted" value="Approved" @if (ViewBag.AllORCompleted == "Approved") { Write("checked='checked'"); } />Approve</div>
+                </div>
+
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2" style="text-align:right;">
+                    @*<input type="submit" name="submitSrh" value="Search" class="btn btn-primary btn-xs" />*@
+                    <button type="submit" name="submitSrh" value="Search" class="btn btn-primary">Search</button>
+                </div>
+                <div class="col-lg-1" style="text-align:right;">
+                    @*<input type="submit" name="Excel" value="Excel" onclick="window.open()" class="btn btn-default btn-xs" />*@
+                    <button type="submit" name="Excel" value="Excel" class="btn btn-info">Excel</button>
+                </div>
+
+            </div>      
+            
+        </div>
+    </div>
+    
+    //============ Table Result Search ======================
+    <div class="table-responsive" style="overflow-y: scroll;">
+        <table class="table table-bordered table-hover">
+            <caption style="text-align:left;"><span style="color:purple">Results @ViewBag.ResultRows Rows</span></caption>
+            <thead style="text-align: center;">
+                <tr>
+                    <td rowspan="2" class="th-sender">NO.</td>
+                    <td rowspan="2" class="th-sender">Status</td>
+                    <td colspan="9" class="th-sender">Sender</td>
+                    <td colspan="2" class="th-reciever">Reciever</td>
+                    <td rowspan="2" class="th-remark">Remark</td>
+                    <td colspan="3" class="th-flow">Issue</td>
+                    <td colspan="3" class="th-flow">Top Section</td>
+                    <td colspan="3" class="th-flow">Reciever</td>
+                    <td colspan="3" class="th-flow">Top Section</td>
+                    <td colspan="3" class="th-flow">A&F</td>
+                </tr>
+
+                <tr>                    
+                    <td class="th-sender">Document NO.<span style="color:red;">*</span></td>
+                    <td class="th-sender">Item NO.</td>
+                    <td class="th-sender">Asset Class<span style="color:red;">*</span></td>
+                    <td class="th-sender">Asset NO.<span style="color:red;">*</span></td>
+                    <td class="th-sender">Asset Description</td>
+                    <td class="th-sender">Cost Center</td>
+                    <td class="th-sender">Room</td>
+                    <td class="th-sender">Qty</td>
+                    <td class="th-sender">Department</td>
+
+                    <td class="th-reciever">Cost Center(SAP)</td>
+                    <td class="th-reciever">Room</td>
+
+                    <td class="th-flow">Date</td>
+                    <td class="th-flow">Time</td>
+                    <td class="th-flow">Name</td>
+
+                    <td class="th-flow">Date</td>
+                    <td class="th-flow">Time</td>
+                    <td class="th-flow">Name</td>
+
+                    <td class="th-flow">Date</td>
+                    <td class="th-flow">Time</td>
+                    <td class="th-flow">Name</td>
+
+                    <td class="th-flow">Date</td>
+                    <td class="th-flow">Time</td>
+                    <td class="th-flow">Name</td>
+
+                    <td class="th-flow">Date</td>
+                    <td class="th-flow">Time</td>
+                    <td class="th-flow">Name</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                @{  string row_group = "row-group2"; }
+                @{ int no = 1; }
+                @foreach(var item in Model){
+                    if (item.ItemNo == 1) {
+                        if (row_group == "row-group1") { row_group = "row-group2"; }
+                        else { row_group = "row-group1"; }
+                    }
+                    
+                
+                    string doc_status = "color:blue";
+                    if(item.DocStatus == "Reject"){
+                        doc_status = "color:red;";
+                    }
+                    else if (item.DocStatus == "Approve") {
+                        doc_status = "color:green;";
+                    }
+                    
+                    
+                    
+                <tr class="@row_group">
+                    <td class="center">@(no++)</td>
+                    <td style="@doc_status">@Html.DisplayFor(modelItem => item.DocStatus)</td>
+                    <td style="white-space:nowrap;">
+                        @*@Html.DisplayFor(modelItem => item.DocNo)*@
+                        @*@Html.ActionLink(item.DocNo, "Preview", "AT", new { @id = item.AutoRun },null)*@
+                        <a target="_blank" class="btn" href="@Url.Action("Preview", "AT")?id=@item.AutoRun">@item.DocNo</a>
+                    </td>
+                    <td class="center">@Html.DisplayFor(modelItem => item.ItemNo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AssetClass)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Asset)
+                        
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.AssetDescription)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CostCenter)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Room)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Qty)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RecCostCenter)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.CostCenter2)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Room2)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Remark)</td>
+
+                    @{ item.IssuerAppDate = item.IssuerAppDate == null ? null : DateTime.ParseExact(item.IssuerAppDate, "yyyymmdd", null).ToString("dd.mm.yyyy"); }
+                    @{ item.IssuerAppTime = item.IssuerAppTime == null ? null : DateTime.ParseExact(item.IssuerAppTime, "HHmmss", null).ToString("HH.mm.ss"); }
+                    @{ item.IssuerName = item.IssuerAppDate == null ? "" : item.IssuerName; }
+                    <td>@Html.DisplayFor(modelItem => item.IssuerAppDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IssuerAppTime)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IssuerName)</td>
+                    
+                    @{ item.TopIssuerAppDate = item.TopIssuerAppDate == null ? null : DateTime.ParseExact(item.TopIssuerAppDate, "yyyymmdd", null).ToString("dd.mm.yyyy"); }
+                    @{ item.TopIssuerAppTime = item.TopIssuerAppTime == null ? null : DateTime.ParseExact(item.TopIssuerAppTime, "HHmmss", null).ToString("HH.mm.ss"); }
+                    @{ item.TopIssuerName = item.TopIssuerAppDate == null ? "" : item.TopIssuerName; }
+                    <td>@Html.DisplayFor(modelItem => item.TopIssuerAppDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TopIssuerAppTime)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TopIssuerName)</td>
+                    
+                    @{ item.RecieverAppDate = item.RecieverAppDate == null ? null : DateTime.ParseExact(item.RecieverAppDate, "yyyymmdd", null).ToString("dd.mm.yyyy"); }
+                    @{ item.RecieverAppTime = item.RecieverAppTime == null ? null : DateTime.ParseExact(item.RecieverAppTime, "HHmmss", null).ToString("HH.mm.ss"); }
+                    @{ item.RecieverName = item.RecieverAppDate == null ? "" : item.RecieverName; }
+                    <td>@Html.DisplayFor(modelItem => item.RecieverAppDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RecieverAppTime)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RecieverName)</td>
+                    
+                    @{ item.TopRecieverAppDate = item.TopRecieverAppDate == null ? null : DateTime.ParseExact(item.TopRecieverAppDate, "yyyymmdd", null).ToString("dd.mm.yyyy"); }
+                    @{ item.TopRecieverAppTime = item.TopRecieverAppTime == null ? null : DateTime.ParseExact(item.TopRecieverAppTime, "HHmmss", null).ToString("HH.mm.ss"); }
+                    @{ item.TopRecieverName = item.TopRecieverAppDate == null ? "" : item.TopRecieverName; }
+                    <td>@Html.DisplayFor(modelItem => item.TopRecieverAppDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TopRecieverAppTime)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TopRecieverName)</td>
+
+                    @{ item.AFAppDate    = item.AFAppDate == null ? null : DateTime.ParseExact(item.AFAppDate, "yyyymmdd", null).ToString("dd.mm.yyyy"); }
+                    @{ item.AFAppTime = item.AFAppTime == null ? null : DateTime.ParseExact(item.AFAppTime, "HHmmss", null).ToString("HH.mm.ss"); }
+                    @{ item.AFName = item.AFAppDate == null ? "" : item.AFName; }
+                    <td>@Html.DisplayFor(modelItem => item.AFAppDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AFAppTime)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AFName)</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+    <script type="text/ecmascript">
+        $('.dp').datepicker({
+            //format: 'dd/mm/yyyy'
+            dateFormat: 'dd/mm/yy'
+        });
+
+    </script>
+}
+
+<style type="text/css">
+    .form-control {
+        width:100%;
+        height:25px;
+        font-size:12px;
+        padding:5px;
+    }
+
+    input[type="radio"] {
+        width:16px;
+        margin:0;
+    }
+
+    .table {
+        table-layout: auto;
+        white-space: nowrap;
+        word-wrap: break-word;
+    }
+
+    .table-bordered, .table-bordered thead tr td, .table-bordered tbody tr td {
+        border-color:black;
+        font-family:Calibri;
+    }
+        .table-bordered thead {
+            font-weight:bold;
+        }
+        .table-bordered tbody tr td {
+            /*color: darkgreen;*/
+        }
+    .th-other {
+        background-color:#FFFFF7;
+    }
+    .th-sender {
+        background-color:#92CDDC;  /*#31869B*/
+        color:black;
+    }
+    .th-reciever {
+        background-color:#C4D79B;
+    }
+    .th-remark {
+        background-color: #D9D9D9; /*#DAEEF3*/
+    }
+    .th-flow {
+        background-color:#FDE9D9;
+    }
+
+    .row-group1 td {
+        background-color: white;   /*#FFFFF7;*/
+    }
+    .row-group2 td {
+        background-color: #FFFFFF; /*#EEECE1*/
+    }
+
+    /*.table-hover > tbody > tr:hover > td{
+        background-color: blue;
+        color: #fff;
+    }*/
+
+    .center {
+        text-align: center;
+    }
+</style>

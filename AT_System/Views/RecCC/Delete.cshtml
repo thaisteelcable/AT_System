@@ -1,0 +1,65 @@
+﻿@model AT_System.Models.FI03_AT_RecCostCenter
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Receiver Cost Center</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+@using (Html.BeginForm()) {
+
+<fieldset>
+    <legend>FI03_AT_RecCostCenter</legend>
+
+    <table>
+        <tr>
+            <td></td>
+@*            <td>@Html.DisplayNameFor(model => model.Client)</td>*@
+@*            <td>@Html.DisplayFor(model => model.Client)</td>*@
+            <td>@Html.HiddenFor(model => model.Client)</td>
+        </tr>
+
+        <tr>
+            <td></td>
+@*            <td>@Html.DisplayNameFor(model => model.AutoRun)</td>*@
+@*            <td>@Html.DisplayFor(model => model.AutoRun)</td>*@
+            <td>@Html.HiddenFor(model => model.AutoRun)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ReceiverCC)</td>
+@*            <td>@Html.DisplayFor(model => model.ReceiverCC)</td>*@
+            <td>@Html.TextBoxFor(model => model.ReceiverCC, new { @readonly="readonly" })</td>
+        </tr>
+
+        <tr>
+            <td></td>
+@*            <td>@Html.DisplayNameFor(model => model.Status)</td>*@
+@*            <td>@Html.DisplayFor(model => model.Status)</td>*@
+            <td>@Html.HiddenFor(model => model.Status)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.FieldCode)</td>
+@*            <td>@Html.DisplayFor(model => model.FieldCode)</td>*@
+            <td>@Html.EditorFor(model => model.FieldCode, new { @readonly="readonly" })</td>
+        </tr>
+
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.DepartmentCode)</td>
+@*            <td>@Html.DisplayFor(model => model.DepartmentCode)</td>*@
+            <td>@Html.EditorFor(model => model.DepartmentCode, new { @readonly="readonly" })</td>
+        </tr>
+
+        <tr><td></td><td><span style='color:red; font-size:2.2em;'>@ViewBag.Error</span></td></tr>
+    </table>
+
+</fieldset>
+    
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

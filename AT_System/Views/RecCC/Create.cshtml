@@ -1,0 +1,66 @@
+﻿@model AT_System.Models.FI03_AT_RecCostCenter
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FI03_AT_RecCostCenter</legend>
+
+        <table>
+@*            <tr>
+                <td>@Html.LabelFor(model => model.Client)</td>
+                <td>@Html.EditorFor(model => model.Client) @Html.ValidationMessageFor(model => model.Client)</td>
+                <td></td>
+            </tr>*@
+
+@*            <tr>
+                <td>@Html.LabelFor(model => model.AutoRun)</td>
+                <td>@Html.EditorFor(model => model.AutoRun) @Html.ValidationMessageFor(model => model.AutoRun)</td>
+                <td></td>
+            </tr>*@
+
+            <tr>
+                <td>@Html.LabelFor(model => model.ReceiverCC)</td>
+                <td>@Html.EditorFor(model => model.ReceiverCC) @Html.ValidationMessageFor(model => model.ReceiverCC)</td>
+                <td><input type="submit" value="Create" /></td>
+            </tr>
+
+@*            <tr>
+                <td>@Html.LabelFor(model => model.Status)</td>
+                <td>@Html.EditorFor(model => model.Status) @Html.ValidationMessageFor(model => model.Status)</td>
+                <td></td>
+            </tr>*@
+
+            <tr>
+                <td>@Html.LabelFor(model => model.FieldCode)</td>
+                <td>@Html.EditorFor(model => model.FieldCode) @Html.ValidationMessageFor(model => model.FieldCode)</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(model => model.DepartmentCode)</td>
+                <td>@Html.EditorFor(model => model.DepartmentCode) @Html.ValidationMessageFor(model => model.DepartmentCode)</td>
+                <td></td>
+            </tr>
+
+            <tr><td></td><td><span style='color:red; font-size:2.2em;'>@ViewBag.Error</span></td></tr>
+        </table>
+
+        <p>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

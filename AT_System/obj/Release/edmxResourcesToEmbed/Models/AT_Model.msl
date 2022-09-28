@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SAPModelStoreContainer" CdmEntityContainer="SAPEntities">
+    <EntitySetMapping Name="FI03_AT_DocItem">
+      <EntityTypeMapping TypeName="SAPModel.FI03_AT_DocItem">
+        <MappingFragment StoreEntitySet="FI03_AT_DocItem">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Room2" ColumnName="Room2" />
+          <ScalarProperty Name="CostCenter2" ColumnName="CostCenter2" />
+          <ScalarProperty Name="RecCostCenter" ColumnName="RecCostCenter" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="AssetDescription" ColumnName="AssetDescription" />
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="AssetClass" ColumnName="AssetClass" />
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="FI03_AT_Doc" ColumnName="FI03_AT_Doc" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FI03_AT_RecCostCenter">
+      <EntityTypeMapping TypeName="SAPModel.FI03_AT_RecCostCenter">
+        <MappingFragment StoreEntitySet="FI03_AT_RecCostCenter">
+          <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+          <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ReceiverCC" ColumnName="ReceiverCC" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HR01_Employee">
+      <EntityTypeMapping TypeName="SAPModel.HR01_Employee">
+        <MappingFragment StoreEntitySet="HR01_Employee">
+          <ScalarProperty Name="EmpIDCard" ColumnName="EmpIDCard" />
+          <ScalarProperty Name="TeamCodeRef" ColumnName="TeamCodeRef" />
+          <ScalarProperty Name="PositionCodeRef" ColumnName="PositionCodeRef" />
+          <ScalarProperty Name="SectionCodeRef" ColumnName="SectionCodeRef" />
+          <ScalarProperty Name="DepartmentCodeRef" ColumnName="DepartmentCodeRef" />
+          <ScalarProperty Name="DivisionCodeRef" ColumnName="DivisionCodeRef" />
+          <ScalarProperty Name="SendMailComparing" ColumnName="SendMailComparing" />
+          <ScalarProperty Name="SendMailSO" ColumnName="SendMailSO" />
+          <ScalarProperty Name="SendMailFC" ColumnName="SendMailFC" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="EndWorkDate" ColumnName="EndWorkDate" />
+          <ScalarProperty Name="StartPermanent" ColumnName="StartPermanent" />
+          <ScalarProperty Name="StartWorkDate" ColumnName="StartWorkDate" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="LastNameEN" ColumnName="LastNameEN" />
+          <ScalarProperty Name="FirstNameEN" ColumnName="FirstNameEN" />
+          <ScalarProperty Name="NamePrefixEN" ColumnName="NamePrefixEN" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="NamePrefix" ColumnName="NamePrefix" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="TeamCode" ColumnName="TeamCode" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="SectionCode" ColumnName="SectionCode" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="PositionTitleName" ColumnName="PositionTitleName" />
+          <ScalarProperty Name="PositionTitleCode" ColumnName="PositionTitleCode" />
+          <ScalarProperty Name="JobTitleName" ColumnName="JobTitleName" />
+          <ScalarProperty Name="JobTitleCode" ColumnName="JobTitleCode" />
+          <ScalarProperty Name="WorkShift" ColumnName="WorkShift" />
+          <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FI03_AT_Doc">
+      <EntityTypeMapping TypeName="SAPModel.FI03_AT_Doc">
+        <MappingFragment StoreEntitySet="FI03_AT_Doc">
+          <ScalarProperty Name="AFAppTime" ColumnName="AFAppTime" />
+          <ScalarProperty Name="ReceiveTimeTop" ColumnName="ReceiveTimeTop" />
+          <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+          <ScalarProperty Name="IssueTimeTop" ColumnName="IssueTimeTop" />
+          <ScalarProperty Name="IssueTime" ColumnName="IssueTime" />
+          <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AFAppDate" ColumnName="AFAppDate" />
+          <ScalarProperty Name="AFApp" ColumnName="AFApp" />
+          <ScalarProperty Name="ReceiveDateTop" ColumnName="ReceiveDateTop" />
+          <ScalarProperty Name="ReceiveByTop" ColumnName="ReceiveByTop" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="ReceiveBy" ColumnName="ReceiveBy" />
+          <ScalarProperty Name="IssueDateTop" ColumnName="IssueDateTop" />
+          <ScalarProperty Name="IssueByTop" ColumnName="IssueByTop" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="IssueBy" ColumnName="IssueBy" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter_To" ColumnName="FI03_AT_RecCostCenter_To" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter_From" ColumnName="FI03_AT_RecCostCenter_From" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FI03_AT_FlowApprove">
+      <EntityTypeMapping TypeName="SAPModel.FI03_AT_FlowApprove">
+        <MappingFragment StoreEntitySet="FI03_AT_FlowApprove">
+          <ScalarProperty Name="FI03_AT_RecCostCenter" ColumnName="FI03_AT_RecCostCenter" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+          <ScalarProperty Name="TimeApprove" ColumnName="TimeApprove" />
+          <ScalarProperty Name="DateApprove" ColumnName="DateApprove" />
+          <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+          <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+          <ScalarProperty Name="EmpLastName" ColumnName="EmpLastName" />
+          <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+          <ScalarProperty Name="FlowState" ColumnName="FlowState" />
+          <ScalarProperty Name="FI03_AT_FlowMaster" ColumnName="FI03_AT_FlowMaster" />
+          <ScalarProperty Name="FI03_AT_Doc" ColumnName="FI03_AT_Doc" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAssetTransfer_Doc">
+      <EntityTypeMapping TypeName="SAPModel.vAssetTransfer_Doc">
+        <MappingFragment StoreEntitySet="vAssetTransfer_Doc">
+          <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Room2" ColumnName="Room2" />
+          <ScalarProperty Name="CostCenter2" ColumnName="CostCenter2" />
+          <ScalarProperty Name="RecCostCenter" ColumnName="RecCostCenter" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="AssetDescription" ColumnName="AssetDescription" />
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="AssetClass" ColumnName="AssetClass" />
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="AutoRunItem" ColumnName="AutoRunItem" />
+          <ScalarProperty Name="ReceiverCC_to" ColumnName="ReceiverCC_to" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter_To" ColumnName="FI03_AT_RecCostCenter_To" />
+          <ScalarProperty Name="ReceiverCC_From" ColumnName="ReceiverCC_From" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter_From" ColumnName="FI03_AT_RecCostCenter_From" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAssetTransfer_Flow">
+      <EntityTypeMapping TypeName="SAPModel.vAssetTransfer_Flow">
+        <MappingFragment StoreEntitySet="vAssetTransfer_Flow">
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+          <ScalarProperty Name="TimeApprove" ColumnName="TimeApprove" />
+          <ScalarProperty Name="DateApprove" ColumnName="DateApprove" />
+          <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+          <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+          <ScalarProperty Name="EmpLastName" ColumnName="EmpLastName" />
+          <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FlowState" ColumnName="FlowState" />
+          <ScalarProperty Name="AutoRunItem" ColumnName="AutoRunItem" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter_To" ColumnName="FI03_AT_RecCostCenter_To" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter_From" ColumnName="FI03_AT_RecCostCenter_From" />
+          <ScalarProperty Name="FI03_AT_FlowMaster" ColumnName="FI03_AT_FlowMaster" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FI03_AT_CostCenter">
+      <EntityTypeMapping TypeName="SAPModel.FI03_AT_CostCenter">
+        <MappingFragment StoreEntitySet="FI03_AT_CostCenter">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="AssetClass" ColumnName="AssetClass" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter" ColumnName="FI03_AT_RecCostCenter" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FI03_AT_FlowMaster">
+      <EntityTypeMapping TypeName="SAPModel.FI03_AT_FlowMaster">
+        <MappingFragment StoreEntitySet="FI03_AT_FlowMaster">
+          <ScalarProperty Name="EmpLastName" ColumnName="EmpLastName" />
+          <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="StepNo" ColumnName="StepNo" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter" ColumnName="FI03_AT_RecCostCenter" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MM01_PR_Config">
+      <EntityTypeMapping TypeName="SAPModel.MM01_PR_Config">
+        <MappingFragment StoreEntitySet="MM01_PR_Config">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Movement" ColumnName="Movement" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAssetTransfer_Report">
+      <EntityTypeMapping TypeName="SAPModel.vAssetTransfer_Report">
+        <MappingFragment StoreEntitySet="vAssetTransfer_Report">
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="AFRemark" ColumnName="AFRemark" />
+          <ScalarProperty Name="AFAppTime" ColumnName="AFAppTime" />
+          <ScalarProperty Name="AFAppDate" ColumnName="AFAppDate" />
+          <ScalarProperty Name="AFAppStatus" ColumnName="AFAppStatus" />
+          <ScalarProperty Name="AFEmail" ColumnName="AFEmail" />
+          <ScalarProperty Name="AFName" ColumnName="AFName" />
+          <ScalarProperty Name="AFID" ColumnName="AFID" />
+          <ScalarProperty Name="fsAF" ColumnName="fsAF" />
+          <ScalarProperty Name="TopRecieverRemark" ColumnName="TopRecieverRemark" />
+          <ScalarProperty Name="TopRecieverAppTime" ColumnName="TopRecieverAppTime" />
+          <ScalarProperty Name="TopRecieverAppDate" ColumnName="TopRecieverAppDate" />
+          <ScalarProperty Name="TopRecieverAppStatus" ColumnName="TopRecieverAppStatus" />
+          <ScalarProperty Name="TopRecieverEmail" ColumnName="TopRecieverEmail" />
+          <ScalarProperty Name="TopRecieverName" ColumnName="TopRecieverName" />
+          <ScalarProperty Name="TopRecieverID" ColumnName="TopRecieverID" />
+          <ScalarProperty Name="fsTopReciever" ColumnName="fsTopReciever" />
+          <ScalarProperty Name="RecieverRemark" ColumnName="RecieverRemark" />
+          <ScalarProperty Name="RecieverAppTime" ColumnName="RecieverAppTime" />
+          <ScalarProperty Name="RecieverAppDate" ColumnName="RecieverAppDate" />
+          <ScalarProperty Name="RecieverAppStatus" ColumnName="RecieverAppStatus" />
+          <ScalarProperty Name="RecieverEmail" ColumnName="RecieverEmail" />
+          <ScalarProperty Name="RecieverName" ColumnName="RecieverName" />
+          <ScalarProperty Name="RecieverID" ColumnName="RecieverID" />
+          <ScalarProperty Name="fsReciever" ColumnName="fsReciever" />
+          <ScalarProperty Name="TopIssuerRemark" ColumnName="TopIssuerRemark" />
+          <ScalarProperty Name="TopIssuerAppTime" ColumnName="TopIssuerAppTime" />
+          <ScalarProperty Name="TopIssuerAppDate" ColumnName="TopIssuerAppDate" />
+          <ScalarProperty Name="TopIssuerAppStatus" ColumnName="TopIssuerAppStatus" />
+          <ScalarProperty Name="TopIssuerEmail" ColumnName="TopIssuerEmail" />
+          <ScalarProperty Name="TopIssuerName" ColumnName="TopIssuerName" />
+          <ScalarProperty Name="TopIssuerID" ColumnName="TopIssuerID" />
+          <ScalarProperty Name="fsTopIssuer" ColumnName="fsTopIssuer" />
+          <ScalarProperty Name="IssuerRemark" ColumnName="IssuerRemark" />
+          <ScalarProperty Name="IssuerAppTime" ColumnName="IssuerAppTime" />
+          <ScalarProperty Name="IssuerAppDate" ColumnName="IssuerAppDate" />
+          <ScalarProperty Name="IssuerAppStatus" ColumnName="IssuerAppStatus" />
+          <ScalarProperty Name="IssuerEmail" ColumnName="IssuerEmail" />
+          <ScalarProperty Name="IssuerName" ColumnName="IssuerName" />
+          <ScalarProperty Name="IssuerID" ColumnName="IssuerID" />
+          <ScalarProperty Name="fsIssuer" ColumnName="fsIssuer" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Room2" ColumnName="Room2" />
+          <ScalarProperty Name="CostCenter2" ColumnName="CostCenter2" />
+          <ScalarProperty Name="RecCostCenter" ColumnName="RecCostCenter" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="AssetDescription" ColumnName="AssetDescription" />
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="AssetClass" ColumnName="AssetClass" />
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="AutoRunItem" ColumnName="AutoRunItem" />
+          <ScalarProperty Name="ReceiverCC_to" ColumnName="ReceiverCC_to" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter_To" ColumnName="FI03_AT_RecCostCenter_To" />
+          <ScalarProperty Name="ReceiverCC_From" ColumnName="ReceiverCC_From" />
+          <ScalarProperty Name="FI03_AT_RecCostCenter_From" ColumnName="FI03_AT_RecCostCenter_From" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FI03_AT_FlowApprove_Log">
+      <EntityTypeMapping TypeName="SAPModel.FI03_AT_FlowApprove_Log">
+        <MappingFragment StoreEntitySet="FI03_AT_FlowApprove_Log">
+          <ScalarProperty Name="FI03_AT_RecCostCenter" ColumnName="FI03_AT_RecCostCenter" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+          <ScalarProperty Name="TimeApprove" ColumnName="TimeApprove" />
+          <ScalarProperty Name="DateApprove" ColumnName="DateApprove" />
+          <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+          <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+          <ScalarProperty Name="EmpLastName" ColumnName="EmpLastName" />
+          <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+          <ScalarProperty Name="FlowState" ColumnName="FlowState" />
+          <ScalarProperty Name="FI03_AT_FlowMaster" ColumnName="FI03_AT_FlowMaster" />
+          <ScalarProperty Name="FI03_AT_Doc" ColumnName="FI03_AT_Doc" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="RunNo" ColumnName="RunNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FI03_AT_RecCostCenter_Special">
+      <EntityTypeMapping TypeName="SAPModel.FI03_AT_RecCostCenter_Special">
+        <MappingFragment StoreEntitySet="FI03_AT_RecCostCenter_Special">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+          <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+          <ScalarProperty Name="SectionCode" ColumnName="SectionCode" />
+          <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAssetTransfer_ReportHistory">
+      <EntityTypeMapping TypeName="SAPModel.vAssetTransfer_ReportHistory">
+        <MappingFragment StoreEntitySet="vAssetTransfer_ReportHistory">
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Room2" ColumnName="Room2" />
+          <ScalarProperty Name="CostCenter2" ColumnName="CostCenter2" />
+          <ScalarProperty Name="RecCostCenter" ColumnName="RecCostCenter" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="AssetDescription" ColumnName="AssetDescription" />
+          <ScalarProperty Name="Asset" ColumnName="Asset" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

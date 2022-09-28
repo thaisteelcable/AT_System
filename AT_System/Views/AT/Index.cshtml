@@ -1,0 +1,192 @@
+﻿@model AT_System.Models._ATForm
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Asset Transfer</h2>
+
+@using (Html.BeginForm("Index", "AT", FormMethod.Get, new { @Id = "FrmSearch" }))
+{
+    <p>
+        <p>@Html.ActionLink("Create New", "Create", "AT", null, new { @class = "w3-btn w3-indigo w3-small" })</p>
+        Date: @Html.TextBox("keydateb", null, new { @class = "dp", @autocomplete = "off", Value = ViewBag.dateb }) To
+        @Html.TextBox("keydatee", null, new { @class = "dp", @autocomplete = "off", @Value = ViewBag.datee })
+        Search: @Html.TextBox("SearchString", null, new { @class = "prSearch" })  
+        <input type="hidden" id="srhfilter" name="filter" />
+        <input type="submit" value="Search" class="w3-btn w3-indigo w3-small" />
+    </p>
+}
+<caption style="text-align:left;"><span style="color:purple">Results @ViewBag.ResultRows Rows</span></caption>
+<div class="table-responsive"> 
+    <table id="tbAdd" class="table table-hover table-striped table-bordered">
+         <thead class="tableHeader">
+             <tr>
+                 <th></th>
+                 <th>No.</th>
+                 <th>Doc No<span style="color:red;">*</span></th>
+                 <th>Asset<span style="color:red;">*</span> </th>
+                 <th>Description</th>
+                 <th>Create On<span style="color:red;">*</span></th>
+                 <th>Status</th>
+                 <th>Work Process</th>
+             </tr>
+         </thead>
+         <tbody>
+            @{
+                int _count = 1;
+          
+                foreach (var hd in Model.vAT_Doc.GroupBy(h => h.DocNo).Select(g => g.First()))
+                {
+                    string strAsset = "";
+                    string strAssetDesc = "";
+                    int _countItem = 0;
+                    
+                    string y = hd.CreateDate.Substring(0, 4);
+                    string m = hd.CreateDate.Substring(4, 2);
+                    string d = hd.CreateDate.Substring(6);
+
+                    hd.CreateDate = d + "/" + m + "/" + y;
+                    foreach (var item in Model.vAT_Doc.Where(i => i.DocNo == hd.DocNo))
+                    {
+                        if (_countItem == 0)
+                        {
+                            _countItem = 1;
+                            strAsset = item.Asset.ToString();
+                            strAssetDesc = item.AssetDescription.ToString();
+                        }
+                        else
+                        {
+                            strAsset = strAsset + "\n" + item.Asset.ToString();
+                            strAssetDesc = strAssetDesc + "\n" + item.AssetDescription.ToString();
+                        }
+                    }
+                    
+                    <tr>          
+                       <td>
+                           @{
+                                if (hd.DocStatus == "Reject")
+                                {
+                                    @Html.ActionLink("Reset", "Reset", new { id = hd.AutoRun  })
+
+                                }
+                                else { 
+                                    @Html.ActionLink("Preview", "Preview", new { id = hd.AutoRun  })
+                                }
+                               
+                           }
+                           
+                       </td>
+                       <td>
+                          <!--Count Item-->
+                          @(_count++)
+                       </td>
+                       <td style="text-align:left;">
+                          <!--AT Doc-->
+                          @Html.DisplayFor(modelItem => hd.DocNo)
+                       </td>
+                       <td style="text-align:left;">
+                          <!--Asset No-->
+                          @Html.Raw(Html.Encode(@strAsset).Replace("\n", "<br />"))
+                       </td>
+                       <td style="text-align:left;">
+                          <!--Asset Description-->
+                          @Html.Raw(Html.Encode(@strAssetDesc).Replace("\n", "<br />"))
+                       </td>
+                       <td>
+                         <!--Create On-->
+                          @Html.DisplayFor(modelItem => hd.CreateDate)
+                       </td>
+                       <td>
+                           @{
+                                if(hd.DocStatus == "Approve"){
+                                    <span style="color:green;">@Html.DisplayFor(modelItem => hd.DocStatus)</span>
+                                }
+                                else if (hd.DocStatus == "Reject")
+                                {
+                                    <span style="color:red;">@Html.DisplayFor(modelItem => hd.DocStatus)</span>
+                                }
+                                else { 
+                                    <span style="color:blue;">@Html.DisplayFor(modelItem => hd.DocStatus)</span>
+                                }
+                               
+                                   
+                           }
+                          
+                         <!--Issue By-->
+                         @*@Html.DisplayFor(modelItem => Model.vAT_Doc[i].IssueBy)*@
+                       </td>  
+                       <td style="text-align:left;">
+                           @Html.DisplayFor(modelItem => hd.FlowStatus)
+                       </td>   
+                   </tr>     
+                    
+                }
+
+
+
+    //if (Model.vAT_Doc[i].AutoRun != strAuto && i != 0)
+    //{
+
+
+    //    strAsset = Model.vAT_Doc[i].Asset.ToString();
+    //    strAssetDesc = Model.vAT_Doc[i].AssetDescription.ToString();
+    //    strDocNo = Model.vAT_Doc[i].DocNo;
+    //    strAuto = Model.vAT_Doc[i].AutoRun;
+
+
+    //}
+    //else
+    //{
+    //    _countItem = 0;
+    //    strAsset = strAsset + "\n" + Model.vAT_Doc[i].Asset.ToString();
+    //    strAssetDesc = strAssetDesc + "\n" + Model.vAT_Doc[i].AssetDescription.ToString();
+    //    strDocNo = Model.vAT_Doc[i].DocNo;
+    //    strAuto = Model.vAT_Doc[i].AutoRun;
+    //}
+
+                    
+
+            }    
+         </tbody>
+    </table>
+</div>
+
+@section Scripts{
+ @Scripts.Render("~/bundles/jqueryval")
+ @Scripts.Render("~/bundles/jqueryui")
+@Styles.Render("~/Content/themes/base/css")
+
+<script type="text/javascript">
+    $('.dp').datepicker({
+        dateFormat: 'dd/mm/yy'
+    });
+
+    $(".filter").click(function () {
+        $("#srhfilter").val($(this).attr("title").trim());
+        $('#FrmSearch').submit();
+    });
+</script>
+
+    <style type="text/css">
+        .filter:hover {
+            cursor:pointer;
+            color:dodgerblue;
+        }
+
+
+        table#tbAdd {
+            font-size:.85em;
+            width:100%;
+        }
+        table#tbAdd th, table#tbAdd td {
+            text-align:center;
+        }
+        table#tbAdd th {
+            background-color: #3f51b5; 
+            color:#fff;           
+        }
+
+    </style>
+
+}

@@ -1,0 +1,1272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SAPModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SAPModelStoreContainer">
+          <EntitySet Name="DBM01_GET_COSTCENTER" EntityType="SAPModel.Store.DBM01_GET_COSTCENTER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FI03_AT_CostCenter" EntityType="SAPModel.Store.FI03_AT_CostCenter" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FI03_AT_Doc" EntityType="SAPModel.Store.FI03_AT_Doc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FI03_AT_DocItem" EntityType="SAPModel.Store.FI03_AT_DocItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FI03_AT_FlowApprove" EntityType="SAPModel.Store.FI03_AT_FlowApprove" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FI03_AT_FlowApprove_Log" EntityType="SAPModel.Store.FI03_AT_FlowApprove_Log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FI03_AT_FlowMaster" EntityType="SAPModel.Store.FI03_AT_FlowMaster" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FI03_AT_RecCostCenter" EntityType="SAPModel.Store.FI03_AT_RecCostCenter" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FI03_AT_RecCostCenter_Special" EntityType="SAPModel.Store.FI03_AT_RecCostCenter_Special" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HR01_Employee" EntityType="SAPModel.Store.HR01_Employee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MM01_PR_Config" EntityType="SAPModel.Store.MM01_PR_Config" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vAssetTransfer_Doc" EntityType="SAPModel.Store.vAssetTransfer_Doc" store:Type="Views" store:Schema="dbo" store:Name="vAssetTransfer_Doc">
+            <DefiningQuery>SELECT 
+      [vAssetTransfer_Doc].[Client] AS [Client], 
+      [vAssetTransfer_Doc].[AutoRun] AS [AutoRun], 
+      [vAssetTransfer_Doc].[DocNo] AS [DocNo], 
+      [vAssetTransfer_Doc].[CreateDate] AS [CreateDate], 
+      [vAssetTransfer_Doc].[FI03_AT_RecCostCenter_From] AS [FI03_AT_RecCostCenter_From], 
+      [vAssetTransfer_Doc].[ReceiverCC_From] AS [ReceiverCC_From], 
+      [vAssetTransfer_Doc].[FI03_AT_RecCostCenter_To] AS [FI03_AT_RecCostCenter_To], 
+      [vAssetTransfer_Doc].[ReceiverCC_to] AS [ReceiverCC_to], 
+      [vAssetTransfer_Doc].[AutoRunItem] AS [AutoRunItem], 
+      [vAssetTransfer_Doc].[ItemNo] AS [ItemNo], 
+      [vAssetTransfer_Doc].[AssetClass] AS [AssetClass], 
+      [vAssetTransfer_Doc].[Asset] AS [Asset], 
+      [vAssetTransfer_Doc].[AssetDescription] AS [AssetDescription], 
+      [vAssetTransfer_Doc].[CostCenter] AS [CostCenter], 
+      [vAssetTransfer_Doc].[Room] AS [Room], 
+      [vAssetTransfer_Doc].[Qty] AS [Qty], 
+      [vAssetTransfer_Doc].[RecCostCenter] AS [RecCostCenter], 
+      [vAssetTransfer_Doc].[CostCenter2] AS [CostCenter2], 
+      [vAssetTransfer_Doc].[Room2] AS [Room2], 
+      [vAssetTransfer_Doc].[Remark] AS [Remark], 
+      [vAssetTransfer_Doc].[DocStatus] AS [DocStatus], 
+      [vAssetTransfer_Doc].[FlowStatus] AS [FlowStatus]
+      FROM [dbo].[vAssetTransfer_Doc] AS [vAssetTransfer_Doc]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vAssetTransfer_Flow" EntityType="SAPModel.Store.vAssetTransfer_Flow" store:Type="Views" store:Schema="dbo" store:Name="vAssetTransfer_Flow">
+            <DefiningQuery>SELECT 
+      [vAssetTransfer_Flow].[AutoRun] AS [AutoRun], 
+      [vAssetTransfer_Flow].[DocNo] AS [DocNo], 
+      [vAssetTransfer_Flow].[CreateDate] AS [CreateDate], 
+      [vAssetTransfer_Flow].[FI03_AT_FlowMaster] AS [FI03_AT_FlowMaster], 
+      [vAssetTransfer_Flow].[FI03_AT_RecCostCenter_From] AS [FI03_AT_RecCostCenter_From], 
+      [vAssetTransfer_Flow].[FI03_AT_RecCostCenter_To] AS [FI03_AT_RecCostCenter_To], 
+      [vAssetTransfer_Flow].[AutoRunItem] AS [AutoRunItem], 
+      [vAssetTransfer_Flow].[FlowState] AS [FlowState], 
+      [vAssetTransfer_Flow].[EmpID] AS [EmpID], 
+      [vAssetTransfer_Flow].[EmpFirstName] AS [EmpFirstName], 
+      [vAssetTransfer_Flow].[EmpLastName] AS [EmpLastName], 
+      [vAssetTransfer_Flow].[EmpEmail] AS [EmpEmail], 
+      [vAssetTransfer_Flow].[ApproveStatus] AS [ApproveStatus], 
+      [vAssetTransfer_Flow].[DateApprove] AS [DateApprove], 
+      [vAssetTransfer_Flow].[TimeApprove] AS [TimeApprove], 
+      [vAssetTransfer_Flow].[UserCreate] AS [UserCreate], 
+      [vAssetTransfer_Flow].[DateCreate] AS [DateCreate], 
+      [vAssetTransfer_Flow].[Remark] AS [Remark], 
+      [vAssetTransfer_Flow].[Client] AS [Client]
+      FROM [dbo].[vAssetTransfer_Flow] AS [vAssetTransfer_Flow]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vAssetTransfer_Report" EntityType="SAPModel.Store.vAssetTransfer_Report" store:Type="Views" store:Schema="dbo" store:Name="vAssetTransfer_Report">
+            <DefiningQuery>SELECT 
+      [vAssetTransfer_Report].[Client] AS [Client], 
+      [vAssetTransfer_Report].[AutoRun] AS [AutoRun], 
+      [vAssetTransfer_Report].[DocNo] AS [DocNo], 
+      [vAssetTransfer_Report].[CreateDate] AS [CreateDate], 
+      [vAssetTransfer_Report].[FI03_AT_RecCostCenter_From] AS [FI03_AT_RecCostCenter_From], 
+      [vAssetTransfer_Report].[ReceiverCC_From] AS [ReceiverCC_From], 
+      [vAssetTransfer_Report].[FI03_AT_RecCostCenter_To] AS [FI03_AT_RecCostCenter_To], 
+      [vAssetTransfer_Report].[ReceiverCC_to] AS [ReceiverCC_to], 
+      [vAssetTransfer_Report].[AutoRunItem] AS [AutoRunItem], 
+      [vAssetTransfer_Report].[ItemNo] AS [ItemNo], 
+      [vAssetTransfer_Report].[AssetClass] AS [AssetClass], 
+      [vAssetTransfer_Report].[Asset] AS [Asset], 
+      [vAssetTransfer_Report].[AssetDescription] AS [AssetDescription], 
+      [vAssetTransfer_Report].[CostCenter] AS [CostCenter], 
+      [vAssetTransfer_Report].[Room] AS [Room], 
+      [vAssetTransfer_Report].[Qty] AS [Qty], 
+      [vAssetTransfer_Report].[RecCostCenter] AS [RecCostCenter], 
+      [vAssetTransfer_Report].[CostCenter2] AS [CostCenter2], 
+      [vAssetTransfer_Report].[Room2] AS [Room2], 
+      [vAssetTransfer_Report].[Remark] AS [Remark], 
+      [vAssetTransfer_Report].[fsIssuer] AS [fsIssuer], 
+      [vAssetTransfer_Report].[IssuerID] AS [IssuerID], 
+      [vAssetTransfer_Report].[IssuerName] AS [IssuerName], 
+      [vAssetTransfer_Report].[IssuerEmail] AS [IssuerEmail], 
+      [vAssetTransfer_Report].[IssuerAppStatus] AS [IssuerAppStatus], 
+      [vAssetTransfer_Report].[IssuerAppDate] AS [IssuerAppDate], 
+      [vAssetTransfer_Report].[IssuerAppTime] AS [IssuerAppTime], 
+      [vAssetTransfer_Report].[IssuerRemark] AS [IssuerRemark], 
+      [vAssetTransfer_Report].[fsTopIssuer] AS [fsTopIssuer], 
+      [vAssetTransfer_Report].[TopIssuerID] AS [TopIssuerID], 
+      [vAssetTransfer_Report].[TopIssuerName] AS [TopIssuerName], 
+      [vAssetTransfer_Report].[TopIssuerEmail] AS [TopIssuerEmail], 
+      [vAssetTransfer_Report].[TopIssuerAppStatus] AS [TopIssuerAppStatus], 
+      [vAssetTransfer_Report].[TopIssuerAppDate] AS [TopIssuerAppDate], 
+      [vAssetTransfer_Report].[TopIssuerAppTime] AS [TopIssuerAppTime], 
+      [vAssetTransfer_Report].[TopIssuerRemark] AS [TopIssuerRemark], 
+      [vAssetTransfer_Report].[fsReciever] AS [fsReciever], 
+      [vAssetTransfer_Report].[RecieverID] AS [RecieverID], 
+      [vAssetTransfer_Report].[RecieverName] AS [RecieverName], 
+      [vAssetTransfer_Report].[RecieverEmail] AS [RecieverEmail], 
+      [vAssetTransfer_Report].[RecieverAppStatus] AS [RecieverAppStatus], 
+      [vAssetTransfer_Report].[RecieverAppDate] AS [RecieverAppDate], 
+      [vAssetTransfer_Report].[RecieverAppTime] AS [RecieverAppTime], 
+      [vAssetTransfer_Report].[RecieverRemark] AS [RecieverRemark], 
+      [vAssetTransfer_Report].[fsTopReciever] AS [fsTopReciever], 
+      [vAssetTransfer_Report].[TopRecieverID] AS [TopRecieverID], 
+      [vAssetTransfer_Report].[TopRecieverName] AS [TopRecieverName], 
+      [vAssetTransfer_Report].[TopRecieverEmail] AS [TopRecieverEmail], 
+      [vAssetTransfer_Report].[TopRecieverAppStatus] AS [TopRecieverAppStatus], 
+      [vAssetTransfer_Report].[TopRecieverAppDate] AS [TopRecieverAppDate], 
+      [vAssetTransfer_Report].[TopRecieverAppTime] AS [TopRecieverAppTime], 
+      [vAssetTransfer_Report].[TopRecieverRemark] AS [TopRecieverRemark], 
+      [vAssetTransfer_Report].[fsAF] AS [fsAF], 
+      [vAssetTransfer_Report].[AFID] AS [AFID], 
+      [vAssetTransfer_Report].[AFName] AS [AFName], 
+      [vAssetTransfer_Report].[AFEmail] AS [AFEmail], 
+      [vAssetTransfer_Report].[AFAppStatus] AS [AFAppStatus], 
+      [vAssetTransfer_Report].[AFAppDate] AS [AFAppDate], 
+      [vAssetTransfer_Report].[AFAppTime] AS [AFAppTime], 
+      [vAssetTransfer_Report].[AFRemark] AS [AFRemark], 
+      [vAssetTransfer_Report].[DocStatus] AS [DocStatus]
+      FROM [dbo].[vAssetTransfer_Report] AS [vAssetTransfer_Report]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vAssetTransfer_ReportHistory" EntityType="SAPModel.Store.vAssetTransfer_ReportHistory" store:Type="Views" store:Schema="dbo" store:Name="vAssetTransfer_ReportHistory">
+            <DefiningQuery>SELECT 
+      [vAssetTransfer_ReportHistory].[Client] AS [Client], 
+      [vAssetTransfer_ReportHistory].[DocNo] AS [DocNo], 
+      [vAssetTransfer_ReportHistory].[CreateDate] AS [CreateDate], 
+      [vAssetTransfer_ReportHistory].[CreateTime] AS [CreateTime], 
+      [vAssetTransfer_ReportHistory].[Asset] AS [Asset], 
+      [vAssetTransfer_ReportHistory].[AssetDescription] AS [AssetDescription], 
+      [vAssetTransfer_ReportHistory].[CostCenter] AS [CostCenter], 
+      [vAssetTransfer_ReportHistory].[Room] AS [Room], 
+      [vAssetTransfer_ReportHistory].[Qty] AS [Qty], 
+      [vAssetTransfer_ReportHistory].[RecCostCenter] AS [RecCostCenter], 
+      [vAssetTransfer_ReportHistory].[CostCenter2] AS [CostCenter2], 
+      [vAssetTransfer_ReportHistory].[Room2] AS [Room2], 
+      [vAssetTransfer_ReportHistory].[Remark] AS [Remark], 
+      [vAssetTransfer_ReportHistory].[ItemNo] AS [ItemNo]
+      FROM [dbo].[vAssetTransfer_ReportHistory] AS [vAssetTransfer_ReportHistory]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="DBM01_GET_COSTCENTER">
+          <Key>
+            <PropertyRef Name="KOKRS" />
+            <PropertyRef Name="COSTCENTER" />
+          </Key>
+          <Property Name="KOKRS" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="COSTCENTER" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="KTEXT" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FI03_AT_CostCenter">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FI03_AT_RecCostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetClass" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="FI03_AT_Doc">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DocNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssueBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssueByTop" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssueDateTop" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiveBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiveDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiveByTop" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiveDateTop" Type="nvarchar" MaxLength="50" />
+          <Property Name="AFApp" Type="nvarchar" MaxLength="50" />
+          <Property Name="AFAppDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreateTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="FlowStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssueTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssueTimeTop" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiveTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiveTimeTop" Type="nvarchar" MaxLength="50" />
+          <Property Name="AFAppTime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FI03_AT_DocItem">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FI03_AT_Doc" Type="uniqueidentifier" />
+          <Property Name="ItemNo" Type="int" />
+          <Property Name="AssetClass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Asset" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="RecCostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="FI03_AT_FlowApprove">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FI03_AT_Doc" Type="uniqueidentifier" />
+          <Property Name="FI03_AT_FlowMaster" Type="uniqueidentifier" />
+          <Property Name="FlowState" Type="nvarchar" MaxLength="50" />
+          <Property Name="FlowStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApproveStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateApprove" Type="nvarchar" MaxLength="8" />
+          <Property Name="TimeApprove" Type="nvarchar" MaxLength="6" />
+          <Property Name="UserCreate" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreate" Type="nvarchar" MaxLength="8" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FI03_AT_FlowApprove_Log">
+          <Key>
+            <PropertyRef Name="RunNo" />
+          </Key>
+          <Property Name="RunNo" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" />
+          <Property Name="FI03_AT_Doc" Type="uniqueidentifier" />
+          <Property Name="FI03_AT_FlowMaster" Type="uniqueidentifier" />
+          <Property Name="FlowState" Type="nvarchar" MaxLength="50" />
+          <Property Name="FlowStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApproveStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateApprove" Type="nvarchar" MaxLength="8" />
+          <Property Name="TimeApprove" Type="nvarchar" MaxLength="6" />
+          <Property Name="UserCreate" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreate" Type="nvarchar" MaxLength="8" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FI03_AT_FlowMaster">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FI03_AT_RecCostCenter" Type="uniqueidentifier" />
+          <Property Name="StepNo" Type="int" />
+          <Property Name="EmpID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="int" />
+          <Property Name="EmpFirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmpLastName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="FI03_AT_RecCostCenter">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FieldCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="ReceiverCC" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="FI03_AT_RecCostCenter_Special">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SectionCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="FieldCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="HR01_Employee">
+          <Key>
+            <PropertyRef Name="Client" />
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="EmpID" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpStatus" Type="nvarchar" MaxLength="5" />
+          <Property Name="WorkShift" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobTitleCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="JobTitleName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PositionTitleCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="PositionTitleName" Type="nvarchar" MaxLength="255" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SectionCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="255" />
+          <Property Name="DivisionCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="DivisionName" Type="nvarchar" MaxLength="255" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="255" />
+          <Property Name="TeamCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="255" />
+          <Property Name="NamePrefix" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="NamePrefixEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstNameEN" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastNameEN" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="5" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartWorkDate" Type="datetime" />
+          <Property Name="StartPermanent" Type="datetime" />
+          <Property Name="EndWorkDate" Type="datetime" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="SendMailFC" Type="bit" />
+          <Property Name="SendMailSO" Type="bit" />
+          <Property Name="SendMailComparing" Type="bit" />
+          <Property Name="DivisionCodeRef" Type="varchar" MaxLength="12" />
+          <Property Name="DepartmentCodeRef" Type="varchar" MaxLength="12" />
+          <Property Name="SectionCodeRef" Type="varchar" MaxLength="12" />
+          <Property Name="PositionCodeRef" Type="varchar" MaxLength="12" />
+          <Property Name="TeamCodeRef" Type="varchar" MaxLength="12" />
+          <Property Name="EmpIDCard" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MM01_PR_Config">
+          <Key>
+            <PropertyRef Name="Client" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Movement" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SAP.dbo.vAssetTransfer_Doc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vAssetTransfer_Doc">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+            <PropertyRef Name="AutoRunItem" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DocNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverCC_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverCC_to" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRunItem" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ItemNo" Type="int" />
+          <Property Name="AssetClass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Asset" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="RecCostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="DocStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="FlowStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SAP.dbo.vAssetTransfer_Flow' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vAssetTransfer_Flow">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+            <PropertyRef Name="AutoRunItem" />
+          </Key>
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DocNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_FlowMaster" Type="uniqueidentifier" />
+          <Property Name="FI03_AT_RecCostCenter_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRunItem" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FlowState" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApproveStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateApprove" Type="nvarchar" MaxLength="8" />
+          <Property Name="TimeApprove" Type="nvarchar" MaxLength="6" />
+          <Property Name="UserCreate" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreate" Type="nvarchar" MaxLength="8" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SAP.dbo.vAssetTransfer_Report' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vAssetTransfer_Report">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+            <PropertyRef Name="AutoRunItem" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRun" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DocNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverCC_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="FI03_AT_RecCostCenter_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverCC_to" Type="nvarchar" MaxLength="50" />
+          <Property Name="AutoRunItem" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ItemNo" Type="int" />
+          <Property Name="AssetClass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Asset" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="RecCostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="fsIssuer" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssuerID" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssuerName" Type="nvarchar" MaxLength="101" />
+          <Property Name="IssuerEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssuerAppStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssuerAppDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="IssuerAppTime" Type="nvarchar" MaxLength="6" />
+          <Property Name="IssuerRemark" Type="nvarchar" MaxLength="50" />
+          <Property Name="fsTopIssuer" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopIssuerID" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopIssuerName" Type="nvarchar" MaxLength="101" />
+          <Property Name="TopIssuerEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopIssuerAppStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopIssuerAppDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="TopIssuerAppTime" Type="nvarchar" MaxLength="6" />
+          <Property Name="TopIssuerRemark" Type="nvarchar" MaxLength="50" />
+          <Property Name="fsReciever" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecieverID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecieverName" Type="nvarchar" MaxLength="101" />
+          <Property Name="RecieverEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecieverAppStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="RecieverAppDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="RecieverAppTime" Type="nvarchar" MaxLength="6" />
+          <Property Name="RecieverRemark" Type="nvarchar" MaxLength="50" />
+          <Property Name="fsTopReciever" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopRecieverID" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopRecieverName" Type="nvarchar" MaxLength="101" />
+          <Property Name="TopRecieverEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopRecieverAppStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="TopRecieverAppDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="TopRecieverAppTime" Type="nvarchar" MaxLength="6" />
+          <Property Name="TopRecieverRemark" Type="nvarchar" MaxLength="50" />
+          <Property Name="fsAF" Type="nvarchar" MaxLength="50" />
+          <Property Name="AFID" Type="nvarchar" MaxLength="50" />
+          <Property Name="AFName" Type="nvarchar" MaxLength="101" />
+          <Property Name="AFEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="AFAppStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="AFAppDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="AFAppTime" Type="nvarchar" MaxLength="6" />
+          <Property Name="AFRemark" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SAP.dbo.vAssetTransfer_ReportHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vAssetTransfer_ReportHistory">
+          <Key>
+            <PropertyRef Name="DocNo" />
+          </Key>
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Asset" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="RecCostCenter" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="ItemNo" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAPModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SAPEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="FI03_AT_DocItem" EntityType="SAPModel.FI03_AT_DocItem" />
+          <EntitySet Name="FI03_AT_RecCostCenter" EntityType="SAPModel.FI03_AT_RecCostCenter" />
+          <EntitySet Name="HR01_Employee" EntityType="SAPModel.HR01_Employee" />
+          <EntitySet Name="FI03_AT_Doc" EntityType="SAPModel.FI03_AT_Doc" />
+          <EntitySet Name="FI03_AT_FlowApprove" EntityType="SAPModel.FI03_AT_FlowApprove" />
+          <EntitySet Name="vAssetTransfer_Doc" EntityType="SAPModel.vAssetTransfer_Doc" />
+          <EntitySet Name="vAssetTransfer_Flow" EntityType="SAPModel.vAssetTransfer_Flow" />
+          <EntitySet Name="FI03_AT_CostCenter" EntityType="SAPModel.FI03_AT_CostCenter" />
+          <EntitySet Name="FI03_AT_FlowMaster" EntityType="SAPModel.FI03_AT_FlowMaster" />
+          <EntitySet Name="MM01_PR_Config" EntityType="SAPModel.MM01_PR_Config" />
+          <EntitySet Name="vAssetTransfer_Report" EntityType="SAPModel.vAssetTransfer_Report" />
+          <EntitySet Name="FI03_AT_FlowApprove_Log" EntityType="SAPModel.FI03_AT_FlowApprove_Log" />
+          <EntitySet Name="FI03_AT_RecCostCenter_Special" EntityType="SAPModel.FI03_AT_RecCostCenter_Special" />
+          <EntitySet Name="vAssetTransfer_ReportHistory" EntityType="SAPModel.vAssetTransfer_ReportHistory" />
+        </EntityContainer>
+        <EntityType Name="FI03_AT_DocItem">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="Guid" Name="FI03_AT_Doc" />
+          <Property Type="Int32" Name="ItemNo" />
+          <Property Type="String" Name="AssetClass" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Asset" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AssetDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Qty" />
+          <Property Type="String" Name="RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FI03_AT_RecCostCenter">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="String" Name="ReceiverCC" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="String" Name="FieldCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DepartmentCode" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HR01_Employee">
+          <Key>
+            <PropertyRef Name="Client" />
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Type="String" Name="Client" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpID" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpStatus" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WorkShift" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="JobTitleCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="JobTitleName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PositionTitleCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PositionTitleName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BranchCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BranchName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SectionCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SectionName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DivisionCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DivisionName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DepartmentCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DepartmentName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TeamCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TeamName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NamePrefix" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NamePrefixEN" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstNameEN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastNameEN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sex" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BirthDate" Precision="3" />
+          <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Tel" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartWorkDate" Precision="3" />
+          <Property Type="DateTime" Name="StartPermanent" Precision="3" />
+          <Property Type="DateTime" Name="EndWorkDate" Precision="3" />
+          <Property Type="String" Name="Username" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="SendMailFC" />
+          <Property Type="Boolean" Name="SendMailSO" />
+          <Property Type="Boolean" Name="SendMailComparing" />
+          <Property Type="String" Name="DivisionCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DepartmentCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SectionCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PositionCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TeamCodeRef" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmpIDCard" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FI03_AT_Doc">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter_From" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter_To" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssueBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssueDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssueByTop" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssueDateTop" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiveBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiveDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiveByTop" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiveDateTop" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFApp" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFAppDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="String" Name="CreateTime" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UpdateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UpdateTime" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DocStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FlowStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssueTime" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssueTimeTop" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiveTime" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiveTimeTop" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFAppTime" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FI03_AT_FlowApprove">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="Guid" Name="FI03_AT_Doc" />
+          <Property Type="Guid" Name="FI03_AT_FlowMaster" />
+          <Property Type="String" Name="FlowState" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FlowStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpFirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpLastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ApproveStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DateApprove" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TimeApprove" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserCreate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DateCreate" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Flag" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vAssetTransfer_Doc">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+            <PropertyRef Name="AutoRunItem" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter_From" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiverCC_From" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter_To" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiverCC_to" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRunItem" Nullable="false" />
+          <Property Type="Int32" Name="ItemNo" />
+          <Property Type="String" Name="AssetClass" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Asset" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AssetDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Qty" />
+          <Property Type="String" Name="RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DocStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FlowStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vAssetTransfer_Flow">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+            <PropertyRef Name="AutoRunItem" />
+          </Key>
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="FI03_AT_FlowMaster" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter_From" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter_To" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRunItem" Nullable="false" />
+          <Property Type="String" Name="FlowState" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpFirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpLastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ApproveStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DateApprove" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TimeApprove" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserCreate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DateCreate" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FI03_AT_CostCenter">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AssetClass" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" />
+        </EntityType>
+        <EntityType Name="FI03_AT_FlowMaster">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="Guid" Name="FI03_AT_RecCostCenter" />
+          <Property Type="Int32" Name="StepNo" />
+          <Property Type="String" Name="EmpID" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="String" Name="EmpFirstName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpLastName" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MM01_PR_Config">
+          <Key>
+            <PropertyRef Name="Client" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="Client" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Movement" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Active" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vAssetTransfer_Report">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+            <PropertyRef Name="AutoRunItem" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter_From" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiverCC_From" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter_To" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiverCC_to" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRunItem" Nullable="false" />
+          <Property Type="Int32" Name="ItemNo" />
+          <Property Type="String" Name="AssetClass" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Asset" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AssetDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Qty" />
+          <Property Type="String" Name="RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fsIssuer" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssuerID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssuerName" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssuerEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssuerAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssuerAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssuerAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssuerRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fsTopIssuer" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopIssuerID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopIssuerName" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopIssuerEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopIssuerAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopIssuerAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopIssuerAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopIssuerRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fsReciever" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RecieverID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RecieverName" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RecieverEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RecieverAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RecieverAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RecieverAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RecieverRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fsTopReciever" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopRecieverID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopRecieverName" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopRecieverEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopRecieverAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopRecieverAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopRecieverAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TopRecieverRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fsAF" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFName" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFAppStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFAppDate" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFAppTime" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AFRemark" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DocStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FI03_AT_FlowApprove_Log">
+          <Key>
+            <PropertyRef Name="RunNo" />
+          </Key>
+          <Property Type="Int64" Name="RunNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" />
+          <Property Type="Guid" Name="FI03_AT_Doc" />
+          <Property Type="Guid" Name="FI03_AT_FlowMaster" />
+          <Property Type="String" Name="FlowState" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FlowStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpFirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpLastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmpEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ApproveStatus" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DateApprove" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TimeApprove" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserCreate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DateCreate" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Flag" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FI03_AT_RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FI03_AT_RecCostCenter_Special">
+          <Key>
+            <PropertyRef Name="AutoRun" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="AutoRun" Nullable="false" />
+          <Property Type="String" Name="SectionCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FieldCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DepartmentCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" />
+        </EntityType>
+        <EntityType Name="vAssetTransfer_ReportHistory">
+          <Key>
+            <PropertyRef Name="DocNo" />
+          </Key>
+          <Property Type="String" Name="Client" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DocNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateDate" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateTime" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Asset" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AssetDescription" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Qty" />
+          <Property Type="String" Name="RecCostCenter" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CostCenter2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Room2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ItemNo" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAPModelStoreContainer" CdmEntityContainer="SAPEntities">
+          <EntitySetMapping Name="FI03_AT_DocItem">
+            <EntityTypeMapping TypeName="SAPModel.FI03_AT_DocItem">
+              <MappingFragment StoreEntitySet="FI03_AT_DocItem">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Room2" ColumnName="Room2" />
+                <ScalarProperty Name="CostCenter2" ColumnName="CostCenter2" />
+                <ScalarProperty Name="RecCostCenter" ColumnName="RecCostCenter" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="AssetDescription" ColumnName="AssetDescription" />
+                <ScalarProperty Name="Asset" ColumnName="Asset" />
+                <ScalarProperty Name="AssetClass" ColumnName="AssetClass" />
+                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+                <ScalarProperty Name="FI03_AT_Doc" ColumnName="FI03_AT_Doc" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FI03_AT_RecCostCenter">
+            <EntityTypeMapping TypeName="SAPModel.FI03_AT_RecCostCenter">
+              <MappingFragment StoreEntitySet="FI03_AT_RecCostCenter">
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ReceiverCC" ColumnName="ReceiverCC" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HR01_Employee">
+            <EntityTypeMapping TypeName="SAPModel.HR01_Employee">
+              <MappingFragment StoreEntitySet="HR01_Employee">
+                <ScalarProperty Name="EmpIDCard" ColumnName="EmpIDCard" />
+                <ScalarProperty Name="TeamCodeRef" ColumnName="TeamCodeRef" />
+                <ScalarProperty Name="PositionCodeRef" ColumnName="PositionCodeRef" />
+                <ScalarProperty Name="SectionCodeRef" ColumnName="SectionCodeRef" />
+                <ScalarProperty Name="DepartmentCodeRef" ColumnName="DepartmentCodeRef" />
+                <ScalarProperty Name="DivisionCodeRef" ColumnName="DivisionCodeRef" />
+                <ScalarProperty Name="SendMailComparing" ColumnName="SendMailComparing" />
+                <ScalarProperty Name="SendMailSO" ColumnName="SendMailSO" />
+                <ScalarProperty Name="SendMailFC" ColumnName="SendMailFC" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="EndWorkDate" ColumnName="EndWorkDate" />
+                <ScalarProperty Name="StartPermanent" ColumnName="StartPermanent" />
+                <ScalarProperty Name="StartWorkDate" ColumnName="StartWorkDate" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="LastNameEN" ColumnName="LastNameEN" />
+                <ScalarProperty Name="FirstNameEN" ColumnName="FirstNameEN" />
+                <ScalarProperty Name="NamePrefixEN" ColumnName="NamePrefixEN" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="NamePrefix" ColumnName="NamePrefix" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="TeamCode" ColumnName="TeamCode" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="SectionCode" ColumnName="SectionCode" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="PositionTitleName" ColumnName="PositionTitleName" />
+                <ScalarProperty Name="PositionTitleCode" ColumnName="PositionTitleCode" />
+                <ScalarProperty Name="JobTitleName" ColumnName="JobTitleName" />
+                <ScalarProperty Name="JobTitleCode" ColumnName="JobTitleCode" />
+                <ScalarProperty Name="WorkShift" ColumnName="WorkShift" />
+                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FI03_AT_Doc">
+            <EntityTypeMapping TypeName="SAPModel.FI03_AT_Doc">
+              <MappingFragment StoreEntitySet="FI03_AT_Doc">
+                <ScalarProperty Name="AFAppTime" ColumnName="AFAppTime" />
+                <ScalarProperty Name="ReceiveTimeTop" ColumnName="ReceiveTimeTop" />
+                <ScalarProperty Name="ReceiveTime" ColumnName="ReceiveTime" />
+                <ScalarProperty Name="IssueTimeTop" ColumnName="IssueTimeTop" />
+                <ScalarProperty Name="IssueTime" ColumnName="IssueTime" />
+                <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AFAppDate" ColumnName="AFAppDate" />
+                <ScalarProperty Name="AFApp" ColumnName="AFApp" />
+                <ScalarProperty Name="ReceiveDateTop" ColumnName="ReceiveDateTop" />
+                <ScalarProperty Name="ReceiveByTop" ColumnName="ReceiveByTop" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="ReceiveBy" ColumnName="ReceiveBy" />
+                <ScalarProperty Name="IssueDateTop" ColumnName="IssueDateTop" />
+                <ScalarProperty Name="IssueByTop" ColumnName="IssueByTop" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="IssueBy" ColumnName="IssueBy" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter_To" ColumnName="FI03_AT_RecCostCenter_To" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter_From" ColumnName="FI03_AT_RecCostCenter_From" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FI03_AT_FlowApprove">
+            <EntityTypeMapping TypeName="SAPModel.FI03_AT_FlowApprove">
+              <MappingFragment StoreEntitySet="FI03_AT_FlowApprove">
+                <ScalarProperty Name="FI03_AT_RecCostCenter" ColumnName="FI03_AT_RecCostCenter" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="TimeApprove" ColumnName="TimeApprove" />
+                <ScalarProperty Name="DateApprove" ColumnName="DateApprove" />
+                <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+                <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+                <ScalarProperty Name="EmpLastName" ColumnName="EmpLastName" />
+                <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+                <ScalarProperty Name="FlowState" ColumnName="FlowState" />
+                <ScalarProperty Name="FI03_AT_FlowMaster" ColumnName="FI03_AT_FlowMaster" />
+                <ScalarProperty Name="FI03_AT_Doc" ColumnName="FI03_AT_Doc" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAssetTransfer_Doc">
+            <EntityTypeMapping TypeName="SAPModel.vAssetTransfer_Doc">
+              <MappingFragment StoreEntitySet="vAssetTransfer_Doc">
+                <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Room2" ColumnName="Room2" />
+                <ScalarProperty Name="CostCenter2" ColumnName="CostCenter2" />
+                <ScalarProperty Name="RecCostCenter" ColumnName="RecCostCenter" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="AssetDescription" ColumnName="AssetDescription" />
+                <ScalarProperty Name="Asset" ColumnName="Asset" />
+                <ScalarProperty Name="AssetClass" ColumnName="AssetClass" />
+                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+                <ScalarProperty Name="AutoRunItem" ColumnName="AutoRunItem" />
+                <ScalarProperty Name="ReceiverCC_to" ColumnName="ReceiverCC_to" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter_To" ColumnName="FI03_AT_RecCostCenter_To" />
+                <ScalarProperty Name="ReceiverCC_From" ColumnName="ReceiverCC_From" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter_From" ColumnName="FI03_AT_RecCostCenter_From" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAssetTransfer_Flow">
+            <EntityTypeMapping TypeName="SAPModel.vAssetTransfer_Flow">
+              <MappingFragment StoreEntitySet="vAssetTransfer_Flow">
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="TimeApprove" ColumnName="TimeApprove" />
+                <ScalarProperty Name="DateApprove" ColumnName="DateApprove" />
+                <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+                <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+                <ScalarProperty Name="EmpLastName" ColumnName="EmpLastName" />
+                <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="FlowState" ColumnName="FlowState" />
+                <ScalarProperty Name="AutoRunItem" ColumnName="AutoRunItem" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter_To" ColumnName="FI03_AT_RecCostCenter_To" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter_From" ColumnName="FI03_AT_RecCostCenter_From" />
+                <ScalarProperty Name="FI03_AT_FlowMaster" ColumnName="FI03_AT_FlowMaster" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FI03_AT_CostCenter">
+            <EntityTypeMapping TypeName="SAPModel.FI03_AT_CostCenter">
+              <MappingFragment StoreEntitySet="FI03_AT_CostCenter">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="AssetClass" ColumnName="AssetClass" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter" ColumnName="FI03_AT_RecCostCenter" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FI03_AT_FlowMaster">
+            <EntityTypeMapping TypeName="SAPModel.FI03_AT_FlowMaster">
+              <MappingFragment StoreEntitySet="FI03_AT_FlowMaster">
+                <ScalarProperty Name="EmpLastName" ColumnName="EmpLastName" />
+                <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="StepNo" ColumnName="StepNo" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter" ColumnName="FI03_AT_RecCostCenter" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MM01_PR_Config">
+            <EntityTypeMapping TypeName="SAPModel.MM01_PR_Config">
+              <MappingFragment StoreEntitySet="MM01_PR_Config">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Movement" ColumnName="Movement" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAssetTransfer_Report">
+            <EntityTypeMapping TypeName="SAPModel.vAssetTransfer_Report">
+              <MappingFragment StoreEntitySet="vAssetTransfer_Report">
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="AFRemark" ColumnName="AFRemark" />
+                <ScalarProperty Name="AFAppTime" ColumnName="AFAppTime" />
+                <ScalarProperty Name="AFAppDate" ColumnName="AFAppDate" />
+                <ScalarProperty Name="AFAppStatus" ColumnName="AFAppStatus" />
+                <ScalarProperty Name="AFEmail" ColumnName="AFEmail" />
+                <ScalarProperty Name="AFName" ColumnName="AFName" />
+                <ScalarProperty Name="AFID" ColumnName="AFID" />
+                <ScalarProperty Name="fsAF" ColumnName="fsAF" />
+                <ScalarProperty Name="TopRecieverRemark" ColumnName="TopRecieverRemark" />
+                <ScalarProperty Name="TopRecieverAppTime" ColumnName="TopRecieverAppTime" />
+                <ScalarProperty Name="TopRecieverAppDate" ColumnName="TopRecieverAppDate" />
+                <ScalarProperty Name="TopRecieverAppStatus" ColumnName="TopRecieverAppStatus" />
+                <ScalarProperty Name="TopRecieverEmail" ColumnName="TopRecieverEmail" />
+                <ScalarProperty Name="TopRecieverName" ColumnName="TopRecieverName" />
+                <ScalarProperty Name="TopRecieverID" ColumnName="TopRecieverID" />
+                <ScalarProperty Name="fsTopReciever" ColumnName="fsTopReciever" />
+                <ScalarProperty Name="RecieverRemark" ColumnName="RecieverRemark" />
+                <ScalarProperty Name="RecieverAppTime" ColumnName="RecieverAppTime" />
+                <ScalarProperty Name="RecieverAppDate" ColumnName="RecieverAppDate" />
+                <ScalarProperty Name="RecieverAppStatus" ColumnName="RecieverAppStatus" />
+                <ScalarProperty Name="RecieverEmail" ColumnName="RecieverEmail" />
+                <ScalarProperty Name="RecieverName" ColumnName="RecieverName" />
+                <ScalarProperty Name="RecieverID" ColumnName="RecieverID" />
+                <ScalarProperty Name="fsReciever" ColumnName="fsReciever" />
+                <ScalarProperty Name="TopIssuerRemark" ColumnName="TopIssuerRemark" />
+                <ScalarProperty Name="TopIssuerAppTime" ColumnName="TopIssuerAppTime" />
+                <ScalarProperty Name="TopIssuerAppDate" ColumnName="TopIssuerAppDate" />
+                <ScalarProperty Name="TopIssuerAppStatus" ColumnName="TopIssuerAppStatus" />
+                <ScalarProperty Name="TopIssuerEmail" ColumnName="TopIssuerEmail" />
+                <ScalarProperty Name="TopIssuerName" ColumnName="TopIssuerName" />
+                <ScalarProperty Name="TopIssuerID" ColumnName="TopIssuerID" />
+                <ScalarProperty Name="fsTopIssuer" ColumnName="fsTopIssuer" />
+                <ScalarProperty Name="IssuerRemark" ColumnName="IssuerRemark" />
+                <ScalarProperty Name="IssuerAppTime" ColumnName="IssuerAppTime" />
+                <ScalarProperty Name="IssuerAppDate" ColumnName="IssuerAppDate" />
+                <ScalarProperty Name="IssuerAppStatus" ColumnName="IssuerAppStatus" />
+                <ScalarProperty Name="IssuerEmail" ColumnName="IssuerEmail" />
+                <ScalarProperty Name="IssuerName" ColumnName="IssuerName" />
+                <ScalarProperty Name="IssuerID" ColumnName="IssuerID" />
+                <ScalarProperty Name="fsIssuer" ColumnName="fsIssuer" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Room2" ColumnName="Room2" />
+                <ScalarProperty Name="CostCenter2" ColumnName="CostCenter2" />
+                <ScalarProperty Name="RecCostCenter" ColumnName="RecCostCenter" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="AssetDescription" ColumnName="AssetDescription" />
+                <ScalarProperty Name="Asset" ColumnName="Asset" />
+                <ScalarProperty Name="AssetClass" ColumnName="AssetClass" />
+                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+                <ScalarProperty Name="AutoRunItem" ColumnName="AutoRunItem" />
+                <ScalarProperty Name="ReceiverCC_to" ColumnName="ReceiverCC_to" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter_To" ColumnName="FI03_AT_RecCostCenter_To" />
+                <ScalarProperty Name="ReceiverCC_From" ColumnName="ReceiverCC_From" />
+                <ScalarProperty Name="FI03_AT_RecCostCenter_From" ColumnName="FI03_AT_RecCostCenter_From" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FI03_AT_FlowApprove_Log">
+            <EntityTypeMapping TypeName="SAPModel.FI03_AT_FlowApprove_Log">
+              <MappingFragment StoreEntitySet="FI03_AT_FlowApprove_Log">
+                <ScalarProperty Name="FI03_AT_RecCostCenter" ColumnName="FI03_AT_RecCostCenter" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="TimeApprove" ColumnName="TimeApprove" />
+                <ScalarProperty Name="DateApprove" ColumnName="DateApprove" />
+                <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+                <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+                <ScalarProperty Name="EmpLastName" ColumnName="EmpLastName" />
+                <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="FlowStatus" ColumnName="FlowStatus" />
+                <ScalarProperty Name="FlowState" ColumnName="FlowState" />
+                <ScalarProperty Name="FI03_AT_FlowMaster" ColumnName="FI03_AT_FlowMaster" />
+                <ScalarProperty Name="FI03_AT_Doc" ColumnName="FI03_AT_Doc" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="RunNo" ColumnName="RunNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FI03_AT_RecCostCenter_Special">
+            <EntityTypeMapping TypeName="SAPModel.FI03_AT_RecCostCenter_Special">
+              <MappingFragment StoreEntitySet="FI03_AT_RecCostCenter_Special">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+                <ScalarProperty Name="SectionCode" ColumnName="SectionCode" />
+                <ScalarProperty Name="AutoRun" ColumnName="AutoRun" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAssetTransfer_ReportHistory">
+            <EntityTypeMapping TypeName="SAPModel.vAssetTransfer_ReportHistory">
+              <MappingFragment StoreEntitySet="vAssetTransfer_ReportHistory">
+                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Room2" ColumnName="Room2" />
+                <ScalarProperty Name="CostCenter2" ColumnName="CostCenter2" />
+                <ScalarProperty Name="RecCostCenter" ColumnName="RecCostCenter" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="AssetDescription" ColumnName="AssetDescription" />
+                <ScalarProperty Name="Asset" ColumnName="Asset" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
